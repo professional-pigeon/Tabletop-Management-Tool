@@ -1,9 +1,9 @@
 import { Box, Text } from '@chakra-ui/react'
 
-export default function Home() {
+export default function Index() {
   return (
     <Box>
-      <Text>hi I am here</Text>
+      <Text>hi I am a different page</Text>
     </Box>
   )
 }
