@@ -1,10 +1,10 @@
 import { Box } from '@chakra-ui/react'
 import Header from './Header'
 
-export default function Layout({ children }) {
+export default function Layout({ user, children }) {
   return (
-    <Box bg='red.200'>
-      <Header />
+    <Box>
+      <Header user={user} />
       {children}
     </Box>
   )
