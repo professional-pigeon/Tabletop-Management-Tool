@@ -1,11 +1,12 @@
-import { Box, Text } from '@chakra-ui/react'
-import { userAgent } from 'next/server'
+import { Box, Flex, Text } from '@chakra-ui/react'
 
 export default function Header({ user }) {
   const { name } = user
   return (
-    <Box bg='blue.200'>
-      <Text>Welcome {name}</Text>
+    <Box bg='blue.200' p='1rem' mb='1rem' boxShadow='md'>
+      <Flex direction='row' justifyContent='space-around'>
+        <Text>Welcome {name}</Text>
+      </Flex>
     </Box>
   )
 }
