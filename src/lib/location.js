@@ -1,4 +1,4 @@
-export default async function getLocation(locationID) {
+export default async function getLocation(locationId) {
   let location
 
   try {

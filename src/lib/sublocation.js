@@ -1,9 +1,9 @@
-export default async function getSubLocation(subLocationID) {
+export default async function getSubLocation(subLocationId) {
   let subLocation
 
   try {
     subLocation = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/sublocations/${subLocationId}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/sub_locations/${subLocationId}`
     )
     const subLocationData = await subLocation.json()
 
