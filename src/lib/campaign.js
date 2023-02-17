@@ -1,9 +1,9 @@
-export default async function getCampaign(userId) {
+export default async function getCampaign(campaignId) {
   let campaign
 
   try {
     campaign = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/user/campaigns/${userId}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/campaigns/${campaignId}`
     )
     const campaignData = await campaign.json()
 
