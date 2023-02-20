@@ -3,7 +3,7 @@ import getLocation from '@/lib/location'
 import { useEffect } from 'react'
 
 
-export default function Index() {
+export default function Index(campaignId) {
   useEffect(() => {
     getLocation(1).then((res) => console.log('hi', res))
   })

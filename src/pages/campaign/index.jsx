@@ -1,6 +1,7 @@
 import { Box, Text } from '@chakra-ui/react'
 import getCampaign from '@/lib/campaign'
 import { useEffect, useState } from 'react'
+import Location from '@/components/multi/Location'
 
 export default function Index() {
   const [locations, setLocations] = useState([])
@@ -13,9 +14,14 @@ export default function Index() {
       setCampaign(campaignData);
   })}, [])
 
+  console.log(locations)
   return (
     <Box>
       <Text>hi I am the campaign page</Text>
+      <Box>
+      <Text>list of locations for {campaign.name}</Text>
+        {locations.map((location) => <Location key={location.id} {...location} />)}
+      </Box>
     </Box>
   )
 }
