@@ -1,4 +1,4 @@
-export default async function getSubLocation(subLocationId) {
+async function getSubLocation(subLocationId) {
   let subLocation
 
   try {
@@ -12,3 +12,5 @@ export default async function getSubLocation(subLocationId) {
     return { error }
   }
 }
+
+export { getSubLocation}

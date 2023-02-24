@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react'
-import getLocation from '@/lib/location'
+import { getLocation } from '@/lib/location'
 import { useEffect } from 'react'
 
 

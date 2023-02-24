@@ -1,4 +1,4 @@
-export default async function getcharacter(characterId) {
+async function getCharacter(characterId) {
   let character
 
   try {
@@ -12,3 +12,5 @@ export default async function getcharacter(characterId) {
     return { error }
   }
 }
+
+export { getCharacter }

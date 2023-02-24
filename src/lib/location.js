@@ -1,4 +1,4 @@
-export default async function getLocation(locationId) {
+async function getLocation(locationId) {
   let location
 
   try {
@@ -12,3 +12,5 @@ export default async function getLocation(locationId) {
     return { error }
   }
 }
+
+export { getLocation }

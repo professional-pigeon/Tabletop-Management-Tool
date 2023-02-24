@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react'
-import getCharacter from '@/lib/character'
+import { getCharacter } from '@/lib/character'
 import { useEffect } from 'react'
 
 export default function Index() {

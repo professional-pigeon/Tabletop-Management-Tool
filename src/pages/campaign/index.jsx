@@ -1,7 +1,8 @@
 import { Button, Flex, VStack, Box, Text, HStack } from '@chakra-ui/react'
-import getCampaign from '@/lib/campaign'
+import { getCampaign } from '@/lib/campaign'
 import { useEffect, useState } from 'react'
 import LocationCard from '@/components/multi/LocationCard'
+import AddLocationModal from '@/components/multi/AddLocationModal'
 
 export default function Index() {
   const [locations, setLocations] = useState([])
@@ -25,7 +26,7 @@ export default function Index() {
         <Flex direction='column' w='65%'>
           <HStack justifyContent='space-between'>
             <Text>Locations #add sort type?#</Text>
-            <Button>add location</Button>
+            <AddLocationModal />
           </HStack>
           <Flex flexWrap={'wrap'} gap='.25rem'>
             {locations.map((location) => <LocationCard key={location.id} {...location} />)}

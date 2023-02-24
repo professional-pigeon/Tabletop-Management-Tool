@@ -1,4 +1,4 @@
-export default async function getCampaign(campaignId) {
+async function getCampaign(campaignId) {
   let campaign
 
   try {
@@ -12,3 +12,5 @@ export default async function getCampaign(campaignId) {
     return { error }
   }
 }
+
+export { getCampaign }

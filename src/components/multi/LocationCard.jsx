@@ -1,4 +1,4 @@
-import { Flex, Button, Text, VStack, HStack } from '@chakra-ui/react'
+import { Flex, Button, Text, VStack } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 export default function LocationCard({ id, name, notes, description }) {
   return (

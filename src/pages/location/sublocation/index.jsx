@@ -1,5 +1,5 @@
-import getSubLocation from '@/lib/sublocation'
 import { Box, Text } from '@chakra-ui/react'
+import { getSubLocation } from '@/lib/sublocation'
 import { useEffect } from 'react'
 
 
