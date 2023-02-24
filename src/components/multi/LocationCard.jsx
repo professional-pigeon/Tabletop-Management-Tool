@@ -1,8 +1,8 @@
 import { Flex, Button, Text, VStack, HStack } from '@chakra-ui/react'
-
+import PropTypes from 'prop-types'
 export default function LocationCard({ id, name, notes, description }) {
   return (
-    <Flex direction='column' bg='green.500' w='33%' h='fit' p='.25rem' gap='1rem'>
+    <Flex direction='column' bg='green.500' w='33%' p='.25rem' gap='1rem'>
       <Text>{name}</Text>
       <VStack>
         <Text w='full'>Description</Text>
@@ -17,3 +17,14 @@ export default function LocationCard({ id, name, notes, description }) {
   )
 }
 
+LocationCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  notes: PropTypes.string,
+  id: PropTypes.number.isRequired
+}
+
+LocationCard.defaultProps ={
+  description: 'tbd',
+  notes: 'none'
+}
