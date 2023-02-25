@@ -7,12 +7,32 @@ import {
   ModalBody,
   ModalCloseButton,
   Text,
+  Input,
   useDisclosure,
   Button,
 } from '@chakra-ui/react'
+import { useState } from 'react'
 
 export default function AddLocationModal({ locations, setLocations }) {
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const onCloseWrap = () => {
+    resetFields();
+    onClose();
+  }
+
+  const resetFields = () => {
+    setDescription('')
+    setName('')
+  }
+
+  const addNewLocation = () => {
+    console.log(name, description);
+    onCloseWrap();
+  }
+
   return (
     <>
       <Button onClick={onOpen}>Add Location</Button>
@@ -23,14 +43,17 @@ export default function AddLocationModal({ locations, setLocations }) {
           <ModalHeader>Add Location</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>form to go here</Text>
+            <Text>Name</Text>
+            <Input value={name} onChange={(e) => setName(e.target.value)}/>
+            <Text>Description</Text>
+            <Input value={description} onChange={(e) => setDescription(e.target.value)}/>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
+            <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
               Close
             </Button>
-            <Button variant='ghost'>Secondary Action</Button>
+            <Button onClick={addNewLocation}>Add</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
