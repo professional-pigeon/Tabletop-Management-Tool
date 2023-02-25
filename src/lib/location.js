@@ -13,7 +13,24 @@ async function getLocation(locationId) {
   }
 }
 
-async function addLocation({ campaignId, name, description, notes }) {
+async function addLocation({ campaignId, name, description }) {
+  let location
+
+  try {
+    location = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/locations`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ campaign_id: campaignId, name, description, notes: 'hi' }),
+      }
+    )
+    const newLocation = await location.json()
+
+    return newLocation
+  } catch (error) {
+    return { error }
+  }
+
 }
 
-export { getLocation }
+export { getLocation, addLocation }
