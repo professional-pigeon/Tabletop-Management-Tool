@@ -18,18 +18,18 @@ export default function AddLocationModal({ locations, setLocations }) {
   const [description, setDescription] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const onCloseWrap = () => {
-    resetFields();
-    onClose();
-  }
-
   const resetFields = () => {
     setDescription('')
     setName('')
   }
 
+  const onCloseWrap = () => {
+    resetFields();
+    onClose();
+  }
+
   const addNewLocation = () => {
-    console.log(name, description);
+    console.log(name, description, 'no notes');
     onCloseWrap();
   }
 
@@ -40,7 +40,7 @@ export default function AddLocationModal({ locations, setLocations }) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Add Location</ModalHeader>
+          <ModalHeader>New Location</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text>Name</Text>

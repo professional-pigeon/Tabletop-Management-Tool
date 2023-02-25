@@ -13,4 +13,7 @@ async function getLocation(locationId) {
   }
 }
 
+async function addLocation({ campaignId, name, description, notes }) {
+}
+
 export { getLocation }
