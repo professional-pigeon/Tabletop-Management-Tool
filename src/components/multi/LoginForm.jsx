@@ -7,7 +7,7 @@ export default function LoginCard() {
   const [password, setPassword] = useState('')
 
   return (
-    <Flex direction='column' w='33%' p='.25rem' borderRadius='.5rem' boxShadow='md'>
+    <Flex direction='column' w='33%' p='.25rem' borderRadius='.5rem' boxShadow='lg'>
       <Text>Login</Text>
       <VStack>
         <Text>User Name</Text>
