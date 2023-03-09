@@ -1,11 +1,10 @@
 import { Box, Text, Button } from '@chakra-ui/react'
-import { loginCall } from '@/lib/login'
+import LoginCard from '@/components/multi/loginForm'
 
 export default function Index() {
   return (
     <Box>
-      <Text>Log in here</Text>
-      <Button onClick={() => loginCall('admin kk', 'test123')}>login</Button>
+      <LoginCard />
     </Box>
   )
 }
