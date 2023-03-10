@@ -13,7 +13,7 @@ async function getLocation(locationId) {
   }
 }
 
-async function addLocation({ campaignId, name, description }) {
+async function addLocation(campaignId, name, description) {
   let location
 
   try {
@@ -21,7 +21,14 @@ async function addLocation({ campaignId, name, description }) {
       `/locations`,
       {
         method: 'POST',
-        body: JSON.stringify({ campaign_id: campaignId, name, description, notes: 'hi' }),
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ 
+          campaign_id: campaignId, 
+          name, 
+          description, 
+          notes: 'hi',
+          location_type: 'city' 
+        }),
       }
     )
     const newLocation = await location.json()

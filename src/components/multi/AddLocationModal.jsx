@@ -1,3 +1,4 @@
+import { addLocation } from '@/lib/location'
 import {
   Modal,
   ModalOverlay,
@@ -29,7 +30,7 @@ export default function AddLocationModal({ locations, setLocations }) {
   }
 
   const addNewLocation = () => {
-    console.log(name, description, 'no notes');
+    addLocation(1, name, description)
     onCloseWrap();
   }
 
