@@ -3,7 +3,7 @@ async function getCharacter(characterId) {
 
   try {
     character = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/characters/${characterId}`
+      `/characters/${characterId}`
     )
     const characterData = await character.json()
 

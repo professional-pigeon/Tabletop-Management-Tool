@@ -29,7 +29,7 @@ export default function Index() {
             <AddLocationModal />
           </HStack>
           <Flex flexWrap={'wrap'} gap='.25rem'>
-            {locations.map((location) => <LocationCard key={location.id} {...location} />)}
+            {locations?.map((location) => <LocationCard key={location.id} {...location} />)}
             <LocationCard name='Zandria 2' />
             <LocationCard name='Zandria 2' />
             <LocationCard name='Zandria 2' />

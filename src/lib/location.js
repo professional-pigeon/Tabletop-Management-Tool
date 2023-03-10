@@ -3,7 +3,7 @@ async function getLocation(locationId) {
 
   try {
     location = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/locations/${locationId}`
+      `/locations/${locationId}`
     )
     const locationData = await location.json()
 
@@ -18,7 +18,7 @@ async function addLocation({ campaignId, name, description }) {
 
   try {
     location = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/locations`,
+      `/locations`,
       {
         method: 'POST',
         body: JSON.stringify({ campaign_id: campaignId, name, description, notes: 'hi' }),

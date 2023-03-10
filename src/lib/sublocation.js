@@ -3,7 +3,7 @@ async function getSubLocation(subLocationId) {
 
   try {
     subLocation = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/sub_locations/${subLocationId}`
+      `/sub_locations/${subLocationId}`
     )
     const subLocationData = await subLocation.json()
 
