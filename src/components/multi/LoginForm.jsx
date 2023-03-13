@@ -1,4 +1,4 @@
-import { Flex, Button, Text, VStack, Input } from '@chakra-ui/react'
+import { Flex, Button, Text, VStack, useToast } from '@chakra-ui/react'
 import { useState } from 'react'
 import { areTextFieldsValidated } from '@/lib/textValidators'
 import TextInput from '../single/TextInput'
@@ -8,6 +8,7 @@ export default function LoginCard() {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [hasError, setHasError] = useState(false)
+  const toast = useToast()
 
   const loginCallWrapper = (userName, password) => {
     if (areTextFieldsValidated([userName, password])) {
@@ -16,10 +17,17 @@ export default function LoginCard() {
           if (res.error) {
             throw new Error(res.error)
           } else {
+            // redirect here
             return console.log(res, 'sucess')
           }
         })
-        .catch((error) => console.log(error, 'throw error toast'))
+        .catch((error) => toast({
+          title: 'Error',
+          description: 'Error with User name or password',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        }))
     } else {
       return setHasError(true)
     }

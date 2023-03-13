@@ -11,16 +11,15 @@ export default function TextInput({
   errorMessage
 }) {
   return (
-    <FormControl>
+    <FormControl isInvalid={error}>
       <FormLabel>{name}</FormLabel>
       <Input 
-        isInvalid={error}
         isDisabled={disabled} 
         value={inputValue} 
         onChange={(e) => setInputValue(e.target.value)}
       />
-      {helperText && <FormHelperText>{helperText}</FormHelperText>}
-      {error && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
+      {(!error && helperText) && <FormHelperText>{helperText}</FormHelperText>}
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
 }
