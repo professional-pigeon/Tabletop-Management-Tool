@@ -12,8 +12,14 @@ export default function LoginCard() {
   const loginCallWrapper = (userName, password) => {
     if (areTextFieldsValidated([userName, password])) {
       loginCall(userName, password)
-        .then((res) => console.log(res, 'success'))
-        .catch((error) => console.log(error, 'failure'))
+        .then((res) => {
+          if (res.error) {
+            throw new Error(res.error)
+          } else {
+            return console.log(res, 'sucess')
+          }
+        })
+        .catch((error) => console.log(error, 'throw error toast'))
     } else {
       return setHasError(true)
     }

@@ -10,7 +10,6 @@ async function loginCall(username, password) {
       body: JSON.stringify({ user_name: username, password: password }),
     })
     const userData = await user.json()
-    console.log(userData)
     return userData
   } catch (error) {
     return { error }
