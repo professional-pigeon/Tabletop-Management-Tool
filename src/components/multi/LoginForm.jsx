@@ -1,6 +1,7 @@
 import { Flex, Button, Text, VStack, Input } from '@chakra-ui/react'
 import { useState } from 'react'
 import { loginCall } from '@/lib/login'
+import TextInput from '../single/TextInput'
 
 export default function LoginCard() {
   const [userName, setUserName] = useState('')
@@ -10,10 +11,8 @@ export default function LoginCard() {
     <Flex direction='column' w='33%' p='.25rem' borderRadius='.5rem' boxShadow='lg'>
       <Text>Login</Text>
       <VStack>
-        <Text>User Name</Text>
-        <Input value={userName} onChange={(e) => setUserName(e.target.value)}/>
-        <Text>Password</Text>
-        <Input value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <TextInput name={'User Name'} inputValue={userName} setInputValue={setUserName}/>
+        <TextInput name={'Password'} inputValue={password} setInputValue={setPassword}/>
       </VStack>
       <Button onClick={() => loginCall(userName, password)}>Login</Button>
     </Flex>

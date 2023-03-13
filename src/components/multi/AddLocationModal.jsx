@@ -13,6 +13,7 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { useState } from 'react'
+import TextInput from '../single/TextInput'
 
 export default function AddLocationModal({ locations, setLocations }) {
   const [name, setName] = useState('')
@@ -44,10 +45,8 @@ export default function AddLocationModal({ locations, setLocations }) {
           <ModalHeader>New Location</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Name</Text>
-            <Input value={name} onChange={(e) => setName(e.target.value)}/>
-            <Text>Description</Text>
-            <Input value={description} onChange={(e) => setDescription(e.target.value)}/>
+            <TextInput name='Name' inputValue={name} setInputValue={setName}/>
+            <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
           </ModalBody>
 
           <ModalFooter>
