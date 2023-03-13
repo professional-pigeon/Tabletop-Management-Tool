@@ -1,46 +1,23 @@
 import { Button, Flex, VStack, Box, Text, HStack } from '@chakra-ui/react'
-import { getCampaign } from '@/lib/campaign'
+import { getCampaigns } from '@/lib/campaign'
 import { useEffect, useState } from 'react'
-import LocationCard from '@/components/multi/LocationCard'
-import AddLocationModal from '@/components/multi/AddLocationModal'
+
 
 export default function Index() {
-  const [locations, setLocations] = useState([])
-  const [campaign, setCampaign] = useState({})
+  const [campaigns, setCampaigns] = useState([{}])
 
   useEffect(() => {
-    getCampaign(1).then((res) => {
-      const { locations: locationData, ...campaignData } = res
-      setLocations(locationData);
-      setCampaign(campaignData);
-  })}, [])
+    getCampaigns().then((res) => setCampaigns(res))
+  }, [])
 
-  console.log(locations)
+  console.log(campaigns)
   return (
     <Box>
-      <Flex direction='row'>
-        <Flex direction='column' w='35%'>
-        <Text>{campaign.name}</Text>
-        <Text>{campaign.notes || 'notes to go here'}</Text>
-        </Flex>
         <Flex direction='column' w='65%'>
-          <HStack justifyContent='space-between'>
-            <Text>Locations #add sort type?#</Text>
-            <AddLocationModal />
-          </HStack>
-          <Flex flexWrap={'wrap'} gap='.25rem'>
-            {locations?.map((location) => <LocationCard key={location.id} {...location} />)}
-            <LocationCard name='Zandria 2' />
-            <LocationCard name='Zandria 2' />
-            <LocationCard name='Zandria 2' />
-            <LocationCard name='Zandria 2' />
-            <LocationCard name='Zandria 2' />
-            <LocationCard name='Zandria 2' />
-            <LocationCard name='Zandria 2' />
-            <LocationCard name='Zandria 2' />
-          </Flex>
+          <Text>All campaigns</Text>
+          {campaigns.map((campaign) => 
+            <Text key={`${campaign.name} ${campaign.id}`}>{campaign.name}</Text>)}
         </Flex>
-      </Flex>
     </Box>
   )
 }

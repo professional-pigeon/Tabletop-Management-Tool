@@ -1,16 +1,16 @@
-async function getCampaign(campaignId) {
-  let campaign
+async function getCampaigns(campaignId) {
+  let campaigns
 
   try {
-    campaign = await fetch(
-      `/campaigns/${campaignId}`
+    campaigns = await fetch(
+      `user/campaigns`
     )
-    const campaignData = await campaign.json()
+    const campaignsData = await campaigns.json()
 
-    return campaignData
+    return campaignsData
   } catch (error) {
     return { error }
   }
 }
 
-export { getCampaign }
+export { getCampaigns }
