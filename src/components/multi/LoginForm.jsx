@@ -3,12 +3,14 @@ import { useState } from 'react'
 import { areTextFieldsValidated } from '@/lib/textValidators'
 import TextInput from '../single/TextInput'
 import { loginCall } from '@/lib/login'
+import { useRouter } from 'next/router'
 
 export default function LoginCard() {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [hasError, setHasError] = useState(false)
   const toast = useToast()
+  const router = useRouter()
 
   const loginCallWrapper = (userName, password) => {
     if (areTextFieldsValidated([userName, password])) {
@@ -17,11 +19,10 @@ export default function LoginCard() {
           if (res.error) {
             throw new Error(res.error)
           } else {
-            // redirect here
-            return console.log(res, 'sucess')
+            router.push('/campaign')
           }
         })
-        .catch((error) => toast({
+        .catch(() => toast({
           title: 'Error',
           description: 'Error with User name or password',
           status: 'error',
