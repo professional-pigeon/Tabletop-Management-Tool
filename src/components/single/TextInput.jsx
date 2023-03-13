@@ -1,4 +1,4 @@
-import { FormLabel, Input, Flex, FormHelperText, FormControl } from '@chakra-ui/react'
+import { FormLabel, Input, FormHelperText, FormControl, FormErrorMessage } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 
 export default function TextInput({ 
@@ -7,7 +7,8 @@ export default function TextInput({
   setInputValue, 
   disabled,
   helperText,
-  error
+  error,
+  errorMessage
 }) {
   return (
     <FormControl>
@@ -19,6 +20,7 @@ export default function TextInput({
         onChange={(e) => setInputValue(e.target.value)}
       />
       {helperText && <FormHelperText>{helperText}</FormHelperText>}
+      {error && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
     </FormControl>
   )
 }
@@ -26,10 +28,11 @@ export default function TextInput({
 TextInput.propTypes = {
   name: PropTypes.string,
   inputValue: PropTypes.string,
-  setInputValue: PropTypes.string,
+  setInputValue: PropTypes.func,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
-  helperText: PropTypes.string
+  helperText: PropTypes.string,
+  errorMessage: PropTypes.string,
 }
 
 TextInput.defaultProps ={
@@ -39,4 +42,5 @@ TextInput.defaultProps ={
   disabled: false,
   error: false,
   helperText: '',
+  errorMessage: `issue with field`
 }
