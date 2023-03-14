@@ -16,4 +16,20 @@ async function loginCall(username, password) {
   }
 }
 
-export { loginCall }
+async function logoutCall() {
+  let res
+  try {
+    res = await fetch(`/auth/logout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    const response = await res.json()
+    return response
+  } catch (error) {
+    return { error }
+  }
+}
+
+export { loginCall, logoutCall }

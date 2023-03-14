@@ -5,19 +5,26 @@ import Link from 'next/link'
 
 
 export default function Index() {
-  const [campaigns, setCampaigns] = useState([{}])
+  const [campaigns, setCampaigns] = useState([])
 
   useEffect(() => {
     getCampaigns().then((res) => setCampaigns(res))
   }, [])
 
-  console.log(campaigns)
   return (
     <Box>
         <Flex direction='column' w='65%'>
           <Text>All campaigns</Text>
-          {campaigns.map((campaign) => 
-            <Link href="/campaign/[id]" as={`/campaign/${campaign.id}`}key={`${campaign.name} ${campaign.id}`}>{campaign.name}</Link>)}
+          {campaigns.length > 0 && campaigns.map((campaign) => 
+            <Link 
+            href="/campaign/[id]" 
+            as={`/campaign/${campaign.id}`}
+            key={`${campaign.name} ${campaign.id}`}
+            >
+              {campaign.name}
+            </Link>
+          )}
+          <Button>Create new campaign</Button>
         </Flex>
     </Box>
   )

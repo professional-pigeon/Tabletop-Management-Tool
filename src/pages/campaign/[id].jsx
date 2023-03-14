@@ -6,5 +6,7 @@ export default function DynamicPage() {
   const {
     query: { id },
   } = router
-  return <div>The dynamic route is {id}</div>
+  return (
+    <div>The dynamic route is {id}</div>
+  )
 }
