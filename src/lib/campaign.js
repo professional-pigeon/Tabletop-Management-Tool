@@ -3,7 +3,7 @@ async function getCampaigns(campaignId) {
 
   try {
     campaigns = await fetch(
-      `user/campaigns`
+      `api/user/campaigns`
     )
     const campaignsData = await campaigns.json()
 
@@ -16,7 +16,7 @@ async function getCampaigns(campaignId) {
 async function getCampaign(campaignId) {
   let campaign
   try {
-    campaign = await fetch(`/campaigns/${campaignId}`)
+    campaign = await fetch(`api/campaigns/${campaignId}`)
     const campaignData = await campaign.json()
 
     return campaignData
@@ -31,7 +31,7 @@ async function createCampaign(params) {
 
   try {
     campaign = await fetch(
-      '/campaigns',
+      'api/campaigns',
       {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -52,7 +52,7 @@ async function deleteCampaign(campaignId) {
   let campaign
   try {
     campaign = await fetch(
-      `/campaigns/${campaignId}`,
+      `api/campaigns/${campaignId}`,
       {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
