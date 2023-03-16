@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import { getCampaign } from '@/lib/campaign'
 import AddLocationModal from '@/components/multi/AddLocationModal'
+import Link from 'next/link'
 
 export default function Index() {
   const router = useRouter()
@@ -18,7 +19,14 @@ export default function Index() {
     <Flex direction='column'>
       <Text>{campaign.name}</Text>
       {campaign.locations?.length > 0 && campaign.locations.map((location) => 
-        <Text key={`${location.name} ${location.id}`}>{location.name}</Text>)}
+        <HStack key={`${location.name} ${location.id}`}>
+          <Link 
+          href="/location/[locationId]" 
+          as={`/location/${location.id}`}
+          >
+            {location.name}
+          </Link>
+        </HStack>)}
       <AddLocationModal campaignId={campaign.id} campaign={campaign} setCampaign={setCampaign} />
     </Flex>
   )

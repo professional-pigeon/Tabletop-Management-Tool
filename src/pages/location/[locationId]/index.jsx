@@ -10,12 +10,14 @@ export default function Index() {
 
   useEffect(() => {
     if (!locationId) return
-    getLocation(locationId).then((res) => console.log('hi', res))
+    getLocation(locationId).then((res) => setLocation(res))
   }, [locationId])
 
   return (
     <Box>
-      <Text>hi I am a location page</Text>
+      <Text>Name: {location.name}</Text>
+      <Text>Description: {location.description}</Text>
+      <Text>Type: {location.location_type}</Text>
     </Box>
   )
 }
