@@ -37,7 +37,6 @@ async function addLocation(params) {
   } catch (error) {
     return { error }
   }
-
 }
 
 export { getLocation, addLocation }

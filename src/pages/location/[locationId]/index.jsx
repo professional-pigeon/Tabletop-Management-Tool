@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import { getLocation } from '@/lib/location'
 import Link from 'next/link'
+import AddSubLocationModal from '@/components/multi/sublocation/AddSubLocationModal'
 
 export default function Index() {
   const router = useRouter()
@@ -14,6 +15,7 @@ export default function Index() {
     getLocation(locationId).then((res) => setLocation(res))
   }, [locationId])
 
+  console.log(location)
   return (
     <Box>
       <Text>Name: {location.name}</Text>
@@ -28,6 +30,7 @@ export default function Index() {
             {subLocation.name}
           </Link>
         </HStack>)}
+        <AddSubLocationModal locationId={location.id} location={location} setLocation={setLocation}/>
     </Box>
   )
 }

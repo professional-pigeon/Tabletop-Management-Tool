@@ -1,4 +1,4 @@
-import { addLocation } from '@/lib/location'
+import { addSubLocation } from '@/lib/sublocation'
 import {
   Modal,
   ModalOverlay,
@@ -16,7 +16,7 @@ import TextInput from '../../single/TextInput'
 export default function AddSubLocationModal({ locationId, location, setLocation }) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const [locationType, setLocationType] = useState('')
+  const [subLocationType, setLocationType] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const resetFields = () => {
@@ -29,13 +29,12 @@ export default function AddSubLocationModal({ locationId, location, setLocation 
     onClose();
   }
 
-  const addNewLocation = () => {
-    addLocation({ campaignId, locationType, name, description })
+  const addNewSubLocation = () => {
+    addSubLocation({ locationId, subLocationType, name, description })
       .then((res) => {
-        const newCampaign = campaign
-        newCampaign.locations.push(res)
-        console.log(newCampaign, res)
-        setCampaign(newCampaign)
+        const newLocation = location
+        newLocation.sub_locations.push(res)
+        setLocation(newLocation)
     })
     onCloseWrap();
   }
@@ -52,14 +51,14 @@ export default function AddSubLocationModal({ locationId, location, setLocation 
           <ModalBody>
             <TextInput name='Name' inputValue={name} setInputValue={setName}/>
             <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
-            <TextInput name='Location Type' inputValue={locationType} setInputValue={setLocationType}/>
+            <TextInput name='Sub-Location Type' inputValue={subLocationType} setInputValue={setLocationType}/>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
               Close
             </Button>
-            <Button onClick={addNewLocation}>Add</Button>
+            <Button onClick={addNewSubLocation}>Add</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
