@@ -37,4 +37,24 @@ async function createCampaign(params) {
   }
 }
 
-export { getCampaigns, createCampaign }
+async function deleteCampaign(campaignId) {
+  try {
+    campaign = await fetch(
+      '/campaigns',
+      {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ 
+          campaign_id: campaignId
+        }),
+      }
+    )
+    const campaignData = await campaign.json()
+
+    return campaignData
+  } catch (error) {
+    return { error }
+  }
+}
+
+export { getCampaigns, createCampaign, deleteCampaign }
