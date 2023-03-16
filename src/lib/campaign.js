@@ -69,4 +69,4 @@ async function deleteCampaign(campaignId) {
   }
 }
 
-export { getCampaigns, createCampaign, deleteCampaign }
+export { getCampaigns, getCampaign, createCampaign, deleteCampaign }
