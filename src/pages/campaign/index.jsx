@@ -1,5 +1,5 @@
-import { Button, Flex, VStack, Box, Text, HStack } from '@chakra-ui/react'
-import { getCampaigns } from '@/lib/campaign'
+import { Button, Flex, Box, Text } from '@chakra-ui/react'
+import { getCampaigns, createCampaign } from '@/lib/campaign'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
@@ -24,7 +24,7 @@ export default function Index() {
               {campaign.name}
             </Link>
           )}
-          <Button>Create new campaign</Button>
+          <Button onClick={() => createCampaign({ name: 'waldo', notes: 'hi', userId: 1 })}>Create new campaign</Button>
         </Flex>
     </Box>
   )

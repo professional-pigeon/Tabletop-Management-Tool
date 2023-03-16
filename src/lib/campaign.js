@@ -13,4 +13,29 @@ async function getCampaigns(campaignId) {
   }
 }
 
-export { getCampaigns }
+async function createCampaign(params) {
+  const { userId, name, notes } = params
+  console.log(userId, name, notes)
+
+  try {
+    campaign = await fetch(
+      '/campaigns',
+      {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ 
+          user_id: userId,
+          name,
+          notes: 'hi'
+        }),
+      }
+    )
+    const campaignData = await campaign.json()
+
+    return campaignData
+  } catch (error) {
+    return { error }
+  }
+}
+
+export { getCampaigns, createCampaign }
