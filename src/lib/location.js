@@ -13,8 +13,9 @@ async function getLocation(locationId) {
   }
 }
 
-async function addLocation(campaignId, name, description, locationType) {
+async function addLocation(params) {
   let location
+  const { campaignId, locationType, name, description } = params
 
   try {
     location = await fetch(

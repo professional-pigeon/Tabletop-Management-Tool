@@ -30,7 +30,7 @@ export default function AddLocationModal({ campaignId, campaign, setCampaign }) 
   }
 
   const addNewLocation = () => {
-    addLocation(campaignId, locationType, name, description)
+    addLocation({ campaignId, locationType, name, description })
       .then((res) => {
         const newCampaign = campaign
         newCampaign.locations.push(res)

@@ -6,10 +6,10 @@ const nextConfig = {
       {
         source: '/:path*',
         destination: 'http://localhost:3000/:path*' // Proxy to Backend
-      }
+      },
       // {
-      //   source: '/login',
-      //   destination: 'http://localhost:3000/login'
+      //   source: '/campaign/:path*',
+      //   destination: 'http://localhost:4000'
       // },
       // {
       //   source: '/auth/login',
