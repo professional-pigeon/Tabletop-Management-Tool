@@ -15,7 +15,7 @@ async function getCampaigns(campaignId) {
 
 async function createCampaign(params) {
   let campaign
-  const { name, notes } = params
+  const { name } = params
 
   try {
     campaign = await fetch(
@@ -24,8 +24,7 @@ async function createCampaign(params) {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ 
-          name,
-          notes
+          name
         }),
       }
     )

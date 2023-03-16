@@ -12,6 +12,13 @@ export default function Index() {
     getCampaigns().then((res) => setCampaigns(res))
   }, [])
 
+  const deleteCampaignWrap = (campaignId) => {
+    deleteCampaign(campaignId).then(() => {
+      const newCampaigns = campaigns.filter((obj) => obj.id !== campaignId)
+      setCampaigns(newCampaigns)
+    })
+  }
+
   return (
     <Box>
         <Flex direction='column' w='65%'>
@@ -24,7 +31,7 @@ export default function Index() {
               >
                 {campaign.name}
               </Link>
-              <Button onClick={() => deleteCampaign(campaign.id)}>Delete me</Button>
+              <Button onClick={() => deleteCampaignWrap(campaign.id)}>Delete me</Button>
             </HStack>
           )}
           <AddCampaignModal campaigns={campaigns} setCampaigns={setCampaigns} />

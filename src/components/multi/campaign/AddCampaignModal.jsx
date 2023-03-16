@@ -15,11 +15,9 @@ import { createCampaign } from '@/lib/campaign'
 
 export default function AddCampaignModal({ campaigns, setCampaigns }) {
   const [name, setName] = useState('')
-  const [notes, setNotes] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const resetFields = () => {
-    setNotes('')
     setName('')
   }
 
@@ -29,7 +27,7 @@ export default function AddCampaignModal({ campaigns, setCampaigns }) {
   }
 
   const addNewCampaign = () => {
-    createCampaign({ name, notes })
+    createCampaign({ name })
       .then((res) => {
         if (res.error) {
           throw new Error(res.error)
@@ -53,7 +51,6 @@ export default function AddCampaignModal({ campaigns, setCampaigns }) {
           <ModalCloseButton />
           <ModalBody>
             <TextInput name='Name' inputValue={name} setInputValue={setName}/>
-            <TextInput name='Notes' inputValue={notes} setInputValue={setNotes}/>
           </ModalBody>
 
           <ModalFooter>
