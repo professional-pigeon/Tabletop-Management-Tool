@@ -26,7 +26,7 @@ export default function Index() {
           {campaigns.length > 0 && campaigns.map((campaign) => 
             <HStack key={`${campaign.name} ${campaign.id}`}>
               <Link 
-              href="/campaign/[id]" 
+              href="/campaign/[campaignId]" 
               as={`/campaign/${campaign.id}`}
               >
                 {campaign.name}

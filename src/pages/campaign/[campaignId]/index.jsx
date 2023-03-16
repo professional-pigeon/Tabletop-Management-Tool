@@ -4,16 +4,15 @@ import { useEffect, useState } from 'react'
 import { getCampaign } from '@/lib/campaign'
 import AddLocationModal from '@/components/multi/AddLocationModal'
 
-export default function DynamicPage() {
+export default function Index() {
   const router = useRouter()
-  const { query: { id } } = router
+  const { campaignId } = router.query
   const [campaign, setCampaign] = useState({})
 
   useEffect(() => {
-    getCampaign(id).then((res) => setCampaign(res))
+    getCampaign(campaignId).then((res) => setCampaign(res))
   }, [])
 
-  console.log(campaign.locations?.length)
   return (
     <Flex direction='column'>
       <Text>{campaign.name}</Text>
