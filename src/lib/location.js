@@ -3,7 +3,7 @@ async function getLocation(locationId) {
 
   try {
     location = await fetch(
-      `/locations/${locationId}`
+      `/api/locations/${locationId}`
     )
     const locationData = await location.json()
 

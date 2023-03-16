@@ -3,7 +3,7 @@ async function getCharacter(characterId) {
 
   try {
     character = await fetch(
-      `/characters/${characterId}`
+      `/api/characters/${characterId}`
     )
     const characterData = await character.json()
 

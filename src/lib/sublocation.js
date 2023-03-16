@@ -3,7 +3,7 @@ async function getSubLocation(subLocationId) {
 
   try {
     subLocation = await fetch(
-      `/sub_locations/${subLocationId}`
+      `/api/sub_locations/${subLocationId}`
     )
     const subLocationData = await subLocation.json()
 

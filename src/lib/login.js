@@ -2,7 +2,7 @@ async function loginCall(username, password) {
   let user
 
   try {
-    user = await fetch(`/auth/login`, {
+    user = await fetch(`/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ async function loginCall(username, password) {
 async function logoutCall() {
   let res
   try {
-    res = await fetch(`/auth/logout`, {
+    res = await fetch(`/api/auth/logout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
