@@ -1,4 +1,3 @@
-import { addLocation } from '@/lib/location'
 import {
   Modal,
   ModalOverlay,
@@ -11,15 +10,16 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import TextInput from '../single/TextInput'
+import TextInput from '../../single/TextInput'
+import { createCampaign } from '@/lib/campaign'
 
-export default function AddLocationModal({ locations, setLocations }) {
+export default function AddCampaignModal({ campaigns, setCampaigns }) {
   const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
+  const [notes, setNotes] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const resetFields = () => {
-    setDescription('')
+    setNotes('')
     setName('')
   }
 
@@ -28,30 +28,39 @@ export default function AddLocationModal({ locations, setLocations }) {
     onClose();
   }
 
-  const addNewLocation = () => {
-    addLocation(1, name, description)
-    onCloseWrap();
+  const addNewCampaign = () => {
+    createCampaign({ name, notes })
+      .then((res) => {
+        if (res.error) {
+          throw new Error(res.error)
+        } else {
+          const newCampaigns =  [...campaigns, res] 
+          setCampaigns(newCampaigns)
+          onCloseWrap();
+        }
+      })
+      .catch((err) => console.log(err))
   }
 
   return (
     <>
-      <Button onClick={onOpen}>Add Location</Button>
+      <Button onClick={onOpen}>Add Campaign</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>New Location</ModalHeader>
+          <ModalHeader>New Campaign</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <TextInput name='Name' inputValue={name} setInputValue={setName}/>
-            <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
+            <TextInput name='Notes' inputValue={notes} setInputValue={setNotes}/>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
               Close
             </Button>
-            <Button onClick={addNewLocation}>Add</Button>
+            <Button onClick={addNewCampaign}>Add</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

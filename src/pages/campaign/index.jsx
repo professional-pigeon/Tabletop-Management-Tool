@@ -1,7 +1,8 @@
-import { Button, Flex, Box, Text } from '@chakra-ui/react'
-import { getCampaigns, createCampaign } from '@/lib/campaign'
+import { Flex, Box, Text, HStack, Button } from '@chakra-ui/react'
+import { getCampaigns } from '@/lib/campaign'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import AddCampaignModal from '@/components/multi/campaign/AddCampaignModal'
 
 
 export default function Index() {
@@ -16,15 +17,17 @@ export default function Index() {
         <Flex direction='column' w='65%'>
           <Text>All campaigns</Text>
           {campaigns.length > 0 && campaigns.map((campaign) => 
-            <Link 
-            href="/campaign/[id]" 
-            as={`/campaign/${campaign.id}`}
-            key={`${campaign.name} ${campaign.id}`}
-            >
-              {campaign.name}
-            </Link>
+            <HStack key={`${campaign.name} ${campaign.id}`}>
+              <Link 
+              href="/campaign/[id]" 
+              as={`/campaign/${campaign.id}`}
+              >
+                {campaign.name}
+              </Link>
+              <Button onClick={() => console.log('delete')}>Delete me</Button>
+            </HStack>
           )}
-          <Button onClick={() => createCampaign({ name: 'waldo', notes: 'hi', userId: 1 })}>Create new campaign</Button>
+          <AddCampaignModal campaigns={campaigns} setCampaigns={setCampaigns} />
         </Flex>
     </Box>
   )
