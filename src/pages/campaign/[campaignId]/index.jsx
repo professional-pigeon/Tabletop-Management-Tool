@@ -10,14 +10,15 @@ export default function Index() {
   const [campaign, setCampaign] = useState({})
 
   useEffect(() => {
+    if (!campaignId) return
     getCampaign(campaignId).then((res) => setCampaign(res))
-  }, [])
+  }, [campaignId])
 
   return (
     <Flex direction='column'>
       <Text>{campaign.name}</Text>
       {campaign.locations?.length > 0 && campaign.locations.map((location) => 
-        <Text key={location.name}>{location.name}</Text>)}
+        <Text key={`${location.name} ${location.id}`}>{location.name}</Text>)}
       <AddLocationModal campaignId={campaign.id} campaign={campaign} setCampaign={setCampaign} />
     </Flex>
   )

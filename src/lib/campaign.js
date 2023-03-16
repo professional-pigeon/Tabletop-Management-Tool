@@ -16,7 +16,7 @@ async function getCampaigns(campaignId) {
 async function getCampaign(campaignId) {
   let campaign
   try {
-    campaign = await fetch(`api/campaigns/${campaignId}`)
+    campaign = await fetch(`/api/campaigns/${campaignId}`)
     const campaignData = await campaign.json()
 
     return campaignData

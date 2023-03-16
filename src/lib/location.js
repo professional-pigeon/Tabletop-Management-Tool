@@ -19,7 +19,7 @@ async function addLocation(params) {
 
   try {
     location = await fetch(
-      `/locations`,
+      `/api/locations`,
       {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
