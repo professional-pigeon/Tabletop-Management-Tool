@@ -11,7 +11,7 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import TextInput from '../single/TextInput'
+import TextInput from '../../single/TextInput'
 
 export default function AddLocationModal({ campaignId, campaign, setCampaign }) {
   const [name, setName] = useState('')

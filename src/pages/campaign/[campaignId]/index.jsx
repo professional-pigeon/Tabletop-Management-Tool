@@ -2,7 +2,7 @@ import { Flex, Text, HStack } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import { getCampaign } from '@/lib/campaign'
-import AddLocationModal from '@/components/multi/AddLocationModal'
+import AddLocationModal from '@/components/multi/location/AddLocationModal'
 import Link from 'next/link'
 
 export default function Index() {
