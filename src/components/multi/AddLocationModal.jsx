@@ -13,9 +13,10 @@ import {
 import { useState } from 'react'
 import TextInput from '../single/TextInput'
 
-export default function AddLocationModal({ locations, setLocations }) {
+export default function AddLocationModal({ campaignId, campaign, setCampaign }) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
+  const [locationType, setLocationType] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const resetFields = () => {
@@ -29,7 +30,13 @@ export default function AddLocationModal({ locations, setLocations }) {
   }
 
   const addNewLocation = () => {
-    addLocation(1, name, description)
+    addLocation(campaignId, locationType, name, description)
+      .then((res) => {
+        const newCampaign = campaign
+        newCampaign.locations.push(res)
+        console.log(newCampaign, res)
+        setCampaign(newCampaign)
+    })
     onCloseWrap();
   }
 
@@ -45,6 +52,7 @@ export default function AddLocationModal({ locations, setLocations }) {
           <ModalBody>
             <TextInput name='Name' inputValue={name} setInputValue={setName}/>
             <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
+            <TextInput name='Location Type' inputValue={locationType} setInputValue={setLocationType}/>
           </ModalBody>
 
           <ModalFooter>

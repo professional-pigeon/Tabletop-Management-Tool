@@ -13,7 +13,7 @@ async function getLocation(locationId) {
   }
 }
 
-async function addLocation(campaignId, name, description) {
+async function addLocation(campaignId, name, description, locationType) {
   let location
 
   try {
@@ -26,8 +26,7 @@ async function addLocation(campaignId, name, description) {
           campaign_id: campaignId, 
           name, 
           description, 
-          notes: 'hi',
-          location_type: 'city' 
+          location_type: locationType
         }),
       }
     )
