@@ -38,9 +38,10 @@ async function createCampaign(params) {
 }
 
 async function deleteCampaign(campaignId) {
+  let campaign
   try {
     campaign = await fetch(
-      '/campaigns',
+      `/campaigns/${campaignId}`,
       {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},

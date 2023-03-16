@@ -1,5 +1,5 @@
 import { Flex, Box, Text, HStack, Button } from '@chakra-ui/react'
-import { getCampaigns } from '@/lib/campaign'
+import { getCampaigns, deleteCampaign } from '@/lib/campaign'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import AddCampaignModal from '@/components/multi/campaign/AddCampaignModal'
@@ -24,7 +24,7 @@ export default function Index() {
               >
                 {campaign.name}
               </Link>
-              <Button onClick={() => console.log('delete')}>Delete me</Button>
+              <Button onClick={() => deleteCampaign(campaign.id)}>Delete me</Button>
             </HStack>
           )}
           <AddCampaignModal campaigns={campaigns} setCampaigns={setCampaigns} />
