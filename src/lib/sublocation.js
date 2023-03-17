@@ -39,4 +39,25 @@ async function addSubLocation(params) {
   }
 }
 
-export { getSubLocation, addSubLocation }
+async function deleteSubLocation(subLocationId) {
+  let subLocation
+  try {
+    subLocation = await fetch(
+      `/api/sub_locations/${subLocationId}`,
+      {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ 
+          sub_location_id: subLocationId
+        }),
+      }
+    )
+    const subLocationData = await location.json()
+
+    return keysToCamel(subLocationData)
+  } catch (error) {
+    return { error }
+  }
+}
+
+export { getSubLocation, addSubLocation, deleteSubLocation }

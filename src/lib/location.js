@@ -55,7 +55,7 @@ async function deleteLocation(locationId) {
         }),
       }
     )
-    const locaationData = await location.json()
+    const locationData = await location.json()
 
     return keysToCamel(locationData)
   } catch (error) {
