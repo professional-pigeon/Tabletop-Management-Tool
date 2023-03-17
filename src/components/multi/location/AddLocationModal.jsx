@@ -34,7 +34,6 @@ export default function AddLocationModal({ campaignId, campaign, setCampaign }) 
       .then((res) => {
         const newCampaign = campaign
         newCampaign.locations.push(res)
-        console.log(newCampaign, res)
         setCampaign(newCampaign)
     })
     onCloseWrap();

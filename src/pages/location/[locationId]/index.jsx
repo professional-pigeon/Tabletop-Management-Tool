@@ -15,17 +15,16 @@ export default function Index() {
     getLocation(locationId).then((res) => setLocation(res))
   }, [locationId])
 
-  console.log(location)
   return (
     <Box>
       <Text>Name: {location.name}</Text>
       <Text>Description: {location.description}</Text>
-      <Text>Type: {location.location_type}</Text>
-      {location.sub_locations?.length > 0 && location.sub_locations.map((subLocation) => 
+      <Text>Type: {location.locationType}</Text>
+      {location.subLocations?.length > 0 && location.subLocations.map((subLocation) => 
         <HStack key={`${subLocation.name} ${subLocation.id}`}>
           <Link 
-          href="/sublocation/[sublocationId]" 
-          as={`/sublocation/${subLocation.id}`}
+          href="/location/[locationId]/sublocation/[sublocationId]" 
+          as={`/location/${locationId}/sublocation/${subLocation.id}`}
           >
             {subLocation.name}
           </Link>

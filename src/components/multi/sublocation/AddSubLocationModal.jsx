@@ -16,12 +16,13 @@ import TextInput from '../../single/TextInput'
 export default function AddSubLocationModal({ locationId, location, setLocation }) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const [subLocationType, setLocationType] = useState('')
+  const [subLocationType, setSubLocationType] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const resetFields = () => {
     setDescription('')
     setName('')
+    setSubLocationType('')
   }
 
   const onCloseWrap = () => {
@@ -33,7 +34,7 @@ export default function AddSubLocationModal({ locationId, location, setLocation 
     addSubLocation({ locationId, subLocationType, name, description })
       .then((res) => {
         const newLocation = location
-        newLocation.sub_locations.push(res)
+        newLocation.subLocations.push(res)
         setLocation(newLocation)
     })
     onCloseWrap();
@@ -41,17 +42,17 @@ export default function AddSubLocationModal({ locationId, location, setLocation 
 
   return (
     <>
-      <Button onClick={onOpen}>Add Location</Button>
+      <Button onClick={onOpen}>Add Sub-Location</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>New Location</ModalHeader>
+          <ModalHeader>New Sub-Location for {location.name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <TextInput name='Name' inputValue={name} setInputValue={setName}/>
             <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
-            <TextInput name='Sub-Location Type' inputValue={subLocationType} setInputValue={setLocationType}/>
+            <TextInput name='Sub-Location Type' inputValue={subLocationType} setInputValue={setSubLocationType}/>
           </ModalBody>
 
           <ModalFooter>
