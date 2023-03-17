@@ -1,3 +1,4 @@
+import { keysToCamel } from "./parsers"
 async function getCampaigns(campaignId) {
   let campaigns
 
@@ -7,7 +8,7 @@ async function getCampaigns(campaignId) {
     )
     const campaignsData = await campaigns.json()
 
-    return campaignsData
+    return keysToCamel(campaignsData)
   } catch (error) {
     return { error }
   }
@@ -19,7 +20,7 @@ async function getCampaign(campaignId) {
     campaign = await fetch(`/api/campaigns/${campaignId}`)
     const campaignData = await campaign.json()
 
-    return campaignData
+    return keysToCamel(campaignData)
   } catch (error) {
     return { error }
   }
@@ -42,7 +43,7 @@ async function createCampaign(params) {
     )
     const campaignData = await campaign.json()
 
-    return campaignData
+    return keysToCamel(campaignData)
   } catch (error) {
     return { error }
   }
@@ -63,7 +64,7 @@ async function deleteCampaign(campaignId) {
     )
     const campaignData = await campaign.json()
 
-    return campaignData
+    return keysToCamel(campaignData)
   } catch (error) {
     return { error }
   }

@@ -1,3 +1,5 @@
+import { keysToCamel } from "./parsers"
+
 async function loginCall(username, password) {
   let user
 
@@ -10,7 +12,7 @@ async function loginCall(username, password) {
       body: JSON.stringify({ user_name: username, password: password }),
     })
     const userData = await user.json()
-    return userData
+    return keysToCamel(userData)
   } catch (error) {
     return { error }
   }
@@ -26,7 +28,7 @@ async function logoutCall() {
       },
     })
     const response = await res.json()
-    return response
+    return keysToCamel(response)
   } catch (error) {
     return { error }
   }

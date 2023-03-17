@@ -1,3 +1,5 @@
+import { keysToCamel } from "./parsers"
+
 async function getCharacter(characterId) {
   let character
 
@@ -7,7 +9,7 @@ async function getCharacter(characterId) {
     )
     const characterData = await character.json()
 
-    return characterData
+    return keysToCamel(characterData)
   } catch (error) {
     return { error }
   }

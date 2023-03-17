@@ -1,3 +1,5 @@
+import { keysToCamel } from "./parsers"
+
 async function getLocation(locationId) {
   let location
 
@@ -7,7 +9,8 @@ async function getLocation(locationId) {
     )
     const locationData = await location.json()
 
-    return locationData
+    
+    return keysToCamel(locationData)
   } catch (error) {
     return { error }
   }
@@ -33,7 +36,7 @@ async function addLocation(params) {
     )
     const newLocation = await location.json()
 
-    return newLocation
+    return keysToCamel(newLocation)
   } catch (error) {
     return { error }
   }
