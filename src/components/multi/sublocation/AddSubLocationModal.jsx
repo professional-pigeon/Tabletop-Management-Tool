@@ -16,13 +16,11 @@ import TextInput from '../../single/TextInput'
 export default function AddSubLocationModal({ locationId, location, setLocation }) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const [subLocationType, setSubLocationType] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const resetFields = () => {
     setDescription('')
     setName('')
-    setSubLocationType('')
   }
 
   const onCloseWrap = () => {
@@ -31,7 +29,7 @@ export default function AddSubLocationModal({ locationId, location, setLocation 
   }
 
   const addNewSubLocation = () => {
-    addSubLocation({ locationId, subLocationType, name, description })
+    addSubLocation({ locationId, name, description })
       .then((res) => {
         const newLocation = location
         newLocation.subLocations.push(res)
@@ -52,7 +50,6 @@ export default function AddSubLocationModal({ locationId, location, setLocation 
           <ModalBody>
             <TextInput name='Name' inputValue={name} setInputValue={setName}/>
             <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
-            <TextInput name='Sub-Location Type' inputValue={subLocationType} setInputValue={setSubLocationType}/>
           </ModalBody>
 
           <ModalFooter>

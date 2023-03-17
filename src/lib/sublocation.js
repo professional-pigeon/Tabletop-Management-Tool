@@ -16,7 +16,7 @@ async function getSubLocation(subLocationId) {
 
 async function addSubLocation(params) {
   let subLocation
-  const { locationId, subLocationType, name, description } = params
+  const { locationId, name, description } = params
 
   try {
     subLocation = await fetch(
@@ -28,7 +28,6 @@ async function addSubLocation(params) {
           location_id: locationId, 
           name, 
           description, 
-          sub_location_type: subLocationType
         }),
       }
     )

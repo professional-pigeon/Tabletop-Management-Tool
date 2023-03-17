@@ -11,13 +11,13 @@ export default function Index() {
 
   useEffect(() => {
     if (!subLocationId) return
-    getSubLocation(subLocationId).then((res) => setsubLocation(res))
+    getSubLocation(subLocationId).then((res) => setSubLocation(res))
   }, [subLocationId])
 
-  console.log(subLocation)
   return (
     <Box>
-      <Text>hi</Text>
+      <Text>Welcome to the sublocation page for {subLocation.name}</Text>
+      <Text>Description: {subLocation.description}</Text>
     </Box>
   )
 }
