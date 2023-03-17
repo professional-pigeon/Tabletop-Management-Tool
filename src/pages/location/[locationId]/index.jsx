@@ -1,4 +1,4 @@
-import { Box, Text, HStack } from '@chakra-ui/react'
+import { Box, Button, Text, HStack } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import { getLocation } from '@/lib/location'
@@ -14,6 +14,8 @@ export default function Index() {
     if (!locationId) return
     getLocation(locationId).then((res) => setLocation(res))
   }, [locationId])
+  
+  const deleteSubLocationWrap = () => { console.log('hi') }
 
   return (
     <Box>
@@ -28,6 +30,7 @@ export default function Index() {
           >
             {subLocation.name}
           </Link>
+          <Button onClick={() => deleteSubLocationWrap()}></Button>
         </HStack>)}
         <AddSubLocationModal locationId={location.id} location={location} setLocation={setLocation}/>
     </Box>

@@ -1,7 +1,8 @@
-import { Flex, Text, HStack } from '@chakra-ui/react'
+import { Flex, Button, Text, HStack } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import { getCampaign } from '@/lib/campaign'
+import { deleteLocation } from '@/lib/location'
 import AddLocationModal from '@/components/multi/location/AddLocationModal'
 import Link from 'next/link'
 
@@ -15,6 +16,15 @@ export default function Index() {
     getCampaign(campaignId).then((res) => setCampaign(res))
   }, [campaignId])
 
+  const deleteLocationWrap = (locationId) => {
+    deleteLocation(locationId).then(() => {
+      let newCampaign = campaign
+      const newLocations = campaign.locations.filter((obj) => obj.id !== locationId)
+      newCampaign.locations = newLocations
+      setCampaign(newCampaign)
+    })
+  }
+
   return (
     <Flex direction='column'>
       <Text>{campaign.name}</Text>
@@ -26,6 +36,7 @@ export default function Index() {
           >
             {location.name}
           </Link>
+          <Button onClick={() => deleteLocationWrap(location.id)}>Delete</Button>
         </HStack>)}
       <AddLocationModal campaignId={campaign.id} campaign={campaign} setCampaign={setCampaign} />
     </Flex>
