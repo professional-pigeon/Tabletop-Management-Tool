@@ -1,5 +1,6 @@
 import { keysToCamel } from "./parsers"
-async function getCampaigns(campaignId) {
+
+async function getCampaigns() {
   let campaigns
 
   try {

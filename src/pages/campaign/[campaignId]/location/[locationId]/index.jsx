@@ -25,9 +25,7 @@ export default function Index() {
       setLocation(newLocation)
     })
   }
-
-  console.log(location)
-
+  
   return (
     <Box>
       <Text>Name: {location.name}</Text>

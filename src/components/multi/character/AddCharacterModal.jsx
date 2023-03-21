@@ -11,8 +11,9 @@ import {
 } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { addCharacter } from '@/lib/character'
-import { getAllLocations } from '@/lib/location'
+import { parseCampaignToSelects } from '@/lib/parsers'
 import TextInput from '../../single/TextInput'
+import { getCampaign } from '@/lib/campaign'
 
 export default function AddCharacterModal({
   campaignId, 
@@ -23,13 +24,18 @@ export default function AddCharacterModal({
   const [description, setDescription] = useState('')
   const [characterRace, setCharacterRace] = useState('')
   const [characterType, setCharacterType] = useState('')
+  const [selectOptions, setSelectOptions] = useState([])
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   useEffect(() => {
     if (!campaignId) return;
-    console.log('campaignId', campaignId)
-    getAllLocations({ campaignId }).then((res) => console.log('res', res))
-  })
+    getCampaign(campaignId).then((res) => {
+      console.log(res, 'hi')
+      const selects = parseCampaignToSelects(res)
+      setSelectOptions(selects)
+    })
+  }, [campaignId])
+
 
   const resetFields = () => {
     setDescription('')
@@ -51,6 +57,8 @@ export default function AddCharacterModal({
     // })
     // onCloseWrap();
   }
+
+  console.log(selectOptions)
 
   return (
     <>

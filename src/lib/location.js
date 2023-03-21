@@ -16,24 +16,6 @@ async function getLocation(locationId) {
   }
 }
 
-async function getAllLocations(params) {
-  let locations
-  const { campaignId } = params;
-
-  try {
-    locations = await fetch(
-      `/api/locations?` + new URLSearchParams({
-        campaign_id: campaignId
-    }))
-    const locationsData = await locations.json()
-
-    
-    return keysToCamel(locationsData)
-  } catch (error) {
-    return { error }
-  }
-}
-
 async function addLocation(params) {
   let location
   const { campaignId, locationType, name, description } = params
@@ -81,4 +63,4 @@ async function deleteLocation(locationId) {
   }
 }
 
-export { getLocation, getAllLocations, addLocation, deleteLocation }
+export { getLocation, addLocation, deleteLocation }
