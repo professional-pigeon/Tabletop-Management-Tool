@@ -5,10 +5,11 @@ import { getLocation } from '@/lib/location'
 import { deleteSubLocation } from '@/lib/sublocation'
 import Link from 'next/link'
 import AddSubLocationModal from '@/components/multi/sublocation/AddSubLocationModal'
+import AddCharacterModal from '@/components/multi/character/AddCharacterModal'
 
 export default function Index() {
   const router = useRouter()
-  const { locationId } = router.query
+  const { locationId, campaignId } = router.query
   const [location, setLocation] = useState({})
 
   useEffect(() => {
@@ -21,10 +22,11 @@ export default function Index() {
       const newLocation = location
       const newSubLocations = location.subLocations.filter((obj) => obj.id !== subLocationId)
       newLocation.subLocations = newSubLocations
-      console.log(newLocation)
       setLocation(newLocation)
     })
   }
+
+  console.log(location)
 
   return (
     <Box>
@@ -42,6 +44,7 @@ export default function Index() {
           <Button onClick={() => deleteSubLocationWrap(subLocation.id)}></Button>
         </HStack>)}
         <AddSubLocationModal locationId={location.id} location={location} setLocation={setLocation}/>
+        <AddCharacterModal place={location} setPlace={setLocation} campaignId={campaignId} />
     </Box>
   )
 }

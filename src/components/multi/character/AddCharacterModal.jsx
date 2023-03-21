@@ -11,9 +11,11 @@ import {
 } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { addCharacter } from '@/lib/character'
+import { getAllLocations } from '@/lib/location'
 import TextInput from '../../single/TextInput'
 
-export default function AddCharacterModal({ 
+export default function AddCharacterModal({
+  campaignId, 
   place,
   setPlace
 }) {
@@ -22,6 +24,12 @@ export default function AddCharacterModal({
   const [characterRace, setCharacterRace] = useState('')
   const [characterType, setCharacterType] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  useEffect(() => {
+    if (!campaignId) return;
+    console.log('campaignId', campaignId)
+    getAllLocations({ campaignId }).then((res) => console.log('res', res))
+  })
 
   const resetFields = () => {
     setDescription('')
