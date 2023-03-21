@@ -14,16 +14,18 @@ import { addCharacter } from '@/lib/character'
 import { parseCampaignToSelects } from '@/lib/parsers'
 import TextInput from '../../single/TextInput'
 import { getCampaign } from '@/lib/campaign'
+import PlaceSelect from '@/components/single/PlaceSelect'
 
 export default function AddCharacterModal({
   campaignId, 
-  place,
-  setPlace
+  initialLocation,
+  setInitialLocation
 }) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [characterRace, setCharacterRace] = useState('')
   const [characterType, setCharacterType] = useState('')
+  const [place, setPlace] = useState({})
   const [selectOptions, setSelectOptions] = useState([])
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -74,6 +76,7 @@ export default function AddCharacterModal({
             <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
             <TextInput name='Character Type' inputValue={characterType} setInputValue={setCharacterType}/>
             <TextInput name='Character Race' inputValue={characterRace} setInputValue={setCharacterRace}/>
+            <PlaceSelect selectOptions={selectOptions} selectValue={place} setSelectValue={setPlace}/>
           </ModalBody>
 
           <ModalFooter>
