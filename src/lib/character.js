@@ -15,6 +15,42 @@ async function getCharacter(characterId) {
   }
 }
 
+async function addCharacter(params) {
+  let character
+
+  const { 
+    char_place_type: placeType, 
+    char_place_id: placeId, 
+    name, 
+    description,
+    characterType,
+    characterRace, 
+  } = params
+
+  try {
+    character = await fetch(
+      `/api/characters`,
+      {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ 
+          char_place_type: placeType, 
+          char_place_id: placeId,
+          name, 
+          description, 
+          character_type: characterType,
+          character_race: characterRace
+        }),
+      }
+    )
+    const newCharacter = await character.json()
+
+    return keysToCamel(newCharacter)
+  } catch (error) {
+    return { error }
+  }
+}
+
 async function deleteCharacter(characterId) {
   let character
   try {
