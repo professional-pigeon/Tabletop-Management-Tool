@@ -10,9 +10,9 @@ export default function Index() {
 
   useEffect(() => {
     if (!characterId) return
-    getCharacter(1).then((res) => setCharacter(res))
+    getCharacter(characterId).then((res) => setCharacter(res))
   }, [characterId])
-  console.log('hi')
+  console.log(characterId, character)
 
   return (
     <Box>

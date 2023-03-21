@@ -72,4 +72,4 @@ async function deleteCharacter(characterId) {
   }
 }
 
-export { getCharacter, deleteCharacter }
+export { getCharacter, addCharacter, deleteCharacter }

@@ -31,8 +31,8 @@ export default function Index() {
       {campaign.locations?.length > 0 && campaign.locations.map((location) => 
         <HStack key={`${location.name} ${location.id}`}>
           <Link 
-          href="/location/[locationId]" 
-          as={`/location/${location.id}`}
+          href="/campaign/[campaignId]/location/[locationId]" 
+          as={`/campaign/${campaignId}/location/${location.id}`}
           >
             {location.name}
           </Link>

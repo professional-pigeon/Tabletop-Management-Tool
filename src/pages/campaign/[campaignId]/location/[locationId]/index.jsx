@@ -34,8 +34,8 @@ export default function Index() {
       {location.subLocations?.length > 0 && location.subLocations.map((subLocation) => 
         <HStack key={`${subLocation.name} ${subLocation.id}`}>
           <Link 
-          href="/location/[locationId]/sublocation/[sublocationId]" 
-          as={`/location/${locationId}/sublocation/${subLocation.id}`}
+          href="/campaign/[campaignId]/location/[locationId]/sublocation/[sublocationId]" 
+          as={`/campaign/${campaignId}/sublocation/${subLocation.id}`}
           >
             {subLocation.name}
           </Link>
