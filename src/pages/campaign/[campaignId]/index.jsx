@@ -25,6 +25,7 @@ export default function Index() {
     })
   }
 
+  console.log(campaign)
   return (
     <Flex direction='column'>
       <Text>{campaign.name}</Text>
@@ -38,6 +39,17 @@ export default function Index() {
           </Link>
           <Button onClick={() => deleteLocationWrap(location.id)}>Delete</Button>
         </HStack>)}
+        <Text>Characters associated</Text>
+        {campaign.characters?.length > 0 && campaign.characters.map((character) => 
+          <HStack key={`${character.name} ${character.id}`}>
+            <Link 
+            href="/campaign/[campaignId]/character/[characterId]" 
+            as={`/campaign/${campaignId}/character/${character.id}`}
+            >
+              {character.name}
+            </Link>
+          </HStack>
+        )}
       <AddLocationModal campaignId={campaign.id} campaign={campaign} setCampaign={setCampaign} />
     </Flex>
   )

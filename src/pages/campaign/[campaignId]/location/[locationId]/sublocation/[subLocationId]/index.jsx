@@ -14,10 +14,22 @@ export default function Index() {
     getSubLocation(subLocationId).then((res) => setSubLocation(res))
   }, [subLocationId])
 
+  console.log(subLocation)
   return (
     <Box>
       <Text>Welcome to the sublocation page for {subLocation.name}</Text>
       <Text>Description: {subLocation.description}</Text>
+      <Text>Characters associated</Text>
+      {subLocation.characters?.length > 0 && subLocation.characters.map((character) => 
+        <HStack key={`${character.name} ${character.id}`}>
+          <Link 
+          href="/campaign/[campaignId]/character/[characterId]" 
+          as={`/campaign/${campaignId}/character/${character.id}`}
+          >
+            {character.name}
+          </Link>
+        </HStack>
+      )}
     </Box>
   )
 }

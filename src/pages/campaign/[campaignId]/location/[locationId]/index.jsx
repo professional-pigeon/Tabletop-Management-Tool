@@ -35,12 +35,23 @@ export default function Index() {
         <HStack key={`${subLocation.name} ${subLocation.id}`}>
           <Link 
           href="/campaign/[campaignId]/location/[locationId]/sublocation/[sublocationId]" 
-          as={`/campaign/${campaignId}/sublocation/${subLocation.id}`}
+          as={`/campaign/${campaignId}/location/${locationId}/sublocation/${subLocation.id}`}
           >
             {subLocation.name}
           </Link>
           <Button onClick={() => deleteSubLocationWrap(subLocation.id)}></Button>
         </HStack>)}
+        <Text>Characters associated</Text>
+        {location.characters?.length > 0 && location.characters.map((character) => 
+          <HStack key={`${character.name} ${character.id}`}>
+            <Link 
+            href="/campaign/[campaignId]/character/[characterId]" 
+            as={`/campaign/${campaignId}/character/${character.id}`}
+            >
+              {character.name}
+            </Link>
+          </HStack>
+        )}
         <AddSubLocationModal locationId={location.id} location={location} setLocation={setLocation}/>
         <AddCharacterModal place={location} setPlace={setLocation} campaignId={campaignId} />
     </Box>
