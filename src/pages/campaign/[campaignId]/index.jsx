@@ -1,4 +1,4 @@
-import { Flex, Button, Text, HStack } from '@chakra-ui/react'
+import { Flex, Button, Text, HStack, Heading } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import { getCampaign } from '@/lib/campaign'
@@ -27,8 +27,9 @@ export default function Index() {
 
   console.log(campaign)
   return (
-    <Flex direction='column'>
-      <Text>{campaign.name}</Text>
+    <Flex direction='column' w='100vw' p='1rem'>
+      <Heading>Campaign: {campaign.name}</Heading>
+      <Flex direction='column'>
       {campaign.locations?.length > 0 && campaign.locations.map((location) => 
         <HStack key={`${location.name} ${location.id}`}>
           <Link 
@@ -51,6 +52,7 @@ export default function Index() {
           </HStack>
         )}
       <AddLocationModal campaignId={campaign.id} campaign={campaign} setCampaign={setCampaign} />
+      </Flex>
     </Flex>
   )
 }

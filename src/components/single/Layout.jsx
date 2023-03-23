@@ -3,7 +3,7 @@ import Header from './Header'
 
 export default function Layout({ user, children }) {
   return (
-    <Box>
+    <Box w='100vw'>
       <Header user={user} />
       {children}
     </Box>

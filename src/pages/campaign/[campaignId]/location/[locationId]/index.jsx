@@ -1,4 +1,4 @@
-import { Box, Button, Text, HStack } from '@chakra-ui/react'
+import { Box, Button, Text, HStack, Flex, Heading } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import { getLocation } from '@/lib/location'
@@ -27,20 +27,21 @@ export default function Index() {
   }
   
   return (
-    <Box>
-      <Text>Name: {location.name}</Text>
-      <Text>Description: {location.description}</Text>
-      <Text>Type: {location.locationType}</Text>
-      {location.subLocations?.length > 0 && location.subLocations.map((subLocation) => 
-        <HStack key={`${subLocation.name} ${subLocation.id}`}>
-          <Link 
-          href="/campaign/[campaignId]/location/[locationId]/sublocation/[sublocationId]" 
-          as={`/campaign/${campaignId}/location/${locationId}/sublocation/${subLocation.id}`}
-          >
-            {subLocation.name}
-          </Link>
-          <Button onClick={() => deleteSubLocationWrap(subLocation.id)}></Button>
-        </HStack>)}
+    <Flex direction='column' w='100vw' p='1rem'>
+      <Heading>Location: {location.name}</Heading>
+      <Flex direction='column'>
+        <Text>Description: {location.description}</Text>
+        <Text>Type: {location.locationType}</Text>
+        {location.subLocations?.length > 0 && location.subLocations.map((subLocation) => 
+          <HStack key={`${subLocation.name} ${subLocation.id}`}>
+            <Link 
+            href="/campaign/[campaignId]/location/[locationId]/sublocation/[sublocationId]" 
+            as={`/campaign/${campaignId}/location/${locationId}/sublocation/${subLocation.id}`}
+            >
+              {subLocation.name}
+            </Link>
+            <Button onClick={() => deleteSubLocationWrap(subLocation.id)}></Button>
+          </HStack>)}
         <Text>Characters associated</Text>
         {location.characters?.length > 0 && location.characters.map((character) => 
           <HStack key={`${character.name} ${character.id}`}>
@@ -54,6 +55,7 @@ export default function Index() {
         )}
         <AddSubLocationModal locationId={location.id} location={location} setLocation={setLocation}/>
         <AddCharacterModal place={location} setPlace={setLocation} campaignId={campaignId} />
-    </Box>
+      </Flex>
+    </Flex>
   )
 }
