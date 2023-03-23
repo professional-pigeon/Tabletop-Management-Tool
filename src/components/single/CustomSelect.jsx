@@ -2,7 +2,7 @@ import { Select, InputGroup, FormControl, FormLabel, FormHelperText, FormErrorMe
 import PropTypes from 'prop-types'
 
 
-export default function PlaceSelect({ 
+export default function CustomSelect({ 
   error, 
   name, 
   disabled,
@@ -10,7 +10,8 @@ export default function PlaceSelect({
   errorMessage,
   selectOptions, 
   selectValue, 
-  setSelectValue }) {
+  setSelectValue 
+}) {
     
   return (
     <FormControl isInvalid={false}>
@@ -18,10 +19,10 @@ export default function PlaceSelect({
       <Select
         isDisabled={disabled} 
         value={selectValue} 
-        onChange={(e) => setSelectValue(JSON.parse(e.target.value))}
+        onChange={(e) => setSelectValue(e.target.value)}
       >
         {selectOptions.map((opt) => 
-          <option value={JSON.stringify(opt)} key={`${opt.name} ${opt.id}`}>{opt.name}</option>)}
+          <option value={opt} key={`${opt}`}>{opt}</option>)}
       </Select>
       {(!error && helperText) && <FormHelperText>{helperText}</FormHelperText>}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
@@ -29,8 +30,9 @@ export default function PlaceSelect({
   )
 }
 
-PlaceSelect.propTypes = {
+CustomSelect.propTypes = {
   name: PropTypes.string,
+  selectOptions: PropTypes.arrayOf(PropTypes.string),
   selectValue: PropTypes.string,
   setSelectValue: PropTypes.func,
   disabled: PropTypes.bool,
@@ -39,7 +41,7 @@ PlaceSelect.propTypes = {
   errorMessage: PropTypes.string,
 }
 
-PlaceSelect.defaultProps ={
+CustomSelect.defaultProps ={
   name: '',
   selectValue: '',
   setSelectValue: () => console.log('hook not set'),

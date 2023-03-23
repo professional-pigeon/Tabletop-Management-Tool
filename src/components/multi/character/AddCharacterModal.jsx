@@ -14,7 +14,9 @@ import { addCharacter } from '@/lib/character'
 import { parseCampaignToSelects } from '@/lib/parsers'
 import TextInput from '../../single/TextInput'
 import { getCampaign } from '@/lib/campaign'
+import { characterRaces as characterRaceOptions, characterTypes as characterTypeOptions } from '@/lib/enumerated'
 import PlaceSelect from '@/components/single/PlaceSelect'
+import CustomSelect from '@/components/single/CustomSelect'
 
 export default function AddCharacterModal({
   campaignId, 
@@ -40,6 +42,9 @@ export default function AddCharacterModal({
 
 
   const resetFields = () => {
+    setPlace({})
+    setCharacterRace('')
+    setCharacterType('')
     setDescription('')
     setName('')
   }
@@ -50,17 +55,21 @@ export default function AddCharacterModal({
   }
 
   const addNewCharacter = () => {
-    console.log('clicked')
-    // addLocation({ campaignId, locationType, name, description })
-    //   .then((res) => {
-    //     const newCampaign = campaign
-    //     newCampaign.locations.push(res)
-    //     setCampaign(newCampaign)
-    // })
-    // onCloseWrap();
+    const { id, placeType } = place
+    addCharacter({ 
+      placeType, 
+      placeId: id, 
+      characterType,
+      characterRace, 
+      name, 
+      description })
+      .then((res) => {
+        console.log(res)
+    })
+    onCloseWrap();
   }
 
-  console.log(selectOptions)
+  console.log(characterRace)
 
   return (
     <>
@@ -74,9 +83,24 @@ export default function AddCharacterModal({
           <ModalBody>
             <TextInput name='Name' inputValue={name} setInputValue={setName}/>
             <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
-            <TextInput name='Character Type' inputValue={characterType} setInputValue={setCharacterType}/>
-            <TextInput name='Character Race' inputValue={characterRace} setInputValue={setCharacterRace}/>
-            <PlaceSelect selectOptions={selectOptions} selectValue={place} setSelectValue={setPlace}/>
+            <CustomSelect 
+                name='Character Type' 
+                selectValue={characterType} 
+                setSelectValue={setCharacterType} 
+                selectOptions={characterTypeOptions} 
+            />
+            <CustomSelect 
+              name='Character Race' 
+              selectValue={characterRace} 
+              setSelectValue={setCharacterRace} 
+              selectOptions={characterRaceOptions} 
+            />
+            <PlaceSelect 
+              name='Where is the Character?' 
+              selectOptions={selectOptions} 
+              selectValue={place} 
+              setSelectValue={setPlace}
+            />
           </ModalBody>
 
           <ModalFooter>

@@ -19,8 +19,8 @@ async function addCharacter(params) {
   let character
 
   const { 
-    char_place_type: placeType, 
-    char_place_id: placeId, 
+    placeType,
+    placeId,
     name, 
     description,
     characterType,
@@ -43,7 +43,7 @@ async function addCharacter(params) {
         }),
       }
     )
-    const newCharacter = await character.json()
+    const newCharacter = await character
 
     return keysToCamel(newCharacter)
   } catch (error) {
