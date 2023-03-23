@@ -18,7 +18,7 @@ export default function CustomSelect({
       <FormLabel>{name}</FormLabel>
       <Select
         isDisabled={disabled} 
-        value={selectValue} 
+        placeholder={'select option'}
         onChange={(e) => setSelectValue(e.target.value)}
       >
         {selectOptions.map((opt) => 

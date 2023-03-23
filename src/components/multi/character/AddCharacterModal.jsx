@@ -34,7 +34,6 @@ export default function AddCharacterModal({
   useEffect(() => {
     if (!campaignId) return;
     getCampaign(campaignId).then((res) => {
-      console.log(res, 'hi')
       const selects = parseCampaignToSelects(res)
       setSelectOptions(selects)
     })
@@ -69,7 +68,8 @@ export default function AddCharacterModal({
     onCloseWrap();
   }
 
-  console.log(characterRace)
+  console.log(place, characterType, characterRace, name, description)
+
 
   return (
     <>

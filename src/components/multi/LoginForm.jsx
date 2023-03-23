@@ -10,7 +10,6 @@ export default function LoginCard() {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [hasError, setHasError] = useState(false)
-  const [show, setShow] = useState(false)
   const toast = useToast()
   const router = useRouter()
 

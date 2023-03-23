@@ -11,13 +11,14 @@ export default function PlaceSelect({
   selectOptions, 
   selectValue, 
   setSelectValue }) {
+
     
   return (
     <FormControl isInvalid={false}>
       <FormLabel>{name}</FormLabel>
       <Select
         isDisabled={disabled} 
-        value={selectValue} 
+        placeholder={'select option'}
         onChange={(e) => setSelectValue(JSON.parse(e.target.value))}
       >
         {selectOptions.map((opt) => 
