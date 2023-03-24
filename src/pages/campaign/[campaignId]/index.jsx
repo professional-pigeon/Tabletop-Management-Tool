@@ -6,6 +6,7 @@ import { deleteLocation } from '@/lib/location'
 import AddLocationModal from '@/components/multi/location/AddLocationModal'
 import Link from 'next/link'
 import AddCharacterModal from '@/components/multi/character/AddCharacterModal'
+import CharacterCard from '@/components/multi/character/CharacterCard'
 
 export default function Index() {
   const router = useRouter()
@@ -41,7 +42,7 @@ export default function Index() {
           <Button onClick={() => deleteLocationWrap(location.id)}>Delete</Button>
         </HStack>)}
         <Text>Characters associated</Text>
-        {campaign.characters?.length > 0 && campaign.characters.map((character) => 
+        {/* {campaign.characters?.length > 0 && campaign.characters.map((character) => 
           <HStack key={`${character.name} ${character.id}`}>
             <Link 
             href="/campaign/[campaignId]/character/[characterId]" 
@@ -50,6 +51,9 @@ export default function Index() {
               {character.name}
             </Link>
           </HStack>
+        )} */}
+        {campaign.characters?.length > 0 && campaign.characters.map((character) => 
+          <CharacterCard character={character} />
         )}
       <AddLocationModal campaignId={campaign.id} campaign={campaign} setCampaign={setCampaign} />
       <AddCharacterModal initialLocation={campaign} setInitialLocation={setCampaign} campaignId={campaign.id} />
