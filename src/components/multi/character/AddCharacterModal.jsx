@@ -63,7 +63,9 @@ export default function AddCharacterModal({
       name, 
       description })
       .then((res) => {
-        console.log(res)
+        let newLocation = initialLocation
+        newLocation.characters.push(res)
+        setInitialLocation(newLocation)
     })
     onCloseWrap();
   }

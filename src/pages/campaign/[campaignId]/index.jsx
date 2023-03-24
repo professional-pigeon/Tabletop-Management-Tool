@@ -5,6 +5,7 @@ import { getCampaign } from '@/lib/campaign'
 import { deleteLocation } from '@/lib/location'
 import AddLocationModal from '@/components/multi/location/AddLocationModal'
 import Link from 'next/link'
+import AddCharacterModal from '@/components/multi/character/AddCharacterModal'
 
 export default function Index() {
   const router = useRouter()
@@ -25,7 +26,6 @@ export default function Index() {
     })
   }
 
-  console.log(campaign)
   return (
     <Flex direction='column' w='100vw' p='1rem'>
       <Heading>Campaign: {campaign.name}</Heading>
@@ -52,6 +52,7 @@ export default function Index() {
           </HStack>
         )}
       <AddLocationModal campaignId={campaign.id} campaign={campaign} setCampaign={setCampaign} />
+      <AddCharacterModal initialLocation={campaign} setInitialLocation={setCampaign} campaignId={campaign.id} />
       </Flex>
     </Flex>
   )
