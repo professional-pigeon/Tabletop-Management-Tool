@@ -8,8 +8,9 @@ export default function CharacterCard({ character }) {
     characterLocation,
     characterRace 
   } = character
+
   return (
-    <Box>
+    <Box w='12.5rem' h='12.5rem' borderRadius='.25rem' boxShadow='base'>
       <Flex direction='column'>
       <Text>{`${name} (${characterRace})`}</Text>
       <Text>Description: {description}</Text>
