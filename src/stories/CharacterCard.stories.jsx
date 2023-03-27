@@ -14,11 +14,13 @@ const character = {
   notes: [
       {
           id: 2,
-          content: "this is the second note for this character"
+          content: "this is the second note for this character",
+          updatedAt: '03/27/2023'
       },
       {
           id: 1,
-          content: "this is the first set of note text for the character"
+          content: "this is the first set of note text for the character",
+          updatedAt: '03/26/2023'
       }
   ]
 }

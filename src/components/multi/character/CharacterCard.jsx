@@ -31,7 +31,7 @@ export default function CharacterCard({ character }) {
         <Text>{`Located: ${characterLocation.name}`}</Text>
         <Text>Notes</Text>
         <UnorderedList>
-          {notes.length > 0 && <Text noOfLines={2}>{notes[0].content}</Text>}
+          {notes.length > 0 && <Text noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
           {notes.length > 1 && <Text>+ {notes.length -1} more</Text>}
         </UnorderedList>
       </Flex>
