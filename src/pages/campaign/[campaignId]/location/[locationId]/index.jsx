@@ -1,11 +1,10 @@
-import { Box, Button, Text, HStack, Flex, Heading } from '@chakra-ui/react'
+import { Button, Text, HStack, Flex, Heading } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import { getLocation } from '@/lib/location'
-import { deleteSubLocation } from '@/lib/sublocation'
 import Link from 'next/link'
-import AddSubLocationModal from '@/components/multi/sublocation/AddSubLocationModal'
 import AddCharacterModal from '@/components/multi/character/AddCharacterModal'
+import AddLocationModal from '@/components/multi/location/AddLocationModal'
 
 export default function Index() {
   const router = useRouter()
@@ -16,15 +15,7 @@ export default function Index() {
     if (!locationId) return
     getLocation(locationId).then((res) => setLocation(res))
   }, [locationId])
-  
-  const deleteSubLocationWrap = (subLocationId) => { 
-    deleteSubLocation(subLocationId).then(() => {
-      const newLocation = location
-      const newSubLocations = location.subLocations.filter((obj) => obj.id !== subLocationId)
-      newLocation.subLocations = newSubLocations
-      setLocation(newLocation)
-    })
-  }
+  console.log(location)
   
   return (
     <Flex direction='column' w='100vw' p='1rem'>
@@ -32,16 +23,17 @@ export default function Index() {
       <Flex direction='column'>
         <Text>Description: {location.description}</Text>
         <Text>Type: {location.locationType}</Text>
-        {/* {location.subLocations?.length > 0 && location.subLocations.map((subLocation) => 
-          <HStack key={`${subLocation.name} ${subLocation.id}`}>
+        {location.innerLocations?.length > 0 && location.innerLocations.map((innerLocation) => 
+          <HStack key={`${innerLocation.name} ${innerLocation.id}`}>
             <Link 
-            href="/campaign/[campaignId]/location/[locationId]/sublocation/[sublocationId]" 
-            as={`/campaign/${campaignId}/location/${locationId}/sublocation/${subLocation.id}`}
+            href="/campaign/[campaignId]/location/[innerLocationId]" 
+            as={`/campaign/${campaignId}/location/${innerLocation.id}`}
             >
-              {subLocation.name}
+              {innerLocation.name}
             </Link>
-            <Button onClick={() => deleteSubLocationWrap(subLocation.id)}></Button>
-          </HStack>)} */}
+            <Button onClick={() => console.log('delete me')}></Button>
+          </HStack>
+        )}
         <Text>Characters associated</Text>
         {location.characters?.length > 0 && location.characters.map((character) => 
           <HStack key={`${character.name} ${character.id}`}>
@@ -53,7 +45,7 @@ export default function Index() {
             </Link>
           </HStack>
         )}
-        <AddSubLocationModal locationId={location.id} location={location} setLocation={setLocation}/>
+        <AddLocationModal campaignId={location.campaignId} place={location} setPlace={setLocation} isAddingInnerLocation={true} />
         <AddCharacterModal place={location} setPlace={setLocation} campaignId={campaignId} />
       </Flex>
     </Flex>

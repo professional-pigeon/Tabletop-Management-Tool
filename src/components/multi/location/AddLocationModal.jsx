@@ -13,7 +13,7 @@ import {
 import { useState } from 'react'
 import TextInput from '../../single/TextInput'
 
-export default function AddLocationModal({ campaignId, campaign, setCampaign }) {
+export default function AddLocationModal({ isAddingInnerLocation, campaignId, place, setPlace }) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [locationType, setLocationType] = useState('')
@@ -30,11 +30,17 @@ export default function AddLocationModal({ campaignId, campaign, setCampaign }) 
   }
 
   const addNewLocation = () => {
-    addLocation({ campaignId, locationType, name, description })
+    const upperLocationId = isAddingInnerLocation ? place.id : null
+    addLocation({ campaignId, locationType, name, description, upperLocationId })
       .then((res) => {
-        const newCampaign = campaign
-        newCampaign.locations.push(res)
-        setCampaign(newCampaign)
+        const newPlace = place
+        console.log(newPlace, place)
+        if (isAddingInnerLocation) {
+          newPlace.innerLocations.push(res)
+        } else {
+          newPlace.locations.push(res)
+        }
+        setPlace(newPlace)
     })
     onCloseWrap();
   }

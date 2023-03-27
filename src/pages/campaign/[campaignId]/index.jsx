@@ -27,6 +27,8 @@ export default function Index() {
     })
   }
 
+  console.log(campaign)
+
   return (
     <Flex direction='column' w='100vw' p='1rem'>
       <Heading>Campaign: {campaign.name}</Heading>
@@ -55,7 +57,7 @@ export default function Index() {
         {campaign.characters?.length > 0 && campaign.characters.map((character) => 
           <CharacterCard character={character} />
         )}
-      <AddLocationModal campaignId={campaign.id} campaign={campaign} setCampaign={setCampaign} />
+      <AddLocationModal isAddingInnerLocation={false} campaignId={campaign.id} place={campaign} setPlace={setCampaign} />
       <AddCharacterModal initialLocation={campaign} setInitialLocation={setCampaign} campaignId={campaign.id} />
       </Flex>
     </Flex>
