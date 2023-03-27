@@ -23,6 +23,14 @@ export default function Index() {
       <Flex direction='column'>
         <Text>Description: {location.description}</Text>
         <Text>Type: {location.locationType}</Text>
+        {location.upperLocation && (
+          <Link
+            href="/campaign/[campaignId]/location/[innerLocationId]" 
+            as={`/campaign/${campaignId}/location/${location.upperLocation.id}`}
+          >
+            Back to {location.upperLocation.name}
+          </Link>
+        )}
         {location.innerLocations?.length > 0 && location.innerLocations.map((innerLocation) => 
           <HStack key={`${innerLocation.name} ${innerLocation.id}`}>
             <Link 
