@@ -3,7 +3,7 @@ import CharacterCard from './CharacterCard'
 
 export default function CardHolder({ characters }) {
   return (
-    <Flex direction='row' gap='1rem' flexWrap='wrap'>
+    <Flex direction='row' gap='1rem' flexWrap='wrap' p='1rem'>
     {characters.length > 0 && characters.map((character) => 
       <CharacterCard key={`${character.id} ${character.name}`} character={character} />
       )}
