@@ -1,8 +1,8 @@
 import { extendTheme } from '@chakra-ui/react'
-import { theme as proTheme } from '@chakra-ui/pro-theme'
-import '@fontsource/inter/variable.css'
+import styles from './styles'
 
 const overrides = {
+  styles
 }
 
-export default extendTheme(proTheme, overrides)
+export default extendTheme(overrides)
