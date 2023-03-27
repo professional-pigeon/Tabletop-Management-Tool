@@ -9,12 +9,14 @@ export default function CharacterCard({ character }) {
     characterRace 
   } = character
 
+  console.log(notes, 'notes')
+
   return (
     <Box 
       minW='15rem'
       w='30%'
       maxW='18rem'
-      h='12.5rem' 
+      h='15rem' 
       borderRadius='.25rem' 
       boxShadow='base'
     >
@@ -23,15 +25,14 @@ export default function CharacterCard({ character }) {
         <Text noOfLines={3}>
           {`Description: `}
           <Text as='span' fontSize='sm' >
-            {description.substring(0, 100)}
+            {description}
           </Text>
         </Text>
         <Text>{`Located: ${characterLocation.name}`}</Text>
-        <Text>Notes below</Text>
+        <Text>Notes</Text>
         <UnorderedList>
-          {notes.length > 0 && notes.map((note) => {
-            <Text key={`note ${note.id}`}>{note.content}</Text>
-          })}
+          {notes.length > 0 && <Text noOfLines={2}>{notes[0].content}</Text>}
+          {notes.length > 1 && <Text>+ {notes.length -1} more</Text>}
         </UnorderedList>
       </Flex>
     </Box>
