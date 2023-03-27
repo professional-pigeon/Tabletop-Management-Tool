@@ -1,7 +1,7 @@
 import { Box, Text, Flex } from '@chakra-ui/react'
 import CharacterCard from './CharacterCard'
 
-export default function CardHolder({ characters }) {
+export default function CharacterCardHolder({ characters }) {
   return (
     <Flex direction='row' gap='1rem' flexWrap='wrap' p='1rem'>
     {characters.length > 0 && characters.map((character) => 

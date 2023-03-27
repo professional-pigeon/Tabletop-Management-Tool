@@ -1,5 +1,5 @@
 import React from "react";
-import CardHolder from "../components/multi/character/CardHolder";
+import CharacterCardHolder from "../components/multi/character/CharacterCardHolder";
 
 const character = {
   id: 2,
@@ -28,11 +28,11 @@ const character = {
 const characters = [character, character, character, character, character, character]
 
 export default {
-  title: 'Components/Multi/CardHolder',
+  title: 'Components/Multi/CharacterCardHolder',
   component: CardHolder,
 };
 
-const Template = (args) => <CardHolder {...args} />;
+const Template = (args) => <CharacterCardHolder {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = { characters }
