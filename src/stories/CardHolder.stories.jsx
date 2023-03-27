@@ -9,7 +9,7 @@ const character = {
   },
   characterRace: "orc",
   characterType: "pc",
-  description: "hi",
+  description: "Hi! This is a very long substring that should be cut off N number of characters and then appended with an ellipses. If it goes over this length on the card you shouldn't be able to see me until we get to the character page",
   name: "Charles",
   notes: [
       {
