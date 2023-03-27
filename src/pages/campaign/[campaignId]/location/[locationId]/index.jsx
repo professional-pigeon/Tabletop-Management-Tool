@@ -32,7 +32,7 @@ export default function Index() {
       <Flex direction='column'>
         <Text>Description: {location.description}</Text>
         <Text>Type: {location.locationType}</Text>
-        {location.subLocations?.length > 0 && location.subLocations.map((subLocation) => 
+        {/* {location.subLocations?.length > 0 && location.subLocations.map((subLocation) => 
           <HStack key={`${subLocation.name} ${subLocation.id}`}>
             <Link 
             href="/campaign/[campaignId]/location/[locationId]/sublocation/[sublocationId]" 
@@ -41,7 +41,7 @@ export default function Index() {
               {subLocation.name}
             </Link>
             <Button onClick={() => deleteSubLocationWrap(subLocation.id)}></Button>
-          </HStack>)}
+          </HStack>)} */}
         <Text>Characters associated</Text>
         {location.characters?.length > 0 && location.characters.map((character) => 
           <HStack key={`${character.name} ${character.id}`}>
