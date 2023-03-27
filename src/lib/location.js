@@ -18,7 +18,7 @@ async function getLocation(locationId) {
 
 async function addLocation(params) {
   let location
-  const { campaignId, locationType, name, description } = params
+  const { campaignId, locationType, name, description, upperLocationId } = params
 
   try {
     location = await fetch(
@@ -30,7 +30,8 @@ async function addLocation(params) {
           campaign_id: campaignId, 
           name, 
           description, 
-          location_type: locationType
+          location_type: locationType,
+          upper_location_id: upperLocationId
         }),
       }
     )

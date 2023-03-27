@@ -45,7 +45,7 @@ export default function Index() {
             </Link>
           </HStack>
         )}
-        <AddLocationModal campaignId={location.campaignId} place={location} setPlace={setLocation} isAddingInnerLocation={true} />
+        <AddLocationModal campaignId={campaignId} place={location} setPlace={setLocation} isAddingInnerLocation={true} />
         <AddCharacterModal place={location} setPlace={setLocation} campaignId={campaignId} />
       </Flex>
     </Flex>
