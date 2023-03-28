@@ -1,10 +1,10 @@
-import { Flex, InputRightElement, Button, Text, VStack, useToast } from '@chakra-ui/react'
-import { useState } from 'react'
-import { areTextFieldsValidated } from '@/lib/textValidators'
+import { Flex, Button, Text, VStack, useToast } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
+import { areTextFieldsValidated } from '../../lib/textValidators'
 import TextInput from '../single/TextInput'
 import HiddenInput from '../single/HiddenInput'
-import { loginCall } from '@/lib/login'
-import { useRouter } from 'next/router'
+import { loginCall } from '../../lib/login'
 
 export default function LoginCard() {
   const [userName, setUserName] = useState('')
@@ -13,7 +13,7 @@ export default function LoginCard() {
   const toast = useToast()
   const router = useRouter()
 
-  const loginCallWrapper = (userName, password) => {
+  const loginCallWrapper = () => {
     if (areTextFieldsValidated([userName, password])) {
       loginCall(userName, password)
         .then((res) => {

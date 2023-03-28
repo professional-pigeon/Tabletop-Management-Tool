@@ -1,4 +1,5 @@
-import { Box, Text, Flex, UnorderedList, ListItem } from '@chakra-ui/react'
+import { Box, Text, Flex, UnorderedList } from '@chakra-ui/react';
+import React from 'react';
 
 export default function LocationCard({ character }) {
   const { 
@@ -7,7 +8,7 @@ export default function LocationCard({ character }) {
     notes, 
     characterLocation,
     characterRace 
-  } = character
+  } = character;
 
   return (
     <Box 

@@ -1,4 +1,3 @@
-import { addLocation } from '@/lib/location'
 import {
   Modal,
   ModalOverlay,
@@ -10,10 +9,16 @@ import {
   useDisclosure,
   Button,
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { addLocation } from '../../../lib/location'
 import TextInput from '../../single/TextInput'
 
-export default function AddLocationModal({ isAddingInnerLocation, campaignId, place, setPlace }) {
+export default function AddLocationModal({ 
+  isAddingInnerLocation, 
+  campaignId, 
+  place, 
+  setPlace 
+}) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [locationType, setLocationType] = useState('')
