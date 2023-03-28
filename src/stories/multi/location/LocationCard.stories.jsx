@@ -6,7 +6,9 @@ export default {
   component: LocationCard,
 };
 
-const Template = (args) => <LocationCard {...args} />;
+function Template(args) {
+  return <LocationCard location={{}} />
+}
 
 export const Primary = Template.bind({});
 Primary.args = { }

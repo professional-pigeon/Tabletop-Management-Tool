@@ -1,7 +1,7 @@
 import React from "react";
 import CharacterCard from "../../../components/multi/character/CharacterCard";
 
-const character = {
+const char = {
   id: 2,
   characterLocation: {
       id: 1,
@@ -30,7 +30,10 @@ export default {
   component: CharacterCard,
 };
 
-const Template = (args) => <CharacterCard {...args} />;
+function Template(args) {
+  const { character } = args
+  return <CharacterCard character={character} />
+}
 
 export const Primary = Template.bind({});
-Primary.args = { character }
+Primary.args = { character: char }

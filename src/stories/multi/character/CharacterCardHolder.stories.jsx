@@ -25,14 +25,17 @@ const character = {
   ]
 }
 
-const characters = [character, character, character, character, character, character]
+const characterArray = [character, character, character, character, character, character]
 
 export default {
   title: 'Components/Multi/Character/CharacterCardHolder',
-  component: CardHolder,
+  component: CharacterCardHolder,
 };
 
-const Template = (args) => <CharacterCardHolder {...args} />;
+function Template(args) {
+  const { characters } = args
+  return <CharacterCardHolder characters={characters} />
+}
 
 export const Primary = Template.bind({});
-Primary.args = { characters }
+Primary.args = { characters: characterArray }
