@@ -1,4 +1,5 @@
-import { Select, InputGroup, FormControl, FormLabel, FormHelperText, FormErrorMessage } from '@chakra-ui/react'
+import { Select, FormControl, FormLabel, FormHelperText, FormErrorMessage } from '@chakra-ui/react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 

@@ -1,4 +1,5 @@
-import { Select, InputGroup, FormControl, FormLabel, FormHelperText, FormErrorMessage } from '@chakra-ui/react'
+import { Select, FormControl, FormLabel, FormHelperText, FormErrorMessage } from '@chakra-ui/react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -18,7 +19,7 @@ export default function CustomSelect({
       <FormLabel>{name}</FormLabel>
       <Select
         isDisabled={disabled} 
-        placeholder={'select option'}
+        placeholder='select option'
         onChange={(e) => setSelectValue(e.target.value)}
       >
         {selectOptions.map((opt) => 

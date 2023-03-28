@@ -8,7 +8,7 @@ import {
   FormControl, 
   FormErrorMessage 
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 export default function HiddenInput({ 

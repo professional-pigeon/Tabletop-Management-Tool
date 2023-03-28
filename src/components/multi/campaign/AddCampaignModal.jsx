@@ -9,9 +9,9 @@ import {
   useDisclosure,
   Button,
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import TextInput from '../../single/TextInput'
-import { createCampaign } from '@/lib/campaign'
+import { createCampaign } from '../../../lib/campaign'
 
 export default function AddCampaignModal({ campaigns, setCampaigns }) {
   const [name, setName] = useState('')

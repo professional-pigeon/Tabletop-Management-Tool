@@ -9,14 +9,14 @@ import {
   useDisclosure,
   Button,
 } from '@chakra-ui/react'
-import { useState, useEffect } from 'react'
-import { addCharacter } from '@/lib/character'
-import { parseCampaignToSelects } from '@/lib/parsers'
+import React, { useState, useEffect } from 'react'
+import { addCharacter } from '../../../lib/character'
+import { parseCampaignToSelects } from '../../../lib/parsers'
 import TextInput from '../../single/TextInput'
-import { getCampaign } from '@/lib/campaign'
+import { getCampaign } from '../../../lib/campaign'
 import { characterRaces as characterRaceOptions, characterTypes as characterTypeOptions } from '@/lib/enumerated'
-import PlaceSelect from '@/components/single/PlaceSelect'
-import CustomSelect from '@/components/single/CustomSelect'
+import PlaceSelect from '../../single/PlaceSelect'
+import CustomSelect from '../../single/CustomSelect'
 
 export default function AddCharacterModal({
   campaignId, 

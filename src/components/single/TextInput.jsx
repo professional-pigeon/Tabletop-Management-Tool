@@ -1,4 +1,5 @@
 import { FormLabel, Input, FormHelperText, FormControl, FormErrorMessage } from '@chakra-ui/react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function TextInput({ 

@@ -1,4 +1,5 @@
-import { Box, Text, Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
+import React from 'react';
 import CharacterCard from './CharacterCard'
 
 export default function CharacterCardHolder({ characters }) {
