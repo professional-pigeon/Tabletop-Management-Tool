@@ -35,16 +35,17 @@ export default function Index() {
       <Flex direction='column'>
         <Flex direction='row'>
           <Box>
-          {campaign.locations?.length > 0 && campaign.locations.map((location) => 
-            <HStack key={`${location.name} ${location.id}`}>
-              <Link 
-              href="/campaign/[campaignId]/location/[locationId]" 
-              as={`/campaign/${campaignId}/location/${location.id}`}
-              >
-                {location.name}
-              </Link>
-              <Button onClick={() => deleteLocationWrap(location.id)}>Delete</Button>
-            </HStack>)}
+            {campaign.locations?.length > 0 && campaign.locations.map((location) => 
+              <HStack key={`${location.name} ${location.id}`}>
+                <Link 
+                href="/campaign/[campaignId]/location/[locationId]" 
+                as={`/campaign/${campaignId}/location/${location.id}`}
+                >
+                  {location.name}
+                </Link>
+                <Button onClick={() => deleteLocationWrap(location.id)}>Delete</Button>
+              </HStack>
+            )}
           </Box>
           <Flex direction='column' w='50%'>
         <Text>Characters associated</Text>
