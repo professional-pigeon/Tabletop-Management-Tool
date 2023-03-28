@@ -1,6 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
 import { ChakraProvider } from '@chakra-ui/react'
-import Layout from '@/components/single/Layout'
-import theme from '@/theme/theme'
+import React from 'react'
+import Layout from '../components/single/Layout'
+import theme from '../theme/theme'
 
 export default function App({ Component, pageProps }) {
   const user = { name: 'Kyle' }

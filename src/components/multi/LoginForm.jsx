@@ -6,7 +6,7 @@ import TextInput from '../single/TextInput'
 import HiddenInput from '../single/HiddenInput'
 import { loginCall } from '../../lib/login'
 
-export default function LoginCard() {
+export default function LoginForm() {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [hasError, setHasError] = useState(false)

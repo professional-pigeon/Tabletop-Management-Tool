@@ -1,11 +1,12 @@
-import { Box, Text, Button, Center } from '@chakra-ui/react'
-import LoginCard from '@/components/multi/loginForm'
+import { Box, Center } from '@chakra-ui/react'
+import React from 'react'
+import LoginForm from '../../components/multi/LoginForm'
 
 export default function Index() {
   return (
     <Box w='100%'>
       <Center>
-        <LoginCard />
+        <LoginForm />
       </Center>
     </Box>
   )
