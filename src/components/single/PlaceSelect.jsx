@@ -11,7 +11,6 @@ export default function PlaceSelect({
   selectOptions, 
   selectValue, 
   setSelectValue }) {
-
     
   return (
     <FormControl isInvalid={false}>

@@ -70,9 +70,6 @@ export default function AddCharacterModal({
     onCloseWrap();
   }
 
-  console.log(place, characterType, characterRace, name, description)
-
-
   return (
     <>
       <Button onClick={onOpen}>Add Character</Button>

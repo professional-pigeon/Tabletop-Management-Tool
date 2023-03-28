@@ -1,6 +1,6 @@
 import { Box, Text, Flex, UnorderedList, ListItem } from '@chakra-ui/react'
 
-export default function CharacterCard({ character }) {
+export default function LocationCard({ character }) {
   const { 
     name, 
     description, 

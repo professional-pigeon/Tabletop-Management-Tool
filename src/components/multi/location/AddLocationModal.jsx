@@ -34,7 +34,6 @@ export default function AddLocationModal({ isAddingInnerLocation, campaignId, pl
     addLocation({ campaignId, locationType, name, description, upperLocationId })
       .then((res) => {
         const newPlace = place
-        console.log(newPlace, place)
         if (isAddingInnerLocation) {
           newPlace.innerLocations.push(res)
         } else {

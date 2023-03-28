@@ -12,7 +12,6 @@ export default function Index() {
     if (!characterId) return
     getCharacter(characterId).then((res) => setCharacter(res))
   }, [characterId])
-  console.log(characterId, character)
 
   return (
     <Flex direction='column' w='100vw' p='1rem'>

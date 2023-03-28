@@ -1,5 +1,5 @@
 import React from "react";
-import CharacterCardHolder from "../components/multi/character/CharacterCardHolder";
+import CharacterCardHolder from "../../../components/multi/character/CharacterCardHolder";
 
 const character = {
   id: 2,
@@ -28,7 +28,7 @@ const character = {
 const characters = [character, character, character, character, character, character]
 
 export default {
-  title: 'Components/Multi/CharacterCardHolder',
+  title: 'Components/Multi/Character/CharacterCardHolder',
   component: CardHolder,
 };
 

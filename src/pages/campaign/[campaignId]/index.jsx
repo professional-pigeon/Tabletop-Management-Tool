@@ -27,8 +27,6 @@ export default function Index() {
     })
   }
 
-  console.log(campaign)
-
   return (
     <Flex direction='column' w='100vw' p='1rem'>
       <Heading>Campaign: {campaign.name}</Heading>
