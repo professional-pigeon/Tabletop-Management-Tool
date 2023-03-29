@@ -1,59 +1,64 @@
-import PropTypes from 'prop-types'
+import {
+  arrayOf,
+  number,
+  shape,
+  string,
+} from 'prop-types';
 
-const noteShape = {
-  id: PropTypes.string,
-  content: PropTypes.string,
-  updatedAt: PropTypes.string
-}
+const noteShape = shape({
+  id: number,
+  content: string,
+  updatedAt: string
+})
 
-const characterLocationShape = {
-  id: PropTypes.string,
-  name: PropTypes.string
-}
+const characterLocationShape = shape({
+  id: number,
+  name: string
+})
 
-const characterShape = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  characterType: PropTypes.string,
-  characterRace: PropTypes.string,
-  description: PropTypes.string,
+const characterShape = shape({
+  id: number,
+  name: string,
+  characterType: string,
+  characterRace: string,
+  description: string,
   characterLocation: characterLocationShape,
-  notes: PropTypes.arrayOf(noteShape)
-}
+  notes: arrayOf(noteShape)
+})
 
-const innerLocationShape = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  locationType: PropTypes.string,
-  description: PropTypes.string,
-  characters: PropTypes.arrayOf(characterShape),
-  notes: PropTypes.arrayOf(noteShape),
+const innerLocationShape = shape({
+  id: number,
+  name: string,
+  locationType: string,
+  description: string,
+  characters: arrayOf(characterShape),
+  notes: arrayOf(noteShape),
   upperLocation: {
-    id: PropTypes.string,
-    name: PropTypes.string
+    id: number,
+    name: string
   }
-}
+})
 
-const locationShape = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  locationType: PropTypes.string,
-  description: PropTypes.string,
-  characters: PropTypes.arrayOf(characterShape),
-  notes: PropTypes.arrayOf(noteShape),
-  innerLocations: PropTypes.arrayOf(innerLocationShape),
+const locationShape = shape({
+  id: number,
+  name: string,
+  locationType: string,
+  description: string,
+  characters: arrayOf(characterShape),
+  notes: arrayOf(noteShape),
+  innerLocations: arrayOf(innerLocationShape),
   upperLocation: {
-    id: PropTypes.string,
-    name: PropTypes.string
+    id: number,
+    name: string
   }
-}
+})
 
-const campaignShape = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  notes: PropTypes.arrayOf(noteShape),
-  locations: PropTypes.arrayOf(locationShape),
-  characters: PropTypes.arrayOf(characterShape)
-}
+const campaignShape = shape({
+  id: number,
+  name: string,
+  notes: arrayOf(noteShape),
+  locations: arrayOf(locationShape),
+  characters: arrayOf(characterShape)
+})
 
 export { noteShape, characterShape, locationShape, campaignShape } 

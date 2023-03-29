@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 const isTextValid = (text) => {
   if (text) return true
   return false
