@@ -10,8 +10,10 @@ import {
   Button,
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import TextInput from '../../single/TextInput'
 import { createCampaign } from '../../../lib/campaign'
+import { campaignShape } from '../../../lib/propShapes'
 
 export default function AddCampaignModal({ campaigns, setCampaigns }) {
   const [name, setName] = useState('')
@@ -63,4 +65,14 @@ export default function AddCampaignModal({ campaigns, setCampaigns }) {
       </Modal>
     </>
   )
+}
+
+AddCampaignModal.propTypes = {
+  campaigns: PropTypes.arrayOf(campaignShape),
+  setCampaigns: PropTypes.func,
+}
+
+AddCampaignModal.defaultProps = {
+  campaigns: [],
+  setCampaigns: () => {},
 }
