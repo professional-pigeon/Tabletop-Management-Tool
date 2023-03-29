@@ -1,20 +1,12 @@
-const toCamel = (str) => {
-  return str.replace(/([-_][a-z])/ig, ($1) => {
-    return $1.toUpperCase()
+const toCamel = (str) => str.replace(/([-_][a-z])/ig, ($1) => $1.toUpperCase()
       .replace('-', '')
-      .replace('_', '');
-  });
-};
+      .replace('_', ''));
 
-const isArray = function (a) {
-  return Array.isArray(a);
-};
+const isArray = (a) => Array.isArray(a);
 
-const isObject = function (obj) {
-  return obj === Object(obj) && !isArray(obj) && typeof obj !== 'function';
-};
+const isObject = (obj) => obj === Object(obj) && !isArray(obj) && typeof obj !== 'function';
 
-const keysToCamel = function (obj) {
+const keysToCamel = (obj) => {
   if (isObject(obj)) {
     const n = {};
 
@@ -24,10 +16,9 @@ const keysToCamel = function (obj) {
       });
 
     return n;
-  } else if (isArray(obj)) {
-    return obj.map((i) => {
-      return keysToCamel(i);
-    });
+  } 
+  if (isArray(obj)) {
+    return obj.map((i) => keysToCamel(i));
   }
 
   return obj;

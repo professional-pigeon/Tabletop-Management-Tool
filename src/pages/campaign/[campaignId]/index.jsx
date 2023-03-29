@@ -1,12 +1,12 @@
 import { Box, Flex, Button, Text, HStack, Heading } from '@chakra-ui/react'
 import { useRouter } from "next/router"
-import { useEffect, useState } from 'react'
-import { getCampaign } from '@/lib/campaign'
-import { deleteLocation } from '@/lib/location'
-import AddLocationModal from '@/components/multi/location/AddLocationModal'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import AddCharacterModal from '@/components/multi/character/AddCharacterModal'
-import CharacterCardHolder from '@/components/multi/character/CharacterCardHolder'
+import { getCampaign } from '../../../lib/campaign'
+import { deleteLocation } from '../../../lib/location'
+import AddLocationModal from '../../../components/multi/location/AddLocationModal'
+import AddCharacterModal from '../../../components/multi/character/AddCharacterModal'
+import CharacterCardHolder from '../../../components/multi/character/CharacterCardHolder'
 
 export default function Index() {
   const router = useRouter()
@@ -20,7 +20,7 @@ export default function Index() {
 
   const deleteLocationWrap = (locationId) => {
     deleteLocation(locationId).then(() => {
-      let newCampaign = campaign
+      const newCampaign = campaign
       const newLocations = campaign.locations.filter((obj) => obj.id !== locationId)
       newCampaign.locations = newLocations
       setCampaign(newCampaign)

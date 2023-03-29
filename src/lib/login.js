@@ -9,7 +9,7 @@ async function loginCall(username, password) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user_name: username, password: password }),
+      body: JSON.stringify({ user_name: username, password }),
     })
     const userData = await user.json()
     return keysToCamel(userData)

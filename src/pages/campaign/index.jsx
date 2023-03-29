@@ -1,8 +1,8 @@
 import { Flex, Box, Text, HStack, Button } from '@chakra-ui/react'
-import { getCampaigns, deleteCampaign } from '@/lib/campaign'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import AddCampaignModal from '@/components/multi/campaign/AddCampaignModal'
+import { getCampaigns, deleteCampaign } from '../../lib/campaign'
+import AddCampaignModal from '../../components/multi/campaign/AddCampaignModal'
 
 
 export default function Index() {

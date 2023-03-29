@@ -1,7 +1,7 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
-import { getCharacter } from '@/lib/character'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { getCharacter } from '../../../../../lib/character'
 
 export default function Index() {
   const router = useRouter()
