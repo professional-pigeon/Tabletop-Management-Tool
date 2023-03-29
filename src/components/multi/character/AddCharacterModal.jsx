@@ -10,11 +10,16 @@ import {
   Button,
 } from '@chakra-ui/react'
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { addCharacter } from '../../../lib/character'
 import { parseCampaignToSelects } from '../../../lib/parsers'
 import TextInput from '../../single/TextInput'
 import { getCampaign } from '../../../lib/campaign'
-import { characterRaces as characterRaceOptions, characterTypes as characterTypeOptions } from '@/lib/enumerated'
+import { campaignShape, locationShape } from '../../../lib/propShapes'
+import { 
+  characterRaces as characterRaceOptions, 
+  characterTypes as characterTypeOptions } 
+  from '../../../lib/enumerated'
 import PlaceSelect from '../../single/PlaceSelect'
 import CustomSelect from '../../single/CustomSelect'
 
@@ -63,7 +68,7 @@ export default function AddCharacterModal({
       name, 
       description })
       .then((res) => {
-        let newLocation = initialLocation
+        const newLocation = initialLocation
         newLocation.characters.push(res)
         setInitialLocation(newLocation)
     })
@@ -112,4 +117,14 @@ export default function AddCharacterModal({
       </Modal>
     </>
   )
+}
+
+AddCharacterModal.propTypes = {
+  campaignId: PropTypes.string.isRequired,
+  initialLocation: PropTypes.oneOf(campaignShape, locationShape).isRequired,
+  setInitialLocation: PropTypes.func, 
+}
+
+AddCharacterModal.defaultProps = {
+  setInitialLocation: () => {},
 }

@@ -1,5 +1,6 @@
 import { Box, Text, Flex, UnorderedList } from '@chakra-ui/react';
 import React from 'react';
+import { characterShape } from '../../../lib/propShapes';
 
 
 export default function CharacterCard({ character }) {
@@ -37,4 +38,8 @@ export default function CharacterCard({ character }) {
       </Flex>
     </Box>
   )
+}
+
+CharacterCard.propTypes = {
+  character: characterShape.isRequired,
 }

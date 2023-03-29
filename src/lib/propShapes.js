@@ -23,7 +23,7 @@ const characterShape = {
 
 const innerLocationShape = {
   id: PropTypes.string,
-  name: PropTypes.string,,
+  name: PropTypes.string,
   locationType: PropTypes.string,
   description: PropTypes.string,
   characters: PropTypes.arrayOf(characterShape),
