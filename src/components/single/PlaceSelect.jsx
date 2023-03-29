@@ -1,4 +1,10 @@
-import { Select, FormControl, FormLabel, FormHelperText, FormErrorMessage } from '@chakra-ui/react'
+import { 
+  Select, 
+  FormControl, 
+  FormLabel, 
+  FormHelperText, 
+  FormErrorMessage 
+} from '@chakra-ui/react'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -10,7 +16,6 @@ export default function PlaceSelect({
   helperText,
   errorMessage,
   selectOptions, 
-  selectValue, 
   setSelectValue }) {
     
   return (
@@ -18,7 +23,7 @@ export default function PlaceSelect({
       <FormLabel>{name}</FormLabel>
       <Select
         isDisabled={disabled} 
-        placeholder={'select option'}
+        placeholder='select option'
         onChange={(e) => setSelectValue(JSON.parse(e.target.value))}
       >
         {selectOptions.map((opt) => 
@@ -32,7 +37,7 @@ export default function PlaceSelect({
 
 PlaceSelect.propTypes = {
   name: PropTypes.string,
-  selectValue: PropTypes.string,
+  selectOptions: PropTypes.arrayOf(PropTypes.string),
   setSelectValue: PropTypes.func,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
@@ -42,8 +47,8 @@ PlaceSelect.propTypes = {
 
 PlaceSelect.defaultProps ={
   name: '',
-  selectValue: '',
-  setSelectValue: () => console.log('hook not set'),
+  selectOptions: [],
+  setSelectValue: () => {},
   disabled: false,
   error: false,
   helperText: '',

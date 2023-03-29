@@ -1,4 +1,10 @@
-import { FormLabel, Input, FormHelperText, FormControl, FormErrorMessage } from '@chakra-ui/react'
+import { 
+  FormLabel, 
+  FormHelperText, 
+  FormControl, 
+  FormErrorMessage,
+  Input 
+} from '@chakra-ui/react'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -38,7 +44,7 @@ TextInput.propTypes = {
 TextInput.defaultProps ={
   name: '',
   inputValue: '',
-  setInputValue: () => console.log('hook not set'),
+  setInputValue: () => {},
   disabled: false,
   error: false,
   helperText: '',

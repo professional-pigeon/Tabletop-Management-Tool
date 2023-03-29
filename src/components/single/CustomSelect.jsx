@@ -10,7 +10,6 @@ export default function CustomSelect({
   helperText,
   errorMessage,
   selectOptions, 
-  selectValue, 
   setSelectValue 
 }) {
     
@@ -34,7 +33,6 @@ export default function CustomSelect({
 CustomSelect.propTypes = {
   name: PropTypes.string,
   selectOptions: PropTypes.arrayOf(PropTypes.string),
-  selectValue: PropTypes.string,
   setSelectValue: PropTypes.func,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
@@ -44,8 +42,8 @@ CustomSelect.propTypes = {
 
 CustomSelect.defaultProps ={
   name: '',
-  selectValue: '',
-  setSelectValue: () => console.log('hook not set'),
+  selectOptions: [],
+  setSelectValue: () => {},
   disabled: false,
   error: false,
   helperText: '',

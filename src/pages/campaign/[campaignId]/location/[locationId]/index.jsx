@@ -1,11 +1,11 @@
 import { Button, Text, HStack, Flex, Heading } from '@chakra-ui/react'
 import { useRouter } from "next/router"
-import { useEffect, useState } from 'react'
-import { getLocation } from '@/lib/location'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import AddCharacterModal from '@/components/multi/character/AddCharacterModal'
-import AddLocationModal from '@/components/multi/location/AddLocationModal'
-import CharacterCardHolder from '@/components/multi/character/CharacterCardHolder'
+import { getLocation } from '../../../../../lib/location'
+import AddCharacterModal from '../../../../../components/multi/character/AddCharacterModal'
+import AddLocationModal from '../../../../../components/multi/location/AddLocationModal'
+import CharacterCardHolder from '../../../../../components/multi/character/CharacterCardHolder'
 
 export default function Index() {
   const router = useRouter()
@@ -16,7 +16,6 @@ export default function Index() {
     if (!locationId) return
     getLocation(locationId).then((res) => setLocation(res))
   }, [locationId])
-  console.log(location)
   
   return (
     <Flex direction='column' w='100vw' p='1rem'>
@@ -41,7 +40,7 @@ export default function Index() {
               >
                 {innerLocation.name}
               </Link>
-              <Button onClick={() => console.log('delete me')}></Button>
+              <Button>Delete</Button>
             </HStack>
           )}
           <Flex direction='column'>
@@ -49,7 +48,7 @@ export default function Index() {
             {location.characters?.length > 0 && <CharacterCardHolder characters={location.characters} />}
           </Flex>
         </Flex>
-        <AddLocationModal campaignId={campaignId} place={location} setPlace={setLocation} isAddingInnerLocation={true} />
+        <AddLocationModal campaignId={campaignId} place={location} setPlace={setLocation} isAddingInnerLocation />
         <AddCharacterModal place={location} setPlace={setLocation} campaignId={campaignId} />
       </Flex>
     </Flex>

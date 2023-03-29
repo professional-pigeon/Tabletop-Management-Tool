@@ -57,7 +57,7 @@ HiddenInput.propTypes = {
 HiddenInput.defaultProps ={
   name: '',
   inputValue: '',
-  setInputValue: () => console.log('hook not set'),
+  setInputValue: () => {},
   disabled: false,
   error: false,
   helperText: '',
