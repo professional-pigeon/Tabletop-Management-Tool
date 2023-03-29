@@ -1,14 +1,14 @@
 import { Box, Text, Flex, UnorderedList } from '@chakra-ui/react';
 import React from 'react';
+import { locationShape } from '../../../lib/propShapes';
 
-export default function LocationCard({ character }) {
+export default function LocationCard({ location }) {
   const { 
     name, 
     description, 
     notes, 
-    characterLocation,
-    characterRace 
-  } = character;
+    locationType,
+  } = location;
 
   return (
     <Box 
@@ -20,14 +20,13 @@ export default function LocationCard({ character }) {
       boxShadow='base'
     >
       <Flex direction='column' py='.5rem' px='1rem'>
-        <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${characterRace})`}</Text>
+        <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${locationType})`}</Text>
         <Text noOfLines={3}>
           {`Description: `}
           <Text as='span' fontSize='sm' >
             {description}
           </Text>
         </Text>
-        <Text>{`Located: ${characterLocation.name}`}</Text>
         <Text>Notes</Text>
         <UnorderedList>
           {notes.length > 0 && <Text noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
@@ -36,4 +35,11 @@ export default function LocationCard({ character }) {
       </Flex>
     </Box>
   )
+}
+
+LocationCard.propTypes = {
+  location: locationShape.isRequired,
+}
+
+LocationCard.defaultProps = {
 }

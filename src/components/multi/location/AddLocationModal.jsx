@@ -10,12 +10,15 @@ import {
   Button,
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { addLocation } from '../../../lib/location'
+import { campaignShape, locationShape } from '../../../lib/propShapes'
 import TextInput from '../../single/TextInput'
 
+
 export default function AddLocationModal({ 
-  isAddingInnerLocation, 
   campaignId, 
+  isAddingInnerLocation, 
   place, 
   setPlace 
 }) {
@@ -74,4 +77,16 @@ export default function AddLocationModal({
       </Modal>
     </>
   )
+}
+
+AddLocationModal.propTypes = {
+  campaignId: PropTypes.string.isRequired,
+  place: PropTypes.oneOf(campaignShape, locationShape).isRequired,
+  isAddingInnerLocation: PropTypes.bool,
+  setPlace: PropTypes.func, 
+}
+
+AddLocationModal.defaultProps = {
+  isAddingInnerLocation: false,
+  setPlace: () => {}, 
 }

@@ -15,7 +15,7 @@ export default function LoginForm() {
 
   const loginCallWrapper = () => {
     if (areTextFieldsValidated([userName, password])) {
-      loginCall(userName, password)
+      return loginCall(userName, password)
         .then((res) => {
           if (res.error) {
             throw new Error(res.error)
@@ -29,26 +29,27 @@ export default function LoginForm() {
           status: 'error',
           duration: 9000,
           isClosable: true,
-        }))
-    } else {
-      return setHasError(true)
+        }
+      ))
     }
+      return setHasError(true)
   }
+
   return (
     <Flex direction='column' w='33%' p='.25rem' borderRadius='.5rem' boxShadow='lg'>
       <Text>Login</Text>
       <VStack>
         <TextInput 
-          name={'User Name'} 
+          name="User Name" 
           inputValue={userName} 
           setInputValue={setUserName}
-          error={hasError ? userName == '' : false } 
+          error={hasError ? userName === '' : false } 
         />
         <HiddenInput 
-          name={'Password'} 
+          name="Password" 
           inputValue={password} 
           setInputValue={setPassword}
-          error={hasError ? password == '' : false}
+          error={hasError ? password === '' : false}
         />
       </VStack>
       <Button onClick={() => loginCallWrapper(userName, password)}>Login</Button>
