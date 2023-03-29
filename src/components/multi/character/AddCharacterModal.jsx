@@ -120,11 +120,13 @@ export default function AddCharacterModal({
 }
 
 AddCharacterModal.propTypes = {
-  campaignId: PropTypes.string.isRequired,
-  initialLocation: PropTypes.oneOf(campaignShape, locationShape).isRequired,
+  campaignId: PropTypes.string,
+  initialLocation: PropTypes.oneOfType([campaignShape, locationShape]),
   setInitialLocation: PropTypes.func, 
 }
 
 AddCharacterModal.defaultProps = {
+  campaignId: '',
+  initialLocation: {},
   setInitialLocation: () => {},
 }

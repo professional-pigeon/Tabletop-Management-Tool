@@ -16,7 +16,8 @@ export default function PlaceSelect({
   helperText,
   errorMessage,
   selectOptions, 
-  setSelectValue }) {
+  setSelectValue 
+}) {
     
   return (
     <FormControl isInvalid={false}>
@@ -37,7 +38,11 @@ export default function PlaceSelect({
 
 PlaceSelect.propTypes = {
   name: PropTypes.string,
-  selectOptions: PropTypes.arrayOf(PropTypes.string),
+  selectOptions: PropTypes.arrayOf(PropTypes.shape({ 
+    name: PropTypes.string, 
+    id: PropTypes.number, 
+    placeType: PropTypes.string 
+  })),
   setSelectValue: PropTypes.func,
   disabled: PropTypes.bool,
   error: PropTypes.bool,

@@ -80,13 +80,15 @@ export default function AddLocationModal({
 }
 
 AddLocationModal.propTypes = {
-  campaignId: PropTypes.string.isRequired,
-  place: PropTypes.oneOf(campaignShape, locationShape).isRequired,
+  campaignId: PropTypes.string,
+  place: PropTypes.oneOfType([campaignShape, locationShape]),
   isAddingInnerLocation: PropTypes.bool,
   setPlace: PropTypes.func, 
 }
 
 AddLocationModal.defaultProps = {
+  campaignId: '',
   isAddingInnerLocation: false,
+  place: {},
   setPlace: () => {}, 
 }
