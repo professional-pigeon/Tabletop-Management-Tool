@@ -30,7 +30,8 @@ export default function LocationCard({ location }) {
         </Text>
         <Text>Inner Locations</Text>
         <UnorderedList>
-          {innerLocations.length === 0 && <Text>{`${innerLocations[0].name}`}</Text>}
+          {innerLocations.length === 0 && <Text>No inner locations</Text>}
+          {innerLocations.length === 1 && <Text>{`${innerLocations[0].name}`}</Text>}
           {innerLocations.length > 1 && <Text>{`${innerLocations[0].name}, + ${innerLocations.length -1} more`}</Text>}
         </UnorderedList>
         <Text>Notes</Text>
