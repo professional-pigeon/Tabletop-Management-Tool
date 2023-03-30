@@ -8,6 +8,7 @@ export default function LocationCard({ location }) {
     description, 
     notes, 
     locationType,
+    innerLocations,
   } = location;
 
   return (
@@ -21,12 +22,17 @@ export default function LocationCard({ location }) {
     >
       <Flex direction='column' py='.5rem' px='1rem'>
         <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${locationType})`}</Text>
-        <Text noOfLines={3}>
+        <Text noOfLines={2}>
           {`Description: `}
           <Text as='span' fontSize='sm' >
             {description}
           </Text>
         </Text>
+        <Text>Inner Locations</Text>
+        <UnorderedList>
+          {innerLocations.length === 0 && <Text>{`${innerLocations[0].name}`}</Text>}
+          {innerLocations.length > 1 && <Text>{`${innerLocations[0].name}, + ${innerLocations.length -1} more`}</Text>}
+        </UnorderedList>
         <Text>Notes</Text>
         <UnorderedList>
           {notes.length > 0 && <Text noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
