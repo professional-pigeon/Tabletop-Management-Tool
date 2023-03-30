@@ -1,5 +1,5 @@
 import React from "react";
-import LocationCard from "../../../components/multi/location/LocationCard";
+import LocationHolder from "../../../components/multi/location/LocationHolder";
 
 const innerLocation = {
   id: 2,
@@ -47,19 +47,18 @@ const locationSample = {
   upperLocation: null
 };
 
+const locationArr = [locationSample, locationSample, locationSample, locationSample, locationSample];
+
 export default {
-  title: 'Components/Multi/Location/LocationCard',
-  component: LocationCard,
+  title: 'Components/Multi/Location/LocationHolder',
+  component: LocationHolder,
 };
 
 function Template(args) {
-  const { location } = args
-  return <LocationCard location={location} />
+  const { locations } = args
+  return <LocationHolder locations={locations} />
 }
 
 export const Primary = Template.bind({});
-Primary.args = { location: locationSample }
-
-export const NoInnerLocations = Template.bind({});
-NoInnerLocations.args = { location: innerLocation }
+Primary.args = { locations: locationArr }
 
