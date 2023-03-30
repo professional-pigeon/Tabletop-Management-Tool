@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { characterShape } from '../../../lib/propShapes';
+import DeleteCharacterModal from './DeleteCharacterModal';
 
 
 export default function CharacterCard({ character, campaignId }) {
@@ -46,6 +47,7 @@ export default function CharacterCard({ character, campaignId }) {
           {notes.length > 1 && <Text>+ {notes.length -1} more</Text>}
         </UnorderedList>
       </Flex>
+      <DeleteCharacterModal characterId={id} />
     </Box>
   );
 };
