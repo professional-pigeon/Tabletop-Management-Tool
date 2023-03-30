@@ -7,6 +7,7 @@ import { deleteLocation } from '../../../lib/location'
 import AddLocationModal from '../../../components/multi/location/AddLocationModal'
 import AddCharacterModal from '../../../components/multi/character/AddCharacterModal'
 import CharacterCardHolder from '../../../components/multi/character/CharacterCardHolder'
+import LocationHolder from '@/components/multi/location/LocationHolder'
 
 export default function Index() {
   const router = useRouter()
@@ -32,7 +33,11 @@ export default function Index() {
       <Heading>Campaign: {campaign.name}</Heading>
       <Flex direction='column'>
         <Flex direction='row'>
-          <Box>
+          <Flex direction='column'>
+            <Text>Locations</Text>
+            {campaign.locations?.length > 0 && (<LocationHolder locations={campaign.locations} campaignId={campaign.id} />)}
+          </Flex>
+          {/* <Box>
             {campaign.locations?.length > 0 && campaign.locations.map((location) => 
               <HStack key={`${location.name} ${location.id}`}>
                 <Link 
@@ -44,11 +49,11 @@ export default function Index() {
                 <Button onClick={() => deleteLocationWrap(location.id)}>Delete</Button>
               </HStack>
             )}
-          </Box>
+          </Box> */}
           <Flex direction='column' w='50%'>
-        <Text>Characters associated</Text>
-        {campaign.characters?.length > 0 && <CharacterCardHolder characters={campaign.characters} campaignId={campaign.id} />}
-        </Flex>
+            <Text>Characters associated</Text>
+              {campaign.characters?.length > 0 && <CharacterCardHolder characters={campaign.characters} campaignId={campaign.id} />}
+            </Flex>
       </Flex>
       <AddLocationModal isAddingInnerLocation={false} campaignId={campaign.id} place={campaign} setPlace={setCampaign} />
       <AddCharacterModal initialLocation={campaign} setInitialLocation={setCampaign} campaignId={campaign.id} />
