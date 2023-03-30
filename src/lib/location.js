@@ -16,6 +16,22 @@ async function getLocation(locationId) {
   }
 }
 
+async function getAllLocations(campaignId) {
+  let location
+
+  try {
+    location = await fetch(
+      `/api/campaign/locations/${campaignId}`
+    )
+    const locationData = await location.json()
+
+    
+    return keysToCamel(locationData)
+  } catch (error) {
+    return { error }
+  }
+}
+
 async function addLocation(params) {
   let location
   const { campaignId, locationType, name, description, upperLocationId } = params
@@ -64,4 +80,4 @@ async function deleteLocation(locationId) {
   }
 }
 
-export { getLocation, addLocation, deleteLocation }
+export { getLocation, addLocation, deleteLocation, getAllLocations }

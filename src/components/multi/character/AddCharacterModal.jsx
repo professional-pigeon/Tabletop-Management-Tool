@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 import { addCharacter } from '../../../lib/character';
 import { parseCampaignToSelects } from '../../../lib/parsers';
 import TextInput from '../../single/TextInput';
-import { getCampaign } from '../../../lib/campaign';
 import { campaignShape, locationShape } from '../../../lib/propShapes';
 import { 
   characterRaces as characterRaceOptions, 
@@ -22,6 +21,7 @@ import {
   from '../../../lib/enumerated';
 import PlaceSelect from '../../single/PlaceSelect';
 import CustomSelect from '../../single/CustomSelect';
+import { getAllLocations } from '../../../lib/location';
 
 export default function AddCharacterModal({
   campaignId, 
@@ -38,7 +38,7 @@ export default function AddCharacterModal({
 
   useEffect(() => {
     if (!campaignId) return;
-    getCampaign(campaignId).then((res) => {
+    getAllLocations(campaignId).then((res) => {
       const selects = parseCampaignToSelects(res)
       setSelectOptions(selects)
     });
