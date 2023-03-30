@@ -45,7 +45,7 @@ export default function Index() {
           )}
           <Flex direction='column'>
             <Text>Characters associated</Text>
-            {location.characters?.length > 0 && <CharacterCardHolder characters={location.characters} />}
+            {location.characters?.length > 0 && <CharacterCardHolder characters={location.characters} campaignId={campaignId} />}
           </Flex>
         </Flex>
         <AddLocationModal campaignId={campaignId} place={location} setPlace={setLocation} isAddingInnerLocation />

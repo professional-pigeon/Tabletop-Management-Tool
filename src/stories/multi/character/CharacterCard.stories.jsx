@@ -32,7 +32,7 @@ export default {
 
 function Template(args) {
   const { character } = args
-  return <CharacterCard character={character} />
+  return <CharacterCard character={character} campaignId={1} />
 }
 
 export const Primary = Template.bind({});

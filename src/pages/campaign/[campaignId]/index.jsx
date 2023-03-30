@@ -47,7 +47,7 @@ export default function Index() {
           </Box>
           <Flex direction='column' w='50%'>
         <Text>Characters associated</Text>
-        {campaign.characters?.length > 0 && <CharacterCardHolder characters={campaign.characters} />}
+        {campaign.characters?.length > 0 && <CharacterCardHolder characters={campaign.characters} campaignId={campaign.id} />}
         </Flex>
       </Flex>
       <AddLocationModal isAddingInnerLocation={false} campaignId={campaign.id} place={campaign} setPlace={setCampaign} />

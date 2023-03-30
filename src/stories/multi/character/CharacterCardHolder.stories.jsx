@@ -34,7 +34,7 @@ export default {
 
 function Template(args) {
   const { characters } = args
-  return <CharacterCardHolder characters={characters} />
+  return <CharacterCardHolder characters={characters} campaignId={1} />
 }
 
 export const Primary = Template.bind({});
