@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { locationShape } from '../../../lib/propShapes';
+import DeleteLocationModal from './DeleteLocationModal';
 
 export default function LocationCard({ location, campaignId }) {
   const { 
@@ -50,6 +51,7 @@ export default function LocationCard({ location, campaignId }) {
           {notes?.length > 1 && <Text>+ {notes.length -1} more</Text>}
         </UnorderedList>
       </Flex>
+      <DeleteLocationModal locationId={id} />
     </Box>
   );
 };
