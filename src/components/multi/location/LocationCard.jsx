@@ -1,4 +1,4 @@
-import { Box, Text, Flex, UnorderedList } from '@chakra-ui/react';
+import { Box, Button, Text, Flex, UnorderedList, HStack } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
@@ -28,8 +28,6 @@ export default function LocationCard({ location, campaignId }) {
         direction='column' 
         py='.5rem' 
         px='1rem'
-        as={Link}
-        href={`/campaign/${campaignId}/location/${id}`}
       >
         <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${locationType})`}</Text>
         <Text noOfLines={2}>
@@ -50,8 +48,16 @@ export default function LocationCard({ location, campaignId }) {
           {notes?.length > 0 && <Text noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
           {notes?.length > 1 && <Text>+ {notes.length -1} more</Text>}
         </UnorderedList>
+        <HStack>
+          <DeleteLocationModal locationId={id} />
+          <Button
+            as={Link}
+            href={`/campaign/${campaignId}/location/${id}`}
+          >
+            Go to
+          </Button>
+        </HStack>
       </Flex>
-      <DeleteLocationModal locationId={id} />
     </Box>
   );
 };

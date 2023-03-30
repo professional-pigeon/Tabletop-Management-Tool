@@ -1,4 +1,4 @@
-import { Box, Text, Flex, UnorderedList } from '@chakra-ui/react';
+import { Box, Button, Text, Flex, UnorderedList, HStack } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types'
 import Link from 'next/link'
@@ -29,8 +29,6 @@ export default function CharacterCard({ character, campaignId }) {
         direction='column' 
         py='.5rem' 
         px='1rem'
-        as={Link}
-        href={`/campaign/${campaignId}/character/${id}`}
       >
         <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${characterRace})`}</Text>
         <Text noOfLines={3}>
@@ -46,8 +44,16 @@ export default function CharacterCard({ character, campaignId }) {
           {notes.length > 0 && <Text noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
           {notes.length > 1 && <Text>+ {notes.length -1} more</Text>}
         </UnorderedList>
+      <HStack>
+        <DeleteCharacterModal characterId={id} />
+        <Button        
+          as={Link}
+          href={`/campaign/${campaignId}/character/${id}`}
+        >
+          Go to
+        </Button>
+      </HStack>
       </Flex>
-      <DeleteCharacterModal characterId={id} />
     </Box>
   );
 };
