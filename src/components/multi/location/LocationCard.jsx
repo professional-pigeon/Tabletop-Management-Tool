@@ -35,7 +35,8 @@ export default function LocationCard({ location }) {
           {innerLocations.length > 1 && <Text>{`${innerLocations[0].name}, + ${innerLocations.length -1} more`}</Text>}
         </UnorderedList>
         <Text>Notes</Text>
-        <UnorderedList>
+        <UnorderedList>          
+          {notes.length === 0 && <Text>no notes</Text>}
           {notes.length > 0 && <Text noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
           {notes.length > 1 && <Text>+ {notes.length -1} more</Text>}
         </UnorderedList>
