@@ -1,7 +1,7 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
-import PropTypes from 'prop-types'
-import CharacterCard from './CharacterCard'
+import PropTypes from 'prop-types';
+import CharacterCard from './CharacterCard';
 import { characterShape } from '../../../lib/propShapes';
 
 export default function CharacterCardHolder({ characters }) {
@@ -11,9 +11,9 @@ export default function CharacterCardHolder({ characters }) {
       <CharacterCard key={`${character.id} ${character.name}`} character={character} />
       )}
     </Flex>
-  )
-}
+  );
+};
 
 CharacterCardHolder.propTypes = {
   characters: PropTypes.arrayOf(characterShape).isRequired
-}
+};

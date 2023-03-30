@@ -1,17 +1,17 @@
-import { Flex, Button, Text, VStack, useToast } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { useRouter } from 'next/router'
-import { areTextFieldsValidated } from '../../lib/textValidators'
-import TextInput from '../single/TextInput'
-import HiddenInput from '../single/HiddenInput'
-import { loginCall } from '../../lib/login'
+import { Flex, Button, Text, VStack, useToast } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import { areTextFieldsValidated } from '../../lib/textValidators';
+import TextInput from '../single/TextInput';
+import HiddenInput from '../single/HiddenInput';
+import { loginCall } from '../../lib/login';
 
 export default function LoginForm() {
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-  const [hasError, setHasError] = useState(false)
-  const toast = useToast()
-  const router = useRouter()
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [hasError, setHasError] = useState(false);
+  const toast = useToast();
+  const router = useRouter();
 
   const loginCallWrapper = () => {
     if (areTextFieldsValidated([userName, password])) {
@@ -30,10 +30,10 @@ export default function LoginForm() {
           duration: 9000,
           isClosable: true,
         }
-      ))
-    }
-      return setHasError(true)
-  }
+      ));
+    };
+      return setHasError(true);
+  };
 
   return (
     <Flex direction='column' w='33%' p='.25rem' borderRadius='.5rem' boxShadow='lg'>
@@ -54,5 +54,5 @@ export default function LoginForm() {
       </VStack>
       <Button onClick={() => loginCallWrapper(userName, password)}>Login</Button>
     </Flex>
-  )
-}
+  );
+};

@@ -34,12 +34,12 @@ export default function LocationCard({ location }) {
         </UnorderedList>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
 LocationCard.propTypes = {
   location: locationShape.isRequired,
-}
+};
 
 LocationCard.defaultProps = {
-}
+};

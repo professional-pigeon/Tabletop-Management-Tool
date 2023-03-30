@@ -8,19 +8,19 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
-} from '@chakra-ui/react'
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import TextInput from '../../single/TextInput'
-import { createCampaign } from '../../../lib/campaign'
-import { campaignShape } from '../../../lib/propShapes'
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import TextInput from '../../single/TextInput';
+import { createCampaign } from '../../../lib/campaign';
+import { campaignShape } from '../../../lib/propShapes';
 
 export default function AddCampaignModal({ campaigns, setCampaigns }) {
-  const [name, setName] = useState('')
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [name, setName] = useState('');
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const resetFields = () => {
-    setName('')
+    setName('');
   }
 
   const onCloseWrap = () => {
@@ -39,8 +39,8 @@ export default function AddCampaignModal({ campaigns, setCampaigns }) {
           onCloseWrap();
         }
       })
-      .catch((err) => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -64,15 +64,15 @@ export default function AddCampaignModal({ campaigns, setCampaigns }) {
         </ModalContent>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 AddCampaignModal.propTypes = {
   campaigns: PropTypes.arrayOf(campaignShape),
   setCampaigns: PropTypes.func,
-}
+};
 
 AddCampaignModal.defaultProps = {
   campaigns: [],
   setCampaigns: () => {},
-}
+};

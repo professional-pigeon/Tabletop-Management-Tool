@@ -8,58 +8,58 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
-} from '@chakra-ui/react'
-import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { addCharacter } from '../../../lib/character'
-import { parseCampaignToSelects } from '../../../lib/parsers'
-import TextInput from '../../single/TextInput'
-import { getCampaign } from '../../../lib/campaign'
-import { campaignShape, locationShape } from '../../../lib/propShapes'
+} from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { addCharacter } from '../../../lib/character';
+import { parseCampaignToSelects } from '../../../lib/parsers';
+import TextInput from '../../single/TextInput';
+import { getCampaign } from '../../../lib/campaign';
+import { campaignShape, locationShape } from '../../../lib/propShapes';
 import { 
   characterRaces as characterRaceOptions, 
   characterTypes as characterTypeOptions } 
-  from '../../../lib/enumerated'
-import PlaceSelect from '../../single/PlaceSelect'
-import CustomSelect from '../../single/CustomSelect'
+  from '../../../lib/enumerated';
+import PlaceSelect from '../../single/PlaceSelect';
+import CustomSelect from '../../single/CustomSelect';
 
 export default function AddCharacterModal({
   campaignId, 
   initialLocation,
   setInitialLocation
 }) {
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [characterRace, setCharacterRace] = useState('')
-  const [characterType, setCharacterType] = useState('')
-  const [place, setPlace] = useState({})
-  const [selectOptions, setSelectOptions] = useState([])
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [characterRace, setCharacterRace] = useState('');
+  const [characterType, setCharacterType] = useState('');
+  const [place, setPlace] = useState({});
+  const [selectOptions, setSelectOptions] = useState([]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     if (!campaignId) return;
     getCampaign(campaignId).then((res) => {
       const selects = parseCampaignToSelects(res)
       setSelectOptions(selects)
-    })
-  }, [campaignId])
+    });
+  }, [campaignId]);
 
 
   const resetFields = () => {
-    setPlace({})
-    setCharacterRace('')
-    setCharacterType('')
-    setDescription('')
-    setName('')
-  }
+    setPlace({});
+    setCharacterRace('');
+    setCharacterType('');
+    setDescription('');
+    setName('');
+  };
 
   const onCloseWrap = () => {
     resetFields();
     onClose();
-  }
+  };
 
   const addNewCharacter = () => {
-    const { id, placeType } = place
+    const { id, placeType } = place;
     addCharacter({ 
       placeType, 
       placeId: id, 
@@ -71,9 +71,9 @@ export default function AddCharacterModal({
         const newLocation = initialLocation
         newLocation.characters.push(res)
         setInitialLocation(newLocation)
-    })
+    });
     onCloseWrap();
-  }
+  };
 
   return (
     <>
@@ -116,17 +116,17 @@ export default function AddCharacterModal({
         </ModalContent>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 AddCharacterModal.propTypes = {
   campaignId: PropTypes.string,
   initialLocation: PropTypes.oneOfType([campaignShape, locationShape]),
   setInitialLocation: PropTypes.func, 
-}
+};
 
 AddCharacterModal.defaultProps = {
   campaignId: '',
   initialLocation: {},
   setInitialLocation: () => {},
-}
+};

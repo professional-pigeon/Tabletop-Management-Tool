@@ -4,9 +4,9 @@ import {
   FormLabel, 
   FormHelperText, 
   FormErrorMessage 
-} from '@chakra-ui/react'
-import React from 'react'
-import PropTypes from 'prop-types'
+} from '@chakra-ui/react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 
 export default function PlaceSelect({ 
@@ -33,8 +33,8 @@ export default function PlaceSelect({
       {(!error && helperText) && <FormHelperText>{helperText}</FormHelperText>}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
-  )
-}
+  );
+};
 
 PlaceSelect.propTypes = {
   name: PropTypes.string,
@@ -48,7 +48,7 @@ PlaceSelect.propTypes = {
   error: PropTypes.bool,
   helperText: PropTypes.string,
   errorMessage: PropTypes.string,
-}
+};
 
 PlaceSelect.defaultProps ={
   name: '',
@@ -58,4 +58,4 @@ PlaceSelect.defaultProps ={
   error: false,
   helperText: '',
   errorMessage: `issue with field`
-}
+};

@@ -7,9 +7,9 @@ import {
   FormHelperText, 
   FormControl, 
   FormErrorMessage 
-} from '@chakra-ui/react'
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export default function HiddenInput({ 
   name, 
@@ -20,8 +20,8 @@ export default function HiddenInput({
   error,
   errorMessage
 }) {
-  const [show, setShow] = useState(false)
-  const handleClick = () => setShow(!show)
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
   return (
     <FormControl isInvalid={error}>
       <FormLabel>{name}</FormLabel>
@@ -41,8 +41,8 @@ export default function HiddenInput({
       {(!error && helperText) && <FormHelperText>{helperText}</FormHelperText>}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
-  )
-}
+  );
+};
 
 HiddenInput.propTypes = {
   name: PropTypes.string,
@@ -52,7 +52,7 @@ HiddenInput.propTypes = {
   error: PropTypes.bool,
   helperText: PropTypes.string,
   errorMessage: PropTypes.string,
-}
+};
 
 HiddenInput.defaultProps ={
   name: '',
@@ -62,4 +62,4 @@ HiddenInput.defaultProps ={
   error: false,
   helperText: '',
   errorMessage: `issue with field`
-}
+};

@@ -8,12 +8,12 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
-} from '@chakra-ui/react'
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import { addLocation } from '../../../lib/location'
-import { campaignShape, locationShape } from '../../../lib/propShapes'
-import TextInput from '../../single/TextInput'
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { addLocation } from '../../../lib/location';
+import { campaignShape, locationShape } from '../../../lib/propShapes';
+import TextInput from '../../single/TextInput';
 
 
 export default function AddLocationModal({ 
@@ -22,23 +22,23 @@ export default function AddLocationModal({
   place, 
   setPlace 
 }) {
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [locationType, setLocationType] = useState('')
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [locationType, setLocationType] = useState('');
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const resetFields = () => {
-    setDescription('')
-    setName('')
-  }
+    setDescription('');
+    setName('');
+  };
 
   const onCloseWrap = () => {
     resetFields();
     onClose();
-  }
+  };
 
   const addNewLocation = () => {
-    const upperLocationId = isAddingInnerLocation ? place.id : null
+    const upperLocationId = isAddingInnerLocation ? place.id : null;
     addLocation({ campaignId, locationType, name, description, upperLocationId })
       .then((res) => {
         const newPlace = place
@@ -48,9 +48,9 @@ export default function AddLocationModal({
           newPlace.locations.push(res)
         }
         setPlace(newPlace)
-    })
+    });
     onCloseWrap();
-  }
+  };
 
   return (
     <>
@@ -76,19 +76,19 @@ export default function AddLocationModal({
         </ModalContent>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 AddLocationModal.propTypes = {
   campaignId: PropTypes.string,
   place: PropTypes.oneOfType([campaignShape, locationShape]),
   isAddingInnerLocation: PropTypes.bool,
   setPlace: PropTypes.func, 
-}
+};
 
 AddLocationModal.defaultProps = {
   campaignId: '',
   isAddingInnerLocation: false,
   place: {},
   setPlace: () => {}, 
-}
+};

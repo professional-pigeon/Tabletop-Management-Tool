@@ -10,7 +10,7 @@ export default function CharacterCard({ character }) {
     notes, 
     characterLocation,
     characterRace 
-  } = character
+  } = character;
 
   return (
     <Box 
@@ -37,9 +37,9 @@ export default function CharacterCard({ character }) {
         </UnorderedList>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
 CharacterCard.propTypes = {
   character: characterShape.isRequired,
-}
+};

@@ -4,9 +4,9 @@ import {
   FormControl, 
   FormErrorMessage,
   Input 
-} from '@chakra-ui/react'
-import React from 'react'
-import PropTypes from 'prop-types'
+} from '@chakra-ui/react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function TextInput({ 
   name, 
@@ -28,8 +28,8 @@ export default function TextInput({
       {(!error && helperText) && <FormHelperText>{helperText}</FormHelperText>}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
-  )
-}
+  );
+};
 
 TextInput.propTypes = {
   name: PropTypes.string,
@@ -39,7 +39,7 @@ TextInput.propTypes = {
   error: PropTypes.bool,
   helperText: PropTypes.string,
   errorMessage: PropTypes.string,
-}
+};
 
 TextInput.defaultProps ={
   name: '',
@@ -49,4 +49,4 @@ TextInput.defaultProps ={
   error: false,
   helperText: '',
   errorMessage: `issue with field`
-}
+};

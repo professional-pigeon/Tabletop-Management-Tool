@@ -1,14 +1,20 @@
-import { Select, FormControl, FormLabel, FormHelperText, FormErrorMessage } from '@chakra-ui/react'
-import React from 'react'
-import PropTypes from 'prop-types'
+import { 
+  FormControl, 
+  FormLabel, 
+  FormHelperText, 
+  FormErrorMessage,
+  Select
+} from '@chakra-ui/react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 
 export default function CustomSelect({ 
-  error, 
-  name, 
   disabled,
-  helperText,
+  error, 
   errorMessage,
+  helperText,
+  name, 
   selectOptions, 
   setSelectValue 
 }) {
@@ -27,25 +33,25 @@ export default function CustomSelect({
       {(!error && helperText) && <FormHelperText>{helperText}</FormHelperText>}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
-  )
-}
+  );
+};
 
 CustomSelect.propTypes = {
+  disabled: PropTypes.bool,
+  error: PropTypes.bool,
+  errorMessage: PropTypes.string,
+  helperText: PropTypes.string,
   name: PropTypes.string,
   selectOptions: PropTypes.arrayOf(PropTypes.string),
   setSelectValue: PropTypes.func,
-  disabled: PropTypes.bool,
-  error: PropTypes.bool,
-  helperText: PropTypes.string,
-  errorMessage: PropTypes.string,
-}
+};
 
 CustomSelect.defaultProps ={
+  disabled: false,
+  error: false,
+  errorMessage: 'issue with field',
+  helperText: '',
   name: '',
   selectOptions: [],
   setSelectValue: () => {},
-  disabled: false,
-  error: false,
-  helperText: '',
-  errorMessage: `issue with field`
-}
+};
