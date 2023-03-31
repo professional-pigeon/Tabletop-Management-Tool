@@ -1,14 +1,10 @@
-import { Box, Flex, Button, Text, HStack, Heading } from '@chakra-ui/react'
+import { Flex, Heading, Text } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { getCampaign } from '../../../lib/campaign'
-import { deleteLocation } from '../../../lib/location'
 import AddLocationModal from '../../../components/multi/location/AddLocationModal'
 import AddCharacterModal from '../../../components/multi/character/AddCharacterModal'
-import CharacterCardHolder from '../../../components/multi/character/CharacterCardHolder'
-import LocationHolder from '@/components/multi/location/LocationHolder'
-import TabSwitch from '@/components/multi/TabSwitch'
+import TabSwitch from '../../../components/multi/TabSwitch'
 
 export default function Index() {
   const router = useRouter()
@@ -21,12 +17,15 @@ export default function Index() {
   }, [campaignId])
 
   return (
-    <Flex direction='column' w='100vw' p='1rem'>
+    <Flex direction='column' w='100vw' px='4rem' py='1rem'>
       <Heading>Campaign: {campaign.name}</Heading>
-      <Flex direction='column'>
-        <TabSwitch locations={campaign.locations} characters={campaign.characters} />
-        <AddLocationModal isAddingInnerLocation={false} campaignId={campaign.id} place={campaign} setPlace={setCampaign} />
-        <AddCharacterModal initialLocation={campaign} setInitialLocation={setCampaign} campaignId={campaign.id} />
+      <Flex direction='row' w='100%' gap={4}>
+        <Flex direction='column' w='30%'>
+          <Text>Features:</Text>
+          <AddLocationModal isAddingInnerLocation={false} campaignId={campaign.id} place={campaign} setPlace={setCampaign} />
+          <AddCharacterModal initialLocation={campaign} setInitialLocation={setCampaign} campaignId={campaign.id} />
+        </Flex>
+        <TabSwitch locations={campaign.locations} characters={campaign.characters} campaignId={campaign.id} />
       </Flex>
     </Flex>
   )

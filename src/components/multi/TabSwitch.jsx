@@ -12,7 +12,7 @@ export default function TabSwitch({ locations, characters, campaignId }) {
   }
 
   return (
-    <Box>
+    <Box w='100%'>
       <Tabs index={tabIndex} onChange={handleTabsChange}>
         <TabList>
           <Tab>Locations</Tab>
