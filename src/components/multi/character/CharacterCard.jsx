@@ -1,4 +1,4 @@
-import { Box, Button, Text, Flex, UnorderedList, HStack } from '@chakra-ui/react';
+import { Box, Button, Text, Flex, HStack } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types'
 import Link from 'next/link'
@@ -41,18 +41,23 @@ export default function CharacterCard({ character, campaignId }) {
             {description}
           </Text>
         </Text>
-        <Text>{`Located: ${characterLocation.name}`}</Text>
+        <Text>
+          {`Located: `}
+          <Text as='span' fontSize='sm' >
+            {characterLocation.name}
+          </Text>
+        </Text>
         <CardNoteList notes={notes} />
-      <HStack>
-        <DeleteCharacterModal characterId={id} />
-        <Button   
-          size='sm'     
-          as={Link}
-          href={`/campaign/${campaignId}/character/${id}`}
-        >
-          Go to
-        </Button>
-      </HStack>
+        <HStack>
+          <DeleteCharacterModal characterId={id} />
+          <Button   
+            size='sm'     
+            as={Link}
+            href={`/campaign/${campaignId}/character/${id}`}
+          >
+            Go to
+          </Button>
+        </HStack>
       </Flex>
     </Box>
   );
