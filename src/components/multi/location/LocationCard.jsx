@@ -22,7 +22,6 @@ export default function LocationCard({ location, campaignId }) {
       minW='15rem'
       w='30%'
       maxW='18rem'
-      h='15rem' 
       borderRadius='.25rem' 
       boxShadow='base'
       bg='white'
@@ -35,15 +34,17 @@ export default function LocationCard({ location, campaignId }) {
         w='100%'
         justifyContent='space-between'
       >
-        <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${locationType})`}</Text>
-        <Text noOfLines={2}>
-          {`Description: `}
-          <Text as='span' fontSize='sm' >
-            {description}
+        <Flex direction='column' gap={2}>
+          <Text align='center' fontSize='lg' fontWeight='bold' textDecor='underline'>{`${name} (${locationType})`}</Text>
+          <Text noOfLines={2}>
+            {`Description: `}
+            <Text as='span' fontSize='sm' >
+              {description}
+            </Text>
           </Text>
-        </Text>
-        <CardInnerLocationsList innerLocations={innerLocations} />
-        <CardNoteList notes={notes} />
+          <CardInnerLocationsList innerLocations={innerLocations} />
+          <CardNoteList notes={notes} />
+        </Flex>
         <HStack>
           <DeleteLocationModal locationId={id} />
           <Button

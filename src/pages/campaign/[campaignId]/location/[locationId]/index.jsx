@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@chakra-ui/react'
+import { Flex, Heading, Text } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from 'react'
 import { getLocation } from '../../../../../lib/location'
@@ -19,8 +19,9 @@ export default function Index() {
   return (
     <Flex direction='column' w='100vw' px='4rem' py='1rem'>
       <Heading>Location: {location.name}</Heading>
-      <Flex direction='row' w='100%' gap={4}>
-        <Flex direction='column' w='30%'>
+      <Flex direction='row' w='100%' gap={6} pt='2rem'>
+        <Flex direction='column' w='30%' gap={2}>
+          <Text fontSize='2xl' textDecor='underline'>Features</Text>
           <AddLocationModal campaignId={campaignId} place={location} setPlace={setLocation} isAddingInnerLocation />
           <AddCharacterModal place={location} setPlace={setLocation} campaignId={campaignId} />
         </Flex>

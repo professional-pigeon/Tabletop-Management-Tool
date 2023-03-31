@@ -8,9 +8,9 @@ export default function CardNoteList({ notes }) {
     <Box>
       <Text>Notes</Text>
       <UnorderedList>
-        {notes.length === 0 && <Text>no notes</Text>}
-        {notes.length > 0 && <Text noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
-        {notes.length > 1 && <Text>+ {notes.length -1} more</Text>}
+        {notes.length === 0 && <Text fontSize='sm'>no notes</Text>}
+        {notes.length > 0 && <Text fontSize='sm' noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
+        {notes.length > 1 && <Text fontSize='sm'>+ {notes.length -1} more</Text>}
       </UnorderedList>
     </Box>
   );

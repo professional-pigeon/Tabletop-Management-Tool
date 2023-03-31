@@ -32,22 +32,24 @@ export default function CharacterCard({ character, campaignId }) {
         px='1rem'
         w='100%'
         minH='15rem'
-        justifyContent='space-between'
+        gap={4}
       >
-        <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${characterRace})`}</Text>
-        <Text noOfLines={2}>
-          {`Description: `}
-          <Text as='span' fontSize='sm' >
-            {description}
+      <Flex direction='column' gap={2}>
+        <Text align='center' fontSize='lg' fontWeight='bold' textDecor='underline'>{`${name} (${characterRace})`}</Text>
+          <Text noOfLines={2}>
+            {`Description: `}
+            <Text as='span' fontSize='sm' >
+              {description}
+            </Text>
           </Text>
-        </Text>
-        <Text>
-          {`Located: `}
-          <Text as='span' fontSize='sm' >
-            {characterLocation.name}
+          <Text>
+            {`Located: `}
+            <Text as='span' fontSize='sm' >
+              {characterLocation.name}
+            </Text>
           </Text>
-        </Text>
-        <CardNoteList notes={notes} />
+          <CardNoteList notes={notes} />
+        </Flex>
         <HStack>
           <DeleteCharacterModal characterId={id} />
           <Button   
