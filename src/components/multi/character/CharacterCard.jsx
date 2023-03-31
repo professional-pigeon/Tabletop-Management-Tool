@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { characterShape } from '../../../lib/propShapes';
 import DeleteCharacterModal from './DeleteCharacterModal';
+import CardNoteList from '../note/CardNoteList';
 
 
 export default function CharacterCard({ character, campaignId }) {
@@ -21,7 +22,6 @@ export default function CharacterCard({ character, campaignId }) {
       minW='15rem'
       w='30%'
       maxW='18rem'
-      h='15rem' 
       borderRadius='.25rem' 
       boxShadow='base'
       bg='white'
@@ -31,25 +31,22 @@ export default function CharacterCard({ character, campaignId }) {
         py='.5rem' 
         px='1rem'
         w='100%'
-        alignContent='space-between'
+        minH='15rem'
+        justifyContent='space-between'
       >
         <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${characterRace})`}</Text>
-        <Text noOfLines={3}>
+        <Text noOfLines={2}>
           {`Description: `}
           <Text as='span' fontSize='sm' >
             {description}
           </Text>
         </Text>
         <Text>{`Located: ${characterLocation.name}`}</Text>
-        <Text>Notes</Text>
-        <UnorderedList>
-          {notes.length === 0 && <Text>no notes</Text>}
-          {notes.length > 0 && <Text noOfLines={2}>{`${notes[0].updatedAt}: ${notes[0].content}`}</Text>}
-          {notes.length > 1 && <Text>+ {notes.length -1} more</Text>}
-        </UnorderedList>
+        <CardNoteList notes={notes} />
       <HStack>
         <DeleteCharacterModal characterId={id} />
-        <Button        
+        <Button   
+          size='sm'     
           as={Link}
           href={`/campaign/${campaignId}/character/${id}`}
         >

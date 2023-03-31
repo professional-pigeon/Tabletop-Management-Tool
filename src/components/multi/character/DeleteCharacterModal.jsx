@@ -44,7 +44,7 @@ export default function DeleteCharacterModal({
 
   return (
     <>
-      <Button onClick={onOpen}>Character</Button>
+      <Button onClick={onOpen} size='sm'>Delete</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

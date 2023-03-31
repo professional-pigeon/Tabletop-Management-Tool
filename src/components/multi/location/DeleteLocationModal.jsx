@@ -45,7 +45,7 @@ export default function DeleteLocationModal({
 
   return (
     <>
-      <Button onClick={onOpen}>Delete Location</Button>
+      <Button onClick={onOpen}>Delete</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
