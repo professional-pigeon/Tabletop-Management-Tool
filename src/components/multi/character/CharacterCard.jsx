@@ -30,6 +30,8 @@ export default function CharacterCard({ character, campaignId }) {
         direction='column' 
         py='.5rem' 
         px='1rem'
+        w='100%'
+        alignContent='space-between'
       >
         <Text align='center' fontSize='lg' fontWeight='bold'>{`${name} (${characterRace})`}</Text>
         <Text noOfLines={3}>
