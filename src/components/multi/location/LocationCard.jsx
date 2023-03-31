@@ -23,6 +23,7 @@ export default function LocationCard({ location, campaignId }) {
       h='15rem' 
       borderRadius='.25rem' 
       boxShadow='base'
+      bg='white'
     >
       <Flex 
         direction='column' 

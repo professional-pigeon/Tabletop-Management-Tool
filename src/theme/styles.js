@@ -1,8 +1,8 @@
 const styles = {
   global: {
-    // body: {
-    //   bg: "green",
-    // },
+    body: {
+      bg: "gray.50",
+    },
     // "*::placeholder": {
     //   color: "chakra-placeholder-color",
     // },

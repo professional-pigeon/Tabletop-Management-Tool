@@ -24,6 +24,7 @@ export default function CharacterCard({ character, campaignId }) {
       h='15rem' 
       borderRadius='.25rem' 
       boxShadow='base'
+      bg='white'
     >
       <Flex 
         direction='column' 
