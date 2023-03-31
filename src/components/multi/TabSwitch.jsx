@@ -20,10 +20,10 @@ export default function TabSwitch({ locations, characters, campaignId }) {
         </TabList>
         <TabPanels>
           <TabPanel>
-            {locations?.length > 1 && <LocationHolder locations={locations} campaignId={campaignId} />}
+            {locations?.length > 0 && <LocationHolder locations={locations} campaignId={campaignId} />}
           </TabPanel>
           <TabPanel>
-            {characters?.length > 1 && <CharacterCardHolder characters={characters} campaignId={campaignId} />}
+            {characters?.length > 0 && <CharacterCardHolder characters={characters} campaignId={campaignId} />}
           </TabPanel>
         </TabPanels>
       </Tabs>
