@@ -45,9 +45,9 @@ export default function SignUpForm() {
             router.push('/campaign')
           }
         })
-        .catch(() => toast({
+        .catch((error) => toast({
           title: 'Error',
-          description: 'Error creating account please validate fields and try again',
+          description: `${error}`,
           status: 'error',
           duration: 9000,
           isClosable: true,
