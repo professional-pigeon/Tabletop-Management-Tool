@@ -11,6 +11,7 @@ export default function TabSwitch({ locations, characters, campaignId }) {
   const handleTabsChange = (index) => {
     setTabIndex(index)
   }
+  console.log(campaignId, typeof campaignId)
 
   return (
     <Box w='100%'>

@@ -23,10 +23,10 @@ export default function Index() {
       <Flex direction='row' w='100%' gap={6} pt='2rem'>
         <FeatureHolder>
         <Text fontSize='2xl' textDecor='underline'>Features</Text>
-          <AddLocationModal campaignId={campaignId} place={location} setPlace={setLocation} isAddingInnerLocation />
-          <AddCharacterModal place={location} setPlace={setLocation} campaignId={campaignId} />
+          <AddLocationModal campaignId={parseInt(campaignId, 10)} place={location} setPlace={setLocation} isAddingInnerLocation />
+          <AddCharacterModal place={location} setPlace={setLocation} campaignId={parseInt(campaignId, 10)} />
         </FeatureHolder>
-        <TabSwitch locations={location.innerLocations} characters={location.characters} campaignId={campaignId} />
+        <TabSwitch locations={location.innerLocations} characters={location.characters} campaignId={parseInt(campaignId, 10)} />
       </Flex>
     </Flex>
   )
