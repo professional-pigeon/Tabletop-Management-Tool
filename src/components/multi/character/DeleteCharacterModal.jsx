@@ -72,13 +72,13 @@ export default function DeleteCharacterModal({
 };
 
 DeleteCharacterModal.propTypes = {
-  characterId: PropTypes.string,
+  characterId: PropTypes.number,
   place: PropTypes.oneOfType([campaignShape, locationShape]),
   setPlace: PropTypes.func, 
 };
 
 DeleteCharacterModal.defaultProps = {
-  characterId: '',
+  characterId: 0,
   place: {},
   setPlace: () => {}, 
 };

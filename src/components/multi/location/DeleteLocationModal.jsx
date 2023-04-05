@@ -74,13 +74,13 @@ export default function DeleteLocationModal({
 };
 
 DeleteLocationModal.propTypes = {
-  locationId: PropTypes.string,
+  locationId: PropTypes.number,
   place: PropTypes.oneOfType([campaignShape, locationShape]),
   setPlace: PropTypes.func, 
 };
 
 DeleteLocationModal.defaultProps = {
-  locationId: '',
+  locationId: 0,
   place: {},
   setPlace: () => {}, 
 };

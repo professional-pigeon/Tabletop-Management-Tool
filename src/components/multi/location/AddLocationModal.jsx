@@ -51,6 +51,7 @@ export default function AddLocationModal({
     });
     onCloseWrap();
   };
+  console.log(place, 'error')
 
   return (
     <>
@@ -80,14 +81,14 @@ export default function AddLocationModal({
 };
 
 AddLocationModal.propTypes = {
-  campaignId: PropTypes.string,
-  place: PropTypes.oneOfType([campaignShape, locationShape]),
+  campaignId: PropTypes.number,
+  place: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
   isAddingInnerLocation: PropTypes.bool,
   setPlace: PropTypes.func, 
 };
 
 AddLocationModal.defaultProps = {
-  campaignId: '',
+  campaignId: 0,
   isAddingInnerLocation: false,
   place: {},
   setPlace: () => {}, 
