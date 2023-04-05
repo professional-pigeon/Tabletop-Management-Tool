@@ -19,10 +19,11 @@ export default function LocationHolder({ locations, campaignId }) {
 };
 
 LocationHolder.propTypes = {
-  locations: PropTypes.arrayOf(locationShape).isRequired,
+  locations: PropTypes.arrayOf(locationShape),
   campaignId: PropTypes.number,
 };
 
 LocationHolder.defaultProps = {
+  locations: [],
   campaignId: 0,
 };

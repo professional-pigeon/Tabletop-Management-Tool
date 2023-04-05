@@ -121,7 +121,7 @@ export default function AddCharacterModal({
 
 AddCharacterModal.propTypes = {
   campaignId: PropTypes.number,
-  initialLocation: PropTypes.oneOfType([campaignShape, locationShape]),
+  initialLocation: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
   setInitialLocation: PropTypes.func, 
 };
 

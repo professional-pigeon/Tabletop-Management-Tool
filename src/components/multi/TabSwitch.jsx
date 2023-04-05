@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import CharacterCardHolder from './character/CharacterCardHolder';
 import LocationHolder from './location/LocationHolder';
+import { locationShape, characterShape } from '../../lib/propShapes';
 
 export default function TabSwitch({ locations, characters, campaignId }) {
   const [tabIndex, setTabIndex] = useState(0)
@@ -29,4 +30,16 @@ export default function TabSwitch({ locations, characters, campaignId }) {
       </Tabs>
     </Box>
   )
+};
+
+TabSwitch.propTypes = {
+  locations: PropTypes.arrayOf(locationShape),
+  characters: PropTypes.arrayOf(characterShape),
+  campaignId: PropTypes.number,
+};
+
+TabSwitch.defaultProps = {
+  locations: [],
+  characters: [],
+  campaignId: 0,
 };

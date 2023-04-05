@@ -51,7 +51,6 @@ export default function AddLocationModal({
     });
     onCloseWrap();
   };
-  console.log(place, 'error')
 
   return (
     <>

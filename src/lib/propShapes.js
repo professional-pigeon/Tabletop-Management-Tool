@@ -33,10 +33,10 @@ const innerLocationShape = shape({
   description: string,
   characters: arrayOf(characterShape),
   notes: arrayOf(noteShape),
-  upperLocation: {
+  upperLocation: shape({
     id: number,
     name: string
-  }
+  })
 })
 
 const locationShape = shape({
@@ -47,10 +47,10 @@ const locationShape = shape({
   characters: arrayOf(characterShape),
   notes: arrayOf(noteShape),
   innerLocations: arrayOf(innerLocationShape),
-  upperLocation: {
+  upperLocation: shape({
     id: number,
     name: string
-  }
+  })
 })
 
 const campaignShape = shape({
