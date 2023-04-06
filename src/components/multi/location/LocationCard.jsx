@@ -1,13 +1,14 @@
 import { Box, Button, Text, Flex, HStack } from '@chakra-ui/react';
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { locationShape } from '../../../lib/propShapes';
 import DeleteLocationModal from './DeleteLocationModal';
 import CardNoteList from '../note/CardNoteList';
 import CardInnerLocationsList from './CardInnerLocationsList';
+import { useCampaignIdContext } from '../../context/CampaignIdContext';
 
-export default function LocationCard({ location, campaignId }) {
+
+export default function LocationCard({ location }) {
   const { 
     id,
     name, 
@@ -16,6 +17,7 @@ export default function LocationCard({ location, campaignId }) {
     locationType,
     innerLocations,
   } = location;
+  const campaignId = useCampaignIdContext()
 
   return (
     <Box 
@@ -62,9 +64,4 @@ export default function LocationCard({ location, campaignId }) {
 
 LocationCard.propTypes = {
   location: locationShape.isRequired,
-  campaignId: PropTypes.number,
-};
-
-LocationCard.defaultProps = {
-  campaignId: 0,
 };

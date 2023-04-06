@@ -14,10 +14,9 @@ import PropTypes from 'prop-types';
 import { addLocation } from '../../../lib/location';
 import { campaignShape, locationShape } from '../../../lib/propShapes';
 import TextInput from '../../single/TextInput';
-
+import { useCampaignIdContext } from '../../context/CampaignIdContext';
 
 export default function AddLocationModal({ 
-  campaignId, 
   isAddingInnerLocation, 
   place, 
   setPlace 
@@ -26,6 +25,7 @@ export default function AddLocationModal({
   const [description, setDescription] = useState('');
   const [locationType, setLocationType] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const campaignId = useCampaignIdContext()
 
   const resetFields = () => {
     setDescription('');
@@ -80,14 +80,12 @@ export default function AddLocationModal({
 };
 
 AddLocationModal.propTypes = {
-  campaignId: PropTypes.number,
   place: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
   isAddingInnerLocation: PropTypes.bool,
   setPlace: PropTypes.func, 
 };
 
 AddLocationModal.defaultProps = {
-  campaignId: 0,
   isAddingInnerLocation: false,
   place: {},
   setPlace: () => {}, 

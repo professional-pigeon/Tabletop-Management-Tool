@@ -4,14 +4,13 @@ import PropTypes from 'prop-types';
 import LocationCard from './LocationCard';
 import { locationShape } from '../../../lib/propShapes';
 
-export default function LocationHolder({ locations, campaignId }) {
+export default function LocationHolder({ locations }) {
   return (
     <Flex direction='row' gap='1rem' flexWrap='wrap' p='1rem'>
       {locations.length > 0 && locations.map((location) => 
         <LocationCard 
           key={`${location.id} ${location.name}`} 
           location={location} 
-          campaignId={campaignId} 
         />
       )}
     </Flex>
@@ -20,10 +19,8 @@ export default function LocationHolder({ locations, campaignId }) {
 
 LocationHolder.propTypes = {
   locations: PropTypes.arrayOf(locationShape),
-  campaignId: PropTypes.number,
 };
 
 LocationHolder.defaultProps = {
   locations: [],
-  campaignId: 0,
 };
