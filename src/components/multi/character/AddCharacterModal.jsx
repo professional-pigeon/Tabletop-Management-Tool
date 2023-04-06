@@ -22,9 +22,9 @@ import {
 import PlaceSelect from '../../single/PlaceSelect';
 import CustomSelect from '../../single/CustomSelect';
 import { getAllLocations } from '../../../lib/location';
+import { useCampaignIdContext } from '../../context/CampaignIdContext';
 
 export default function AddCharacterModal({
-  campaignId, 
   initialLocation,
   setInitialLocation
 }) {
@@ -35,6 +35,7 @@ export default function AddCharacterModal({
   const [place, setPlace] = useState({});
   const [selectOptions, setSelectOptions] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const campaignId = useCampaignIdContext()
 
   useEffect(() => {
     if (!campaignId) return;
@@ -120,13 +121,11 @@ export default function AddCharacterModal({
 };
 
 AddCharacterModal.propTypes = {
-  campaignId: PropTypes.number,
   initialLocation: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
   setInitialLocation: PropTypes.func, 
 };
 
 AddCharacterModal.defaultProps = {
-  campaignId: 0,
   initialLocation: {},
   setInitialLocation: () => {},
 };

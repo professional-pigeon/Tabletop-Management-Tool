@@ -5,7 +5,7 @@ import CharacterCardHolder from './character/CharacterCardHolder';
 import LocationHolder from './location/LocationHolder';
 import { locationShape, characterShape } from '../../lib/propShapes';
 
-export default function TabSwitch({ locations, characters, campaignId }) {
+export default function TabSwitch({ locations, characters }) {
   const [tabIndex, setTabIndex] = useState(0)
 
   const handleTabsChange = (index) => {
@@ -21,10 +21,10 @@ export default function TabSwitch({ locations, characters, campaignId }) {
         </TabList>
         <TabPanels>
           <TabPanel>
-            {locations?.length > 0 && <LocationHolder locations={locations} campaignId={campaignId} />}
+            {locations?.length > 0 && <LocationHolder locations={locations} />}
           </TabPanel>
           <TabPanel>
-            {characters?.length > 0 && <CharacterCardHolder characters={characters} campaignId={campaignId} />}
+            {characters?.length > 0 && <CharacterCardHolder characters={characters} />}
           </TabPanel>
         </TabPanels>
       </Tabs>
@@ -35,11 +35,9 @@ export default function TabSwitch({ locations, characters, campaignId }) {
 TabSwitch.propTypes = {
   locations: PropTypes.arrayOf(locationShape),
   characters: PropTypes.arrayOf(characterShape),
-  campaignId: PropTypes.number,
 };
 
 TabSwitch.defaultProps = {
   locations: [],
   characters: [],
-  campaignId: 0,
 };

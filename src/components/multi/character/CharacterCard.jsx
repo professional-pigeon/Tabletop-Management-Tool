@@ -5,9 +5,10 @@ import Link from 'next/link'
 import { characterShape } from '../../../lib/propShapes';
 import DeleteCharacterModal from './DeleteCharacterModal';
 import CardNoteList from '../note/CardNoteList';
+import { useCampaignIdContext } from '../../context/CampaignIdContext';
 
 
-export default function CharacterCard({ character, campaignId }) {
+export default function CharacterCard({ character }) {
   const { 
     id,
     name, 
@@ -16,6 +17,7 @@ export default function CharacterCard({ character, campaignId }) {
     characterLocation,
     characterRace 
   } = character;
+  const campaignId = useCampaignIdContext()
 
   return (
     <Box
@@ -67,9 +69,4 @@ export default function CharacterCard({ character, campaignId }) {
 
 CharacterCard.propTypes = {
   character: characterShape.isRequired,
-  campaignId: PropTypes.number,
-};
-
-CharacterCard.defaultProps = {
-  campaignId: 0
 };
