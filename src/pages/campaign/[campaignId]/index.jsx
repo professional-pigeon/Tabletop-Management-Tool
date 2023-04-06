@@ -6,6 +6,7 @@ import AddLocationModal from '../../../components/multi/location/AddLocationModa
 import AddCharacterModal from '../../../components/multi/character/AddCharacterModal'
 import TabSwitch from '../../../components/multi/TabSwitch'
 import FeatureHolder from '../../../components/single/FeatureHolder'
+import { CampaignIdProvider } from '../../../components/context/CampaignIdContext'
 
 export default function Index() {
   const router = useRouter()
@@ -18,16 +19,18 @@ export default function Index() {
   }, [campaignId])
 
   return (
-    <Flex direction='column' w='100vw' px='4rem' py='1rem'>
-      <Heading>Campaign: {campaign.name}</Heading>
-      <Flex direction='row' w='100%' gap={6} pt='2rem'>
-        <FeatureHolder>
-          <Text fontSize='2xl' textDecor='underline'>Features</Text>
-          <AddLocationModal isAddingInnerLocation={false} campaignId={campaign.id} place={campaign} setPlace={setCampaign} />
-          <AddCharacterModal initialLocation={campaign} setInitialLocation={setCampaign} campaignId={campaign.id} />
-        </FeatureHolder>
-        <TabSwitch locations={campaign.locations} characters={campaign.characters} campaignId={campaign.id} />
+    <CampaignIdProvider id={campaignId}>
+      <Flex direction='column' w='100vw' px='4rem' py='1rem'>
+        <Heading>Campaign: {campaign.name}</Heading>
+        <Flex direction='row' w='100%' gap={6} pt='2rem'>
+          <FeatureHolder>
+            <Text fontSize='2xl' textDecor='underline'>Features</Text>
+            <AddLocationModal isAddingInnerLocation={false} campaignId={campaign.id} place={campaign} setPlace={setCampaign} />
+            <AddCharacterModal initialLocation={campaign} setInitialLocation={setCampaign} campaignId={campaign.id} />
+          </FeatureHolder>
+          <TabSwitch locations={campaign.locations} characters={campaign.characters} campaignId={campaign.id} />
+        </Flex>
       </Flex>
-    </Flex>
+    </CampaignIdProvider>
   )
 }
