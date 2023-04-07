@@ -87,8 +87,8 @@ export default function SignUpForm() {
           error={hasError ? passwordError(passwordConfirm) : false}
           errorMessage={passwordErrorMessage(passwordConfirm)}
         />
+        <Button onClick={() => signUpCallWrapper()}>Sign up</Button>
       </VStack>
-      <Button onClick={() => signUpCallWrapper()}>Sign up</Button>
     </Flex>
   );
 };

@@ -51,8 +51,8 @@ export default function LoginForm() {
           setInputValue={setPassword}
           error={hasError ? password === '' : false}
         />
+        <Button onClick={() => loginCallWrapper(userName, password)}>Login</Button>
       </VStack>
-      <Button onClick={() => loginCallWrapper(userName, password)}>Login</Button>
     </Flex>
   );
 };
