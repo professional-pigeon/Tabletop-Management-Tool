@@ -1,25 +1,17 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
-import { useRouter } from "next/router"
-import React, { useEffect, useState } from 'react'
-import { getCampaign } from '../../../lib/campaign'
+import React from 'react'
 import AddLocationModal from '../../../components/multi/location/AddLocationModal'
 import AddCharacterModal from '../../../components/multi/character/AddCharacterModal'
 import TabSwitch from '../../../components/multi/TabSwitch'
 import FeatureHolder from '../../../components/single/FeatureHolder'
 import { CampaignIdProvider } from '../../../components/context/CampaignIdContext'
+import useCampaigns from '../../../lib/hooks/useCampaigns'
 
 export default function Index() {
-  const router = useRouter()
-  const { campaignId } = router.query
-  const [campaign, setCampaign] = useState({})
-
-  useEffect(() => {
-    if (!campaignId) return
-    getCampaign(campaignId).then((res) => setCampaign(res))
-  }, [campaignId])
+  const { campaign, setCampaign } = useCampaigns()
 
   return (
-    <CampaignIdProvider id={parseInt(campaign.id, 10)}>
+    <CampaignIdProvider id={parseInt(campaign?.id, 10)}>
       <Flex direction='column' w='100vw' px='4rem' py='1rem'>
         <Heading>Campaign: {campaign.name}</Heading>
         <Flex direction='row' w='100%' gap={6} pt='2rem'>
