@@ -9,7 +9,7 @@ import {
   useDisclosure,
   Button,
 } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { addCharacter } from '../../../lib/character';
 import { parseCampaignToSelects } from '../../../lib/parsers';
@@ -28,10 +28,11 @@ export default function AddCharacterModal({
   initialLocation,
   setInitialLocation
 }) {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [characterRace, setCharacterRace] = useState('');
-  const [characterType, setCharacterType] = useState('');
+  const nameRef = useRef()
+  const descriptionRef = useRef()
+  const characterRaceRef = useRef()
+  const characterTypeRef = useRef()
+
   const [place, setPlace] = useState({});
   const [selectOptions, setSelectOptions] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -56,10 +57,6 @@ export default function AddCharacterModal({
 
   const resetFields = () => {
     setPlace({});
-    setCharacterRace('');
-    setCharacterType('');
-    setDescription('');
-    setName('');
   };
 
   const onCloseWrap = () => {
@@ -72,10 +69,11 @@ export default function AddCharacterModal({
     addCharacter({ 
       placeType, 
       placeId, 
-      characterType,
-      characterRace, 
-      name, 
-      description })
+      characterType: characterTypeRef.current.value,
+      characterRace: characterRaceRef.current.value, 
+      name: nameRef.current.value, 
+      description: descriptionRef.current.value 
+    })
       .then((res) => {
         const newLocation = initialLocation
         newLocation.characters.push(res)
@@ -94,18 +92,16 @@ export default function AddCharacterModal({
           <ModalHeader>New Character</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <TextInput name='Name' inputValue={name} setInputValue={setName}/>
-            <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
+            <TextInput name='Name' valueRef={nameRef} />
+            <TextInput name='Description' valueRef={descriptionRef} />
             <CustomSelect 
                 name='Character Type' 
-                selectValue={characterType} 
-                setSelectValue={setCharacterType} 
+                valueRef={characterTypeRef}
                 selectOptions={characterTypeOptions} 
             />
             <CustomSelect 
               name='Character Race' 
-              selectValue={characterRace} 
-              setSelectValue={setCharacterRace} 
+              valueRef={characterRaceRef}
               selectOptions={characterRaceOptions} 
             />
             <PlaceSelect 
