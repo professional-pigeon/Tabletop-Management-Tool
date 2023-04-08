@@ -23,6 +23,7 @@ import PlaceSelect from '../../single/PlaceSelect';
 import CustomSelect from '../../single/CustomSelect';
 import { getAllLocations } from '../../../lib/location';
 import { useCampaignIdContext } from '../../context/CampaignIdContext';
+import usePlaceSelects from '@/lib/hooks/usePlaceSelects';
 
 export default function AddCharacterModal({
   initialLocation,
@@ -34,10 +35,9 @@ export default function AddCharacterModal({
   const characterTypeRef = useRef()
 
   const [place, setPlace] = useState({});
-  const [selectOptions, setSelectOptions] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const campaignId = useCampaignIdContext();
   const { id } = initialLocation
+  const { selectOptions } = usePlaceSelects()
 
   const sortSelects = (selects) => {
     // eslint-disable-next-line no-nested-ternary
@@ -45,22 +45,10 @@ export default function AddCharacterModal({
     return sorted
   }
 
-  useEffect(() => {
-    if (!campaignId || !id) return;
-    getAllLocations(campaignId).then((res) => {
-      const selects = parseCampaignToSelects(res)
-      const sorted = sortSelects(selects)
-      setSelectOptions(sorted)
-    });
-  }, [campaignId, id]);
-
-
-  const resetFields = () => {
-    setPlace({});
-  };
+  const sortedSelectOptions = sortSelects(selectOptions)
 
   const onCloseWrap = () => {
-    resetFields();
+    setPlace({})
     onClose();
   };
 
@@ -75,7 +63,7 @@ export default function AddCharacterModal({
       description: descriptionRef.current.value 
     })
       .then((res) => {
-        const newLocation = initialLocation
+        const newLocation = { ...initialLocation }
         newLocation.characters.push(res)
         setInitialLocation(newLocation)
     });
@@ -106,7 +94,7 @@ export default function AddCharacterModal({
             />
             <PlaceSelect 
               name='Where is the Character?' 
-              selectOptions={selectOptions} 
+              selectOptions={sortedSelectOptions} 
               selectValue={place} 
               setSelectValue={setPlace}
             />
