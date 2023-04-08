@@ -43,10 +43,7 @@ export default function UpdateLocationModal({
       locationType: locationType || place.locationType,
       upperLocationId: place.upperLocationId
     }
-    updateLocation(params).then((res) => {
-      console.log(res)
-      setPlace(res)
-    })
+    updateLocation(params).then((res) => setPlace(res))
     onCloseWrap();
   };
 

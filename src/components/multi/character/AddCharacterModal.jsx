@@ -35,15 +35,23 @@ export default function AddCharacterModal({
   const [place, setPlace] = useState({});
   const [selectOptions, setSelectOptions] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const campaignId = useCampaignIdContext()
+  const campaignId = useCampaignIdContext();
+  const { id } = initialLocation
+
+  const sortSelects = (selects) => {
+    // eslint-disable-next-line no-nested-ternary
+    const sorted = selects.sort((a, b) => a.id === id ? -1 : b.id === id ? 1 : 0)
+    return sorted
+  }
 
   useEffect(() => {
-    if (!campaignId) return;
+    if (!campaignId || !id) return;
     getAllLocations(campaignId).then((res) => {
       const selects = parseCampaignToSelects(res)
-      setSelectOptions(selects)
+      const sorted = sortSelects(selects)
+      setSelectOptions(sorted)
     });
-  }, [campaignId]);
+  }, [campaignId, id]);
 
 
   const resetFields = () => {
@@ -60,10 +68,10 @@ export default function AddCharacterModal({
   };
 
   const addNewCharacter = () => {
-    const { id, placeType } = place;
+    const { id: placeId, placeType } = place;
     addCharacter({ 
       placeType, 
-      placeId: id, 
+      placeId, 
       characterType,
       characterRace, 
       name, 

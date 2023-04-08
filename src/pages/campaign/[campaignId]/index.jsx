@@ -19,7 +19,7 @@ export default function Index() {
   }, [campaignId])
 
   return (
-    <CampaignIdProvider id={campaignId}>
+    <CampaignIdProvider id={parseInt(campaign.id, 10)}>
       <Flex direction='column' w='100vw' px='4rem' py='1rem'>
         <Heading>Campaign: {campaign.name}</Heading>
         <Flex direction='row' w='100%' gap={6} pt='2rem'>
