@@ -1,6 +1,5 @@
 import { Box, Button, Text, Flex, HStack } from '@chakra-ui/react';
 import React from 'react';
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { characterShape } from '../../../lib/propShapes';
 import DeleteCharacterModal from './DeleteCharacterModal';

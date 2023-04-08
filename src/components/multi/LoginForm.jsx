@@ -2,7 +2,7 @@ import { Flex, Button, Text, VStack, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { areTextFieldsValidated } from '../../lib/textValidators';
-import TextInput from '../single/TextInput';
+import StateTextInput from '../single/StateTextInput';
 import HiddenInput from '../single/HiddenInput';
 import { loginCall } from '../../lib/login';
 
@@ -39,7 +39,7 @@ export default function LoginForm() {
     <Flex direction='column' w='33%' p='.25rem' borderRadius='.5rem' boxShadow='lg'>
       <Text>Login</Text>
       <VStack>
-        <TextInput 
+        <StateTextInput 
           name="User Name" 
           inputValue={userName} 
           setInputValue={setUserName}

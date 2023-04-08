@@ -43,7 +43,7 @@ async function addCharacter(params) {
         }),
       }
     )
-    const newCharacter = await character
+    const newCharacter = await character.json()
 
     return keysToCamel(newCharacter)
   } catch (error) {
