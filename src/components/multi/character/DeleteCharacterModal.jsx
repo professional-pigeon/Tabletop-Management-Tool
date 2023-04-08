@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { deleteCharacter } from '../../../lib/character';
 import { campaignShape, locationShape } from '../../../lib/propShapes';
-import TextInput from '../../single/TextInput';
+import StateTextInput from '../../single/StateTextInput';
 
 
 export default function DeleteCharacterModal({ 
@@ -52,7 +52,7 @@ export default function DeleteCharacterModal({
           <ModalHeader>Delete Character</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <TextInput 
+            <StateTextInput 
               helperText='Type DELETE then click Delete to confirm' 
               inputValue={textConfirm} 
               setInputValue={setTextConfirm}

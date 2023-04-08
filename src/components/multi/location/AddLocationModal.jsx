@@ -9,7 +9,7 @@ import {
   useDisclosure,
   Button,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { addLocation } from '../../../lib/location';
 import { campaignShape, locationShape } from '../../../lib/propShapes';
@@ -21,27 +21,23 @@ export default function AddLocationModal({
   place, 
   setPlace 
 }) {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [locationType, setLocationType] = useState('');
+  const nameRef = useRef()
+  const descriptionRef = useRef()
+  const locationTypeRef = useRef()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const campaignId = useCampaignIdContext()
 
-  const resetFields = () => {
-    setDescription('');
-    setName('');
-  };
-
-  const onCloseWrap = () => {
-    resetFields();
-    onClose();
-  };
-
   const addNewLocation = () => {
-    const upperLocationId = isAddingInnerLocation ? place.id : null;
-    addLocation({ campaignId, locationType, name, description, upperLocationId })
+    const params = {
+      campaignId,
+      locationType: locationTypeRef.current.value,
+      name: nameRef.current.value,
+      description: descriptionRef.current.value,
+      upperLocationId: isAddingInnerLocation ? place.id : null,
+    }
+    addLocation(params)
       .then((res) => {
-        const newPlace = place
+        const newPlace = { ...place }
         if (isAddingInnerLocation) {
           newPlace.innerLocations.push(res)
         } else {
@@ -49,7 +45,7 @@ export default function AddLocationModal({
         }
         setPlace(newPlace)
     });
-    onCloseWrap();
+    onClose()
   };
 
   return (
@@ -62,13 +58,13 @@ export default function AddLocationModal({
           <ModalHeader>New Location</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <TextInput name='Name' inputValue={name} setInputValue={setName}/>
-            <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
-            <TextInput name='Location Type' inputValue={locationType} setInputValue={setLocationType}/>
+            <TextInput name='Name' valueRef={nameRef} />
+            <TextInput name='Description' valueRef={descriptionRef} />
+            <TextInput name='Location Type' valueRef={locationTypeRef} />
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
             <Button onClick={addNewLocation}>Add</Button>

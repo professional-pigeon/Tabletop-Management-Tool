@@ -14,7 +14,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { deleteLocation } from '../../../lib/location';
 import { campaignShape, locationShape } from '../../../lib/propShapes';
-import TextInput from '../../single/TextInput';
+import StateTextInput from '../../single/StateTextInput';
 
 
 export default function DeleteLocationModal({ 
@@ -54,7 +54,7 @@ export default function DeleteLocationModal({
           <ModalCloseButton />
           <ModalBody>
             <Text>This will also delete all inner locations and attached characters</Text>
-            <TextInput 
+            <StateTextInput 
               helperText='Type DELETE then click Delete to confirm' 
               inputValue={textConfirm} 
               setInputValue={setTextConfirm}
