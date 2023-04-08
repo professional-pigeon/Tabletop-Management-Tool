@@ -13,6 +13,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { campaignShape, locationShape } from '../../../lib/propShapes';
 import TextInput from '../../single/TextInput';
+import { updateLocation } from '../../../lib/location';
 
 export default function UpdateLocationModal({ 
   place, 
@@ -34,12 +35,18 @@ export default function UpdateLocationModal({
     onClose();
   };
   
-  const updateLocation = () => {
-    const updateProps = {
+  const updateLocationCall = () => {
+    const params = {
+      locationId: place.id,
       name: name || place.name,
       description: description || place.description,
-      locationType: locationType || place.locationType
+      locationType: locationType || place.locationType,
+      upperLocationId: place.upperLocationId
     }
+    updateLocation(params).then((res) => {
+      console.log(res)
+      setPlace(res)
+    })
     onCloseWrap();
   };
 
@@ -62,7 +69,7 @@ export default function UpdateLocationModal({
             <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
               Close
             </Button>
-            <Button onClick={updateLocation}>Update</Button>
+            <Button onClick={updateLocationCall}>Update</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

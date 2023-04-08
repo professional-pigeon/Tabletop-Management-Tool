@@ -80,4 +80,36 @@ async function deleteLocation(locationId) {
   }
 }
 
-export { getLocation, addLocation, deleteLocation, getAllLocations }
+async function updateLocation(params) {
+  let location
+  const { 
+    locationId,
+    locationType, 
+    name, 
+    description, 
+    upperLocationId 
+  } = params
+  
+  try {
+    location = await fetch(
+      `/api/locations/${locationId}`,
+      {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ 
+          name, 
+          description, 
+          location_type: locationType,
+          upper_location_id: upperLocationId
+        }),
+      }
+    )
+    const locationData = await location.json()
+
+    return keysToCamel(locationData)
+  } catch (error) {
+    return { error }
+  }
+}
+
+export { getLocation, addLocation, deleteLocation, updateLocation, getAllLocations }
