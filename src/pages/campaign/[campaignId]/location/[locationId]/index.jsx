@@ -7,6 +7,7 @@ import AddLocationModal from '../../../../../components/multi/location/AddLocati
 import TabSwitch from '../../../../../components/multi/TabSwitch'
 import FeatureHolder from '../../../../../components/single/FeatureHolder'
 import { CampaignIdProvider } from '../../../../../components/context/CampaignIdContext'
+import UpdateLocationModal from '../../../../../components/multi/location/UpdateLocationModal'
 
 export default function Index() {
   const router = useRouter()
@@ -25,6 +26,7 @@ export default function Index() {
         <Flex direction='row' w='100%' gap={6} pt='2rem'>
           <FeatureHolder>
           <Text fontSize='2xl' textDecor='underline'>Features</Text>
+            <UpdateLocationModal place={location} setPlace={setLocation} />
             <AddLocationModal place={location} setPlace={setLocation} isAddingInnerLocation />
             <AddCharacterModal place={location} setPlace={setLocation} />
           </FeatureHolder>

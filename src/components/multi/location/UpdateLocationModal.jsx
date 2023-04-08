@@ -18,24 +18,28 @@ export default function UpdateLocationModal({
   place, 
   setPlace 
 }) {
-  const [name, setName] = useState(place.name);
-  const [description, setDescription] = useState(place.description);
-  const [locationType, setLocationType] = useState(place.locationType);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [locationType, setLocationType] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const resetFields = () => {
     setDescription('');
     setName('');
+    setLocationType('');
   };
 
   const onCloseWrap = () => {
     resetFields();
     onClose();
   };
-
+  
   const updateLocation = () => {
-    console.log('update')
-    console.log(name, description, locationType)
+    const updateProps = {
+      name: name || place.name,
+      description: description || place.description,
+      locationType: locationType || place.locationType
+    }
     onCloseWrap();
   };
 
@@ -49,9 +53,9 @@ export default function UpdateLocationModal({
           <ModalHeader>Update Location</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <TextInput name='Name' inputValue={name} setInputValue={setName}/>
-            <TextInput name='Description' inputValue={description} setInputValue={setDescription}/>
-            <TextInput name='Location Type' inputValue={locationType} setInputValue={setLocationType}/>
+            <TextInput name='Name' placeholder={place.name} inputValue={name} setInputValue={setName}/>
+            <TextInput name='Description' placeholder={place.description} inputValue={description} setInputValue={setDescription}/>
+            <TextInput name='Location Type' placeholder={place.locationType} inputValue={locationType} setInputValue={setLocationType}/>
           </ModalBody>
 
           <ModalFooter>

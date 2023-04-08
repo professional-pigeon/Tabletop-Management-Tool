@@ -13,6 +13,7 @@ export default function TextInput({
   inputValue, 
   setInputValue, 
   disabled,
+  placeholder,
   helperText,
   error,
   errorMessage
@@ -23,6 +24,7 @@ export default function TextInput({
       <Input 
         isDisabled={disabled} 
         value={inputValue} 
+        placeholder={placeholder}
         onChange={(e) => setInputValue(e.target.value)}
       />
       {(!error && helperText) && <FormHelperText>{helperText}</FormHelperText>}
@@ -37,6 +39,7 @@ TextInput.propTypes = {
   setInputValue: PropTypes.func,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
+  placeholder: PropTypes.string,
   helperText: PropTypes.string,
   errorMessage: PropTypes.string,
 };
@@ -48,5 +51,6 @@ TextInput.defaultProps ={
   disabled: false,
   error: false,
   helperText: '',
-  errorMessage: `issue with field`
+  errorMessage: `issue with field`,
+  placeholder: ''
 };
