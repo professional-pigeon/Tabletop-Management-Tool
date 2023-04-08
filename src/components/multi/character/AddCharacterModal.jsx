@@ -9,10 +9,9 @@ import {
   useDisclosure,
   Button,
 } from '@chakra-ui/react';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { addCharacter } from '../../../lib/character';
-import { parseCampaignToSelects } from '../../../lib/parsers';
 import TextInput from '../../single/TextInput';
 import { campaignShape, locationShape } from '../../../lib/propShapes';
 import { 
@@ -21,23 +20,21 @@ import {
   from '../../../lib/enumerated';
 import PlaceSelect from '../../single/PlaceSelect';
 import CustomSelect from '../../single/CustomSelect';
-import { getAllLocations } from '../../../lib/location';
-import { useCampaignIdContext } from '../../context/CampaignIdContext';
-import usePlaceSelects from '@/lib/hooks/usePlaceSelects';
+import usePlaceSelects from '../../../lib/hooks/usePlaceSelects';
 
 export default function AddCharacterModal({
   initialLocation,
   setInitialLocation
 }) {
-  const nameRef = useRef()
-  const descriptionRef = useRef()
-  const characterRaceRef = useRef()
-  const characterTypeRef = useRef()
+  const nameRef = useRef();
+  const descriptionRef = useRef();
+  const characterRaceRef = useRef();
+  const characterTypeRef = useRef();
 
   const [place, setPlace] = useState({});
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { id } = initialLocation
-  const { selectOptions } = usePlaceSelects()
+  const { id } = initialLocation;
+  const { selectOptions } = usePlaceSelects();
 
   const sortSelects = (selects) => {
     // eslint-disable-next-line no-nested-ternary
@@ -45,10 +42,10 @@ export default function AddCharacterModal({
     return sorted
   }
 
-  const sortedSelectOptions = sortSelects(selectOptions)
+  const sortedSelectOptions = sortSelects(selectOptions);
 
   const onCloseWrap = () => {
-    setPlace({})
+    setPlace({});
     onClose();
   };
 

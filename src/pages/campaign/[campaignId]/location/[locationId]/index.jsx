@@ -8,17 +8,14 @@ import TabSwitch from '../../../../../components/multi/TabSwitch'
 import FeatureHolder from '../../../../../components/single/FeatureHolder'
 import { CampaignIdProvider } from '../../../../../components/context/CampaignIdContext'
 import UpdateLocationModal from '../../../../../components/multi/location/UpdateLocationModal'
+import useLocations from '../../../../../lib/hooks/useLocations'
 
 export default function Index() {
   const router = useRouter()
-  const { locationId, campaignId } = router.query
-  const [location, setLocation] = useState({})
+  const { campaignId } = router.query
+  const { location, setLocation } = useLocations()
 
-  useEffect(() => {
-    if (!locationId) return
-    getLocation(locationId).then((res) => setLocation(res))
-  }, [locationId])
-  
+
   return (
     <CampaignIdProvider id={parseInt(campaignId, 10)}>
       <Flex direction='column' w='100vw' px='4rem' py='1rem'>
