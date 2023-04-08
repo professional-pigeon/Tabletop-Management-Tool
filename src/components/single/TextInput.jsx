@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import { 
   FormLabel, 
   FormHelperText, 
@@ -10,8 +11,7 @@ import PropTypes from 'prop-types';
 
 export default function TextInput({ 
   name, 
-  inputValue, 
-  setInputValue, 
+  valueRef,
   disabled,
   placeholder,
   helperText,
@@ -23,9 +23,8 @@ export default function TextInput({
       <FormLabel>{name}</FormLabel>
       <Input 
         isDisabled={disabled} 
-        value={inputValue} 
+        ref={valueRef}
         placeholder={placeholder}
-        onChange={(e) => setInputValue(e.target.value)}
       />
       {(!error && helperText) && <FormHelperText>{helperText}</FormHelperText>}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
@@ -34,9 +33,11 @@ export default function TextInput({
 };
 
 TextInput.propTypes = {
+  valueRef: PropTypes.oneOfType([
+    PropTypes.func, 
+    PropTypes.shape({ current: PropTypes.object })
+  ]).isRequired,
   name: PropTypes.string,
-  inputValue: PropTypes.string,
-  setInputValue: PropTypes.func,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
   placeholder: PropTypes.string,
@@ -46,8 +47,6 @@ TextInput.propTypes = {
 
 TextInput.defaultProps ={
   name: '',
-  inputValue: '',
-  setInputValue: () => {},
   disabled: false,
   error: false,
   helperText: '',
