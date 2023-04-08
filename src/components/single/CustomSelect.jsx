@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import { 
   FormControl, 
   FormLabel, 
@@ -16,7 +17,7 @@ export default function CustomSelect({
   helperText,
   name, 
   selectOptions, 
-  setSelectValue 
+  valueRef
 }) {
     
   return (
@@ -25,7 +26,7 @@ export default function CustomSelect({
       <Select
         isDisabled={disabled} 
         placeholder='select option'
-        onChange={(e) => setSelectValue(e.target.value)}
+        ref={valueRef}
       >
         {selectOptions.map((opt) => 
           <option value={opt} key={`${opt}`}>{opt}</option>)}
@@ -43,7 +44,10 @@ CustomSelect.propTypes = {
   helperText: PropTypes.string,
   name: PropTypes.string,
   selectOptions: PropTypes.arrayOf(PropTypes.string),
-  setSelectValue: PropTypes.func,
+  valueRef: PropTypes.oneOfType([
+    PropTypes.func, 
+    PropTypes.shape({ current: PropTypes.object })
+  ]).isRequired,
 };
 
 CustomSelect.defaultProps ={
@@ -53,5 +57,4 @@ CustomSelect.defaultProps ={
   helperText: '',
   name: '',
   selectOptions: [],
-  setSelectValue: () => {},
 };
