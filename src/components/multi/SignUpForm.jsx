@@ -1,5 +1,5 @@
 import { Flex, Button, Text, VStack, useToast } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { areTextFieldsValidated } from '../../lib/textValidators';
 import TextInput from '../single/TextInput';
@@ -7,8 +7,8 @@ import HiddenInput from '../single/HiddenInput';
 import signUpCall from '../../lib/user';
 
 export default function SignUpForm() {
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
+  const userNameRef = useRef()
+  const emailRef = useRef()
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [hasError, setHasError] = useState(false);
@@ -36,8 +36,8 @@ export default function SignUpForm() {
   }
 
   const signUpCallWrapper = () => {
-    if (areTextFieldsValidated([userName, email, password, passwordConfirm])) {
-      return signUpCall(userName, email, password)
+    if (areTextFieldsValidated([userNameRef.current.value, emailRef.current.value, password, passwordConfirm])) {
+      return signUpCall(userNameRef.curent.value, emailRef.current.value, password)
         .then((res) => {
           if (res.error) {
             throw new Error(res.error)
@@ -63,15 +63,13 @@ export default function SignUpForm() {
       <VStack>
         <TextInput 
           name="User Name" 
-          inputValue={userName} 
-          setInputValue={setUserName}
-          error={hasError ? userName === '' : false } 
+          valueRef={userNameRef}
+          error={hasError ? userNameRef.current.value === '' : false } 
         />
         <TextInput 
           name="Email" 
-          inputValue={email} 
-          setInputValue={setEmail}
-          error={hasError ? email === '' : false } 
+          valueRef={emailRef}
+          error={hasError ? emailRef.current.value === '' : false } 
         />
         <HiddenInput 
           name="Password" 
