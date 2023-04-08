@@ -44,11 +44,6 @@ export default function AddCharacterModal({
 
   const sortedSelectOptions = sortSelects(selectOptions);
 
-  const onCloseWrap = () => {
-    setPlace({});
-    onClose();
-  };
-
   const addNewCharacter = () => {
     const { id: placeId, placeType } = place;
     addCharacter({ 
@@ -64,7 +59,8 @@ export default function AddCharacterModal({
         newLocation.characters.push(res)
         setInitialLocation(newLocation)
     });
-    onCloseWrap();
+    setPlace();
+    onClose();
   };
 
   return (
@@ -98,7 +94,7 @@ export default function AddCharacterModal({
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
             <Button onClick={addNewCharacter}>Add</Button>

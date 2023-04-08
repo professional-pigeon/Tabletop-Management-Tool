@@ -12,7 +12,7 @@ import {
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { campaignShape, locationShape } from '../../../lib/propShapes';
-import TextInput from '../../single/TextInput';
+import StateTextInput from '../../single/StateTextInput';
 import { updateLocation } from '../../../lib/location';
 
 export default function UpdateLocationModal({ 
@@ -57,9 +57,9 @@ export default function UpdateLocationModal({
           <ModalHeader>Update Location</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <TextInput name='Name' placeholder={place.name} inputValue={name} setInputValue={setName}/>
-            <TextInput name='Description' placeholder={place.description} inputValue={description} setInputValue={setDescription}/>
-            <TextInput name='Location Type' placeholder={place.locationType} inputValue={locationType} setInputValue={setLocationType}/>
+            <StateTextInput name='Name' placeholder={place.name} inputValue={name} setInputValue={setName}/>
+            <StateTextInput name='Description' placeholder={place.description} inputValue={description} setInputValue={setDescription}/>
+            <StateTextInput name='Location Type' placeholder={place.locationType} inputValue={locationType} setInputValue={setLocationType}/>
           </ModalBody>
 
           <ModalFooter>

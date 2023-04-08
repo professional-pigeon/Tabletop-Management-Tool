@@ -11,7 +11,7 @@ export default function Index() {
   const { campaign, setCampaign } = useCampaigns()
 
   return (
-    <CampaignIdProvider id={parseInt(campaign?.id, 10)}>
+    <CampaignIdProvider id={parseInt(campaign.id, 10)}>
       <Flex direction='column' w='100vw' px='4rem' py='1rem'>
         <Heading>Campaign: {campaign.name}</Heading>
         <Flex direction='row' w='100%' gap={6} pt='2rem'>

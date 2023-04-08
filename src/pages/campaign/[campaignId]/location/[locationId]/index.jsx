@@ -1,7 +1,6 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
 import { useRouter } from "next/router"
-import React, { useEffect, useState } from 'react'
-import { getLocation } from '../../../../../lib/location'
+import React from 'react'
 import AddCharacterModal from '../../../../../components/multi/character/AddCharacterModal'
 import AddLocationModal from '../../../../../components/multi/location/AddLocationModal'
 import TabSwitch from '../../../../../components/multi/TabSwitch'
@@ -14,7 +13,6 @@ export default function Index() {
   const router = useRouter()
   const { campaignId } = router.query
   const { location, setLocation } = useLocations()
-
 
   return (
     <CampaignIdProvider id={parseInt(campaignId, 10)}>

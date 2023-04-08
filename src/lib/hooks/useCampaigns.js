@@ -8,7 +8,6 @@ export default function useCampaigns() {
   const [campaign, setCampaign] = useState({})
 
   useEffect(() => {
-    console.log(campaignId, 'id')
     if (!campaignId) return
     getCampaign(campaignId).then((res) => setCampaign(res))
   }, [campaignId])
