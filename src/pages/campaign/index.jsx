@@ -1,11 +1,13 @@
 import { Flex, Box, Text, HStack, Button } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
+import Cookies from 'cookies'
 import Link from 'next/link'
 import { getCampaigns, deleteCampaign } from '../../lib/campaign'
 import AddCampaignModal from '../../components/multi/campaign/AddCampaignModal'
+import Layout from '../../components/single/Layout'
 
-
-export default function Index() {
+export default function Index(props) {
+  const { user } = props;
   const [campaigns, setCampaigns] = useState([])
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export default function Index() {
   }
 
   return (
-    <Box>
+    <Layout user={user}>
         <Flex direction='column' w='65%'>
           <Text>All campaigns</Text>
           {campaigns.length > 0 && campaigns.map((campaign) => 
@@ -36,6 +38,22 @@ export default function Index() {
           )}
           <AddCampaignModal campaigns={campaigns} setCampaigns={setCampaigns} />
         </Flex>
-    </Box>
+    </Layout>
   )
+}
+
+export async function getServerSideProps({ req, res }) {
+	const cookies = new Cookies(req)
+
+	// Get a cookie
+  const hi = cookies.get('_api_tabletop_management_session')
+  if (!hi) {
+    return { 
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      }
+    }
+  }
+  return { props: { user: { isLoggedIn: true, name: 'Kyle' }} }
 }
