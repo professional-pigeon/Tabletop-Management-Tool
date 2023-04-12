@@ -1,14 +1,14 @@
+/* eslint-disable react/prop-types */
 import { Flex, Text, HStack, Button } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { getCampaigns, deleteCampaign } from '../../lib/campaign'
 import AddCampaignModal from '../../components/multi/campaign/AddCampaignModal'
 import Layout from '../../components/single/Layout'
-import { authUser } from '@/lib/user'
+import { authUser } from '../../lib/user'
 
 export default function Index(props) {
   const { user } = props;
-  console.log(user)
   const [campaigns, setCampaigns] = useState([])
 
   useEffect(() => {

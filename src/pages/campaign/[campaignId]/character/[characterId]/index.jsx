@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { Flex, Heading, Text } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import useCharacters from '../../../../../lib/hooks/useCharacters'
 import Layout from '../../../../../components/single/Layout'
-import { authUser } from '@/lib/user'
+import { authUser } from '../../../../../lib/user'
 
 export default function Index() {
   const { character, setCharacter } = useCharacters()

@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Flex, Heading, Text } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import React from 'react'
-import Cookies from 'cookies'
 import AddCharacterModal from '../../../../../components/multi/character/AddCharacterModal'
 import AddLocationModal from '../../../../../components/multi/location/AddLocationModal'
 import TabSwitch from '../../../../../components/multi/TabSwitch'

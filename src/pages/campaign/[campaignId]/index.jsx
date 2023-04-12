@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 import AddLocationModal from '../../../components/multi/location/AddLocationModal'
