@@ -7,14 +7,6 @@ const nextConfig = {
         source: '/api/:path*',
         destination: 'http://localhost:3000/api/:path*',
       },
-      // {
-      //   source: '/campaign/:path*',
-      //   destination: 'http://localhost:4000'
-      // },
-      // {
-      //   source: '/auth/login',
-      //   destination: 'http://localhost:3000/auth/login'
-      // }
     ]
   }
 }
