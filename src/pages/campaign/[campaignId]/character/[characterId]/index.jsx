@@ -1,8 +1,8 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import Cookies from 'cookies'
 import useCharacters from '../../../../../lib/hooks/useCharacters'
-import Layout from '@/components/single/Layout'
+import Layout from '../../../../../components/single/Layout'
+import { authUser } from '@/lib/user'
 
 export default function Index() {
   const { character, setCharacter } = useCharacters()
@@ -22,11 +22,9 @@ export default function Index() {
 }
 
 export async function getServerSideProps({ req }) {
-	const cookies = new Cookies(req)
+  const user = await authUser(req)
 
-	// Get a cookie
-  const hi = cookies.get('_api_tabletop_management_session')
-  if (!hi) {
+  if (!user.userName) {
     return { 
       redirect: {
         destination: '/login',
@@ -34,5 +32,5 @@ export async function getServerSideProps({ req }) {
       }
     }
   }
-  return { props: { user: { isLoggedIn: true, name: 'Kyle' }} }
+  return { props: { user } }
 }

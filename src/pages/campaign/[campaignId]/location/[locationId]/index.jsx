@@ -10,6 +10,7 @@ import { CampaignIdProvider } from '../../../../../components/context/CampaignId
 import UpdateLocationModal from '../../../../../components/multi/location/UpdateLocationModal'
 import useLocations from '../../../../../lib/hooks/useLocations'
 import Layout from '../../../../../components/single/Layout'
+import { authUser } from '../../../../../lib/user'
 
 export default function Index(props) {
   const { user } = props
@@ -38,11 +39,9 @@ export default function Index(props) {
 };
 
 export async function getServerSideProps({ req }) {
-	const cookies = new Cookies(req)
+  const user = await authUser(req)
 
-	// Get a cookie
-  const hi = cookies.get('_api_tabletop_management_session')
-  if (!hi) {
+  if (!user.userName) {
     return { 
       redirect: {
         destination: '/login',
@@ -50,5 +49,5 @@ export async function getServerSideProps({ req }) {
       }
     }
   }
-  return { props: { user: { isLoggedIn: true, name: 'Kyle' }} }
+  return { props: { user } }
 }

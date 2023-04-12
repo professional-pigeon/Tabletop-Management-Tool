@@ -1,6 +1,5 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
-import Cookies from 'cookies'
 import AddLocationModal from '../../../components/multi/location/AddLocationModal'
 import AddCharacterModal from '../../../components/multi/character/AddCharacterModal'
 import TabSwitch from '../../../components/multi/TabSwitch'
@@ -8,6 +7,7 @@ import FeatureHolder from '../../../components/single/FeatureHolder'
 import { CampaignIdProvider } from '../../../components/context/CampaignIdContext'
 import useCampaigns from '../../../lib/hooks/useCampaigns'
 import Layout from '../../../components/single/Layout'
+import { authUser } from '../../../lib/user'
 
 export default function Index() {
   const { campaign, setCampaign } = useCampaigns()
@@ -32,11 +32,9 @@ export default function Index() {
 };
 
 export async function getServerSideProps({ req }) {
-	const cookies = new Cookies(req)
+  const user = await authUser(req)
 
-	// Get a cookie
-  const hi = cookies.get('_api_tabletop_management_session')
-  if (!hi) {
+  if (!user.userName) {
     return { 
       redirect: {
         destination: '/login',
@@ -44,5 +42,5 @@ export async function getServerSideProps({ req }) {
       }
     }
   }
-  return { props: { user: { isLoggedIn: true, name: 'Kyle' }} }
+  return { props: { user } }
 }

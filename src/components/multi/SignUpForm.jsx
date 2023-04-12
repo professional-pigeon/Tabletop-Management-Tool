@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { areTextFieldsValidated } from '../../lib/textValidators';
 import TextInput from '../single/TextInput';
 import HiddenInput from '../single/HiddenInput';
-import signUpCall from '../../lib/user';
+import { signUpCall } from '../../lib/user';
 
 export default function SignUpForm() {
   const userNameRef = useRef()

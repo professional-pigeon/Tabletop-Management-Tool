@@ -1,6 +1,6 @@
 import { keysToCamel } from "./parsers"
 
-export default async function signUpCall(username, email, password) {
+async function signUpCall(username, email, password) {
   let user
 
   try {
@@ -24,3 +24,22 @@ export default async function signUpCall(username, email, password) {
     return { error: 'There was an error in the response'}
   }
 }
+
+async function authUser(req) {
+  let user
+  try {
+    user = await fetch('http://localhost:4000/api/users', 
+      { 
+        headers: {
+          origin: 'localhost',
+          Cookie: req.headers.cookie,
+      }}
+    )
+    const userData = await user.json()
+    return keysToCamel(userData)
+  } catch (error) {
+    return { error }
+  }
+}
+
+export { signUpCall, authUser }

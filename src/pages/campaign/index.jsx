@@ -1,13 +1,14 @@
-import { Flex, Box, Text, HStack, Button } from '@chakra-ui/react'
+import { Flex, Text, HStack, Button } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import Cookies from 'cookies'
 import Link from 'next/link'
 import { getCampaigns, deleteCampaign } from '../../lib/campaign'
 import AddCampaignModal from '../../components/multi/campaign/AddCampaignModal'
 import Layout from '../../components/single/Layout'
+import { authUser } from '@/lib/user'
 
 export default function Index(props) {
   const { user } = props;
+  console.log(user)
   const [campaigns, setCampaigns] = useState([])
 
   useEffect(() => {
@@ -43,11 +44,9 @@ export default function Index(props) {
 }
 
 export async function getServerSideProps({ req }) {
-	const cookies = new Cookies(req)
+  const user = await authUser(req)
 
-	// Get a cookie
-  const hi = cookies.get('_api_tabletop_management_session')
-  if (!hi) {
+  if (!user.userName) {
     return { 
       redirect: {
         destination: '/login',
@@ -55,5 +54,5 @@ export async function getServerSideProps({ req }) {
       }
     }
   }
-  return { props: { user: { isLoggedIn: true, name: 'Kyle' }} }
+  return { props: { user } }
 }
