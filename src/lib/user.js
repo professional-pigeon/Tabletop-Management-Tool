@@ -31,9 +31,10 @@ async function authUser(req) {
     user = await fetch('http://localhost:4000/api/users', 
       { 
         headers: {
-          origin: 'localhost',
+          origin: 'http://localhost:4000',
           Cookie: req.headers.cookie,
-      }}
+        }
+    }
     )
     const userData = await user.json()
     return keysToCamel(userData)
