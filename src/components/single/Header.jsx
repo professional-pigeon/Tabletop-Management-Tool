@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { logoutCall } from '../../lib/login';
 
 export default function Header({ user }) {
-  const { name } = user;
+  const { name = '' } = user || {};
   const router = useRouter()
 
   const logoutWrap = () => {

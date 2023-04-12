@@ -2,14 +2,17 @@ import { Box, Center } from '@chakra-ui/react'
 import React from 'react'
 import Cookies from 'cookies'
 import LoginForm from '../../components/multi/LoginForm'
+import Layout from '../../components/single/Layout'
 
 export default function Index() {
   return (
-    <Box w='100%'>
-      <Center>
-        <LoginForm />
-      </Center>
-    </Box>
+    <Layout>
+      <Box w='100%'>
+        <Center>
+          <LoginForm />
+        </Center>
+      </Box>
+    </Layout>
   )
 }
 
