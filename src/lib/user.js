@@ -28,10 +28,10 @@ async function signUpCall(username, email, password) {
 async function authUser(req) {
   let user
   try {
-    user = await fetch('http://localhost:4000/api/users', 
+    user = await fetch(`${process.env.API_BASE_URL}/api/users`, 
       { 
         headers: {
-          origin: 'http://localhost:4000',
+          origin: `${process.env.BASE_URL}`,
           Cookie: req.headers.cookie,
         }
     }

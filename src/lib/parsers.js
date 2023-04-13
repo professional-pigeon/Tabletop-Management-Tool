@@ -27,13 +27,8 @@ const keysToCamel = (obj) => {
 
 const parseCampaignToSelects = (campaign) => {
   const selectArr = [{ id: campaign.id, name: `Campaign: ${campaign.name}`, placeType: 'Campaign'}];
-  campaign.locations.forEach((loc) => {
+  campaign.locations?.forEach((loc) => {
     selectArr.push({ id: loc.id, name: loc.name, placeType: 'Location' })
-    // if (loc.subLocations.length > 0) {
-    //   loc.subLocations.forEach((sl) => {
-    //     selectArr.push({ id: sl.id, name: sl.name, placeType: 'SubLocation'})
-    //   })
-    // }
   })
   return selectArr
 }
