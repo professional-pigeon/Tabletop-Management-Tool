@@ -11,14 +11,15 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { deleteCharacter } from '../../../lib/character';
-import { campaignShape, locationShape } from '../../../lib/propShapes';
+import { deleteCampaign } from '../../../lib/campaign';
+import { campaignShape } from '../../../lib/propShapes';
 import StateTextInput from '../../single/StateTextInput';
 
-export default function DeleteCharacterModal({ 
-  characterId,
-  setPlace,
-  place
+
+export default function DeleteCampaignModal({ 
+  campaignId,
+  setCampaigns,
+  campaigns
 }) {
   const [textConfirm, setTextConfirm] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,23 +33,20 @@ export default function DeleteCharacterModal({
     onClose();
   };
 
-  const deleteCharacterWrap = () => {
-    deleteCharacter(characterId).then(() => {
-      const newPlace = place
-      const newCharacters = place.characters.filter((obj) => obj.id !== characterId)
-      newPlace.characters = newCharacters
-      setPlace(newPlace)
+  const deleteCampaignWrap = () => {
+    deleteCampaign(campaignId).then(() => {
+      const newCampaigns = campaigns.filter((obj) => obj.id !== campaignId)
+      setCampaigns(newCampaigns)
     })
   }
-
   return (
     <>
-      <Button onClick={onOpen} size='sm'>Delete</Button>
+      <Button onClick={onOpen}>Delete</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Delete Character</ModalHeader>
+          <ModalHeader>Delete Campaign</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <StateTextInput 
@@ -62,7 +60,7 @@ export default function DeleteCharacterModal({
             <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
               Close
             </Button>
-            <Button onClick={() => deleteCharacterWrap()} isDisabled={textConfirm !== 'DELETE'}>Delete</Button>
+            <Button onClick={() => deleteCampaignWrap()} isDisabled={textConfirm !== 'DELETE'}>Delete</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -70,14 +68,8 @@ export default function DeleteCharacterModal({
   );
 };
 
-DeleteCharacterModal.propTypes = {
-  characterId: PropTypes.number,
-  place: PropTypes.oneOfType([campaignShape, locationShape]),
-  setPlace: PropTypes.func, 
-};
-
-DeleteCharacterModal.defaultProps = {
-  characterId: 0,
-  place: {},
-  setPlace: () => {}, 
+DeleteCampaignModal.propTypes = {
+  campaignId: PropTypes.number.isRequired,
+  campaigns: PropTypes.arrayOf(campaignShape).isRequired,
+  setCampaigns: PropTypes.func.isRequired
 };
