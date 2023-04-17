@@ -13,11 +13,11 @@ export default function Header({ user }) {
   };
   
   return (
-    <Box bg='blue.200' p='1rem' mb='1rem' boxShadow='md'>
-      <Flex direction='row' justifyContent='space-around'>
-        <Text>Campaign Manager</Text>
-        <Text>Welcome {userName}</Text>
-        <Text as='button' onClick={() => logoutWrap()}>Logout</Text>
+    <Box bg='blue.200' px='4rem' py='1rem' mb='1rem' boxShadow='md'>
+      <Flex direction='row'>
+        <Text w='33%'>Campaign Manager</Text>
+        <Text w='33%' textAlign='center'>Welcome {userName}</Text>
+        <Text  w='33%'as='button' onClick={() => logoutWrap()}>Logout</Text>
       </Flex>
     </Box>
   );
