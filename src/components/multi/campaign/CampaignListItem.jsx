@@ -1,4 +1,4 @@
-import { HStack, Button } from '@chakra-ui/react';
+import { HStack, Button, Text } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
@@ -13,14 +13,14 @@ export default function CampaignListItem({ campaign, setCampaigns, campaigns }) 
     })
   }
   return (
-    <HStack key={`${campaign.name} ${campaign.id}`}>
+    <HStack w='24rem' justifyContent='space-between' p='.5rem' borderRadius='.5rem' bg='blue.100'>
       <Link 
         href="/campaign/[campaignId]" 
         as={`/campaign/${campaign.id}`}
       >
-        {campaign.name}
+        <Text fontSize='xl'>{campaign.name}</Text>
       </Link>
-      <Button onClick={() => deleteCampaignWrap(campaign.id)}>Delete me</Button>
+      <Button onClick={() => deleteCampaignWrap(campaign.id)}>Delete</Button>
     </HStack>
   );
 };
