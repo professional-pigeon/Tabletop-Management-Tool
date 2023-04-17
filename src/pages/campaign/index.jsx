@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Flex, Text, HStack, Button } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -6,6 +5,7 @@ import { getCampaigns, deleteCampaign } from '../../lib/campaign'
 import AddCampaignModal from '../../components/multi/campaign/AddCampaignModal'
 import Layout from '../../components/single/Layout'
 import { authUser } from '../../lib/user'
+import { userShape } from '../../lib/propShapes'
 
 export default function Index(props) {
   const { user } = props;
@@ -55,4 +55,8 @@ export async function getServerSideProps({ req }) {
     }
   }
   return { props: { user } }
+}
+
+Index.propTypes = {
+  user: userShape.isRequired
 }

@@ -23,7 +23,7 @@ export default function Header({ user }) {
         <Text w='33%'>Campaign Manager</Text>
         <Text w='33%' textAlign='center' >Welcome {userName}</Text>
         {user?.userName ? 
-            <Text  w='33%' as='button' onClick={() => logoutWrap()}>Logout</Text>
+            <Text  w='33%' textAlign='right' as='button' onClick={() => logoutWrap()}>Logout</Text>
           :
             <Text  w='33%' as='button' onClick={() => loginWrap()}>Login</Text>
         }

@@ -61,4 +61,9 @@ const campaignShape = shape({
   characters: arrayOf(characterShape)
 })
 
-export { noteShape, characterShape, locationShape, campaignShape } 
+const userShape = shape({
+  userName: string,
+  email: string
+})
+
+export { noteShape, characterShape, locationShape, campaignShape, userShape } 

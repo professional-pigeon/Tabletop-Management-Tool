@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 import AddLocationModal from '../../../components/multi/location/AddLocationModal'
@@ -9,13 +8,15 @@ import { CampaignIdProvider } from '../../../components/context/CampaignIdContex
 import useCampaigns from '../../../lib/hooks/useCampaigns'
 import Layout from '../../../components/single/Layout'
 import { authUser } from '../../../lib/user'
+import { userShape } from '../../../lib/propShapes'
 
-export default function Index() {
+export default function Index(props) {
+  const { user } = props
   const { campaign, setCampaign } = useCampaigns()
 
   return (
     <CampaignIdProvider id={parseInt(campaign.id, 10)}>
-      <Layout>
+      <Layout user={user}>
         <Flex direction='column' w='100vw' px='4rem' py='1rem'>
           <Heading>Campaign: {campaign.name}</Heading>
           <Flex direction='row' w='100%' gap={6} pt='2rem'>
@@ -44,4 +45,8 @@ export async function getServerSideProps({ req }) {
     }
   }
   return { props: { user } }
+}
+
+Index.propTypes = {
+  user: userShape.isRequired
 }

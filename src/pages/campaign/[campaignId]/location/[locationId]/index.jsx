@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Flex, Heading, Text } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import React from 'react'
@@ -11,6 +10,7 @@ import UpdateLocationModal from '../../../../../components/multi/location/Update
 import useLocations from '../../../../../lib/hooks/useLocations'
 import Layout from '../../../../../components/single/Layout'
 import { authUser } from '../../../../../lib/user'
+import { userShape } from '../../../../../lib/propShapes'
 
 export default function Index(props) {
   const { user } = props
@@ -50,4 +50,8 @@ export async function getServerSideProps({ req }) {
     }
   }
   return { props: { user } }
+}
+
+Index.propTypes = {
+  user: userShape.isRequired
 }
