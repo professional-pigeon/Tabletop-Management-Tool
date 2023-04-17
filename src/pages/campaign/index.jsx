@@ -24,7 +24,7 @@ export default function Index(props) {
 
   return (
     <Layout user={user}>
-        <Flex direction='column' w='65%'>
+      <Flex direction='column' w='100vw' px='4rem' py='1rem'>
           <Text>All campaigns</Text>
           {campaigns.length > 0 && campaigns.map((campaign) => 
             <HStack key={`${campaign.name} ${campaign.id}`}>
