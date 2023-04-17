@@ -1,5 +1,6 @@
-import { Flex, Button, Text, VStack, useToast } from '@chakra-ui/react';
+import { Flex, Button, Text, VStack, useToast, Heading } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { areTextFieldsValidated } from '../../lib/textValidators';
 import StateTextInput from '../single/StateTextInput';
@@ -36,8 +37,8 @@ export default function LoginForm() {
   };
 
   return (
-    <Flex direction='column' w='33%' p='.25rem' borderRadius='.5rem' boxShadow='lg'>
-      <Text>Login</Text>
+    <Flex direction='column' w='24rem' px='1rem' py='.5rem' borderRadius='.5rem' boxShadow='lg' gap={2}>
+      <Heading textAlign='center'>Login</Heading>
       <VStack>
         <StateTextInput 
           name="User Name" 
@@ -51,7 +52,13 @@ export default function LoginForm() {
           setInputValue={setPassword}
           error={hasError ? password === '' : false}
         />
-        <Button onClick={() => loginCallWrapper(userName, password)}>Login</Button>
+        <Button w='50%' onClick={() => loginCallWrapper(userName, password)}>Login</Button>
+        <Link 
+          href='/signup'
+          as='/signup'
+        >
+          <Text color='blue.700' fontWeight='semibold'>Create new account</Text>
+        </Link>
       </VStack>
     </Flex>
   );

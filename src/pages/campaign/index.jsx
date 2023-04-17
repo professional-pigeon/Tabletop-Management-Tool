@@ -24,13 +24,13 @@ export default function Index(props) {
 
   return (
     <Layout user={user}>
-        <Flex direction='column' w='65%'>
+      <Flex direction='column' w='100vw' px='4rem' py='1rem'>
           <Text>All campaigns</Text>
           {campaigns.length > 0 && campaigns.map((campaign) => 
             <HStack key={`${campaign.name} ${campaign.id}`}>
               <Link 
-              href="/campaign/[campaignId]" 
-              as={`/campaign/${campaign.id}`}
+                href="/campaign/[campaignId]" 
+                as={`/campaign/${campaign.id}`}
               >
                 {campaign.name}
               </Link>
@@ -46,13 +46,13 @@ export default function Index(props) {
 export async function getServerSideProps({ req }) {
   const user = await authUser(req)
 
-  // if (!user.userName) {
-  //   return { 
-  //     redirect: {
-  //       destination: '/login',
-  //       permanent: false,
-  //     }
-  //   }
-  // }
+  if (!user.userName) {
+    return { 
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      }
+    }
+  }
   return { props: { user } }
 }
