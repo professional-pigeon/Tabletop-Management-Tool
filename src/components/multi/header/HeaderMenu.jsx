@@ -22,7 +22,7 @@ export default function HeaderMenu({ isLoggedIn }) {
       {isLoggedIn ?
         (<MenuList>
           <MenuItem onClick={() => logoutWrap()}>Logout</MenuItem>
-          <MenuItem onClick={() => router.push('/campaign')}>Go To Dashboard</MenuItem>
+          <MenuItem onClick={() => router.push('/dashboard')}>Go To Dashboard</MenuItem>
         </MenuList>
         ) : (
           <MenuList>

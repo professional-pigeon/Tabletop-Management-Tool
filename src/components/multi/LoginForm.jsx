@@ -21,7 +21,7 @@ export default function LoginForm() {
           if (res.error) {
             throw new Error(res.error)
           } else {
-            router.push('/campaign')
+            router.push('/dashboard')
           }
         })
         .catch(() => toast({
