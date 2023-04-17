@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Menu, MenuList, MenuItem, MenuButton, IconButton } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types'

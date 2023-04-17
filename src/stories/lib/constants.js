@@ -48,4 +48,11 @@ const location = {
   upperLocation: null
 };
 
-export { character, location, innerLocation }
+const campaign = {
+  id: 1,
+  locations: [location, location],
+  characters: [character],
+
+}
+
+export { character, location, innerLocation, campaign }
