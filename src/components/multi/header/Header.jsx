@@ -3,7 +3,6 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useRouter } from 'next/router';
 import { logoutCall } from '../../../lib/login';
-import Link from 'next/link';
 
 export default function Header({ user }) {
   const { userName = '' } = user || {};

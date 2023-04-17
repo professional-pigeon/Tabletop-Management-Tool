@@ -23,8 +23,8 @@ import CustomSelect from '../../single/CustomSelect';
 import usePlaceSelects from '../../../lib/hooks/usePlaceSelects';
 
 export default function AddCharacterModal({
-  initialLocation,
-  setInitialLocation
+  initialPlace,
+  setInitialPlace
 }) {
   const nameRef = useRef();
   const descriptionRef = useRef();
@@ -33,7 +33,7 @@ export default function AddCharacterModal({
 
   const [place, setPlace] = useState({});
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { id } = initialLocation;
+  const { id } = initialPlace;
   const { selectOptions } = usePlaceSelects();
 
   const sortSelects = (selects) => {
@@ -55,9 +55,9 @@ export default function AddCharacterModal({
       description: descriptionRef.current.value 
     })
       .then((res) => {
-        const newLocation = { ...initialLocation }
+        const newLocation = { ...initialPlace }
         newLocation.characters.push(res)
-        setInitialLocation(newLocation)
+        setInitialPlace(newLocation)
     });
     setPlace();
     onClose();
@@ -76,9 +76,9 @@ export default function AddCharacterModal({
             <TextInput name='Name' valueRef={nameRef} />
             <TextInput name='Description' valueRef={descriptionRef} />
             <CustomSelect 
-                name='Character Type' 
-                valueRef={characterTypeRef}
-                selectOptions={characterTypeOptions} 
+              name='Character Type' 
+              valueRef={characterTypeRef}
+              selectOptions={characterTypeOptions} 
             />
             <CustomSelect 
               name='Character Race' 
@@ -106,11 +106,11 @@ export default function AddCharacterModal({
 };
 
 AddCharacterModal.propTypes = {
-  initialLocation: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
-  setInitialLocation: PropTypes.func, 
+  initialPlace: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
+  setInitialPlace: PropTypes.func, 
 };
 
 AddCharacterModal.defaultProps = {
-  initialLocation: {},
-  setInitialLocation: () => {},
+  initialPlace: {},
+  setInitialPlace: () => {},
 };
