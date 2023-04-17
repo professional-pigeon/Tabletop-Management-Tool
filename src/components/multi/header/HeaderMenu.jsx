@@ -15,7 +15,6 @@ export default function HeaderMenu({ isLoggedIn }) {
   return (
     <Menu>
       <MenuButton
-        alignSelf='flex-end'
         as={IconButton}
         aria-label='Options'
         icon={<HamburgerIcon />}
