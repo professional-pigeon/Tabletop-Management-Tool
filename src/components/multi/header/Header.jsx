@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
 import { Box, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useRouter } from 'next/router';
 import { logoutCall } from '../../../lib/login';
+import { userShape } from '../../../lib/propShapes';
 
 export default function Header({ user }) {
-  const { userName = '' } = user || {};
+  const { userName } = user
   const router = useRouter()
 
   const logoutWrap = () => {
@@ -30,3 +30,7 @@ export default function Header({ user }) {
     </Box>
   );
 };
+
+Header.propTypes = {
+  user: userShape.isRequired
+}
