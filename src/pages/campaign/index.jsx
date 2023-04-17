@@ -46,13 +46,13 @@ export default function Index(props) {
 export async function getServerSideProps({ req }) {
   const user = await authUser(req)
 
-  // if (!user.userName) {
-  //   return { 
-  //     redirect: {
-  //       destination: '/login',
-  //       permanent: false,
-  //     }
-  //   }
-  // }
+  if (!user.userName) {
+    return { 
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      }
+    }
+  }
   return { props: { user } }
 }
