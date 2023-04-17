@@ -1,4 +1,4 @@
-import { Flex, Heading} from '@chakra-ui/react';
+import { Flex, Heading } from '@chakra-ui/react';
 import React from 'react';
 import AddCampaignModal from './AddCampaignModal';
 import useAllCampaigns from '../../../lib/hooks/useAllCampaigns';
