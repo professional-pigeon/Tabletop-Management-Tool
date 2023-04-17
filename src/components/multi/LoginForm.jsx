@@ -37,7 +37,7 @@ export default function LoginForm() {
   };
 
   return (
-    <Flex direction='column' w='33%' px='1rem' py='.5rem' borderRadius='.5rem' boxShadow='lg' gap={2}>
+    <Flex direction='column' w='24rem' px='1rem' py='.5rem' borderRadius='.5rem' boxShadow='lg' gap={2}>
       <Heading textAlign='center'>Login</Heading>
       <VStack>
         <StateTextInput 

@@ -1,4 +1,4 @@
-import { Flex, Button, Text, VStack, useToast } from '@chakra-ui/react';
+import { Flex, Button, Heading, VStack, useToast } from '@chakra-ui/react';
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { areTextFieldsValidated } from '../../lib/textValidators';
@@ -58,8 +58,8 @@ export default function SignUpForm() {
   };
 
   return (
-    <Flex direction='column' w='33%' p='.25rem' borderRadius='.5rem' boxShadow='lg'>
-      <Text>Sign Up</Text>
+    <Flex direction='column' w='24rem' px='1rem' py='.5rem' borderRadius='.5rem' boxShadow='lg' gap={2}>
+      <Heading textAlign='center'>Sign Up</Heading>
       <VStack>
         <TextInput 
           name="User Name" 
