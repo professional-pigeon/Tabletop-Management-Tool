@@ -1,36 +1,28 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
-import { useRouter } from 'next/router';
-import { logoutCall } from '../../../lib/login';
 import { userShape } from '../../../lib/propShapes';
+import HeaderMenu from './HeaderMenu';
 
 export default function Header({ user }) {
   const { userName } = user
-  const router = useRouter()
-
-  const logoutWrap = () => {
-    logoutCall().then(() => router.push('/login'))
-  };
-
-  const loginWrap = () => {
-    router.push('/login')
-  }
   
   return (
     <Box bg='blue.300' px='4rem' py='1rem' mb='2rem' boxShadow='lg' borderBottomRadius='sm'>
-      <Flex direction='row' fontSize='xl'>
-        <Text w='33%'>Campaign Manager</Text>
-        <Text w='33%' textAlign='center' >Welcome {userName}</Text>
-        {user?.userName ? 
-            <Text  w='33%' textAlign='right' as='button' onClick={() => logoutWrap()}>Logout</Text>
-          :
-            <Text  w='33%' as='button' onClick={() => loginWrap()}>Login</Text>
-        }
+      <Flex direction='row'>
+        <Text w='33%' fontSize='xl'>Campaign Manager</Text>
+        <Text w='33%' textAlign='center' fontSize='xl'>Welcome {userName}</Text>
+        <Flex w='33%' justifyContent='flex-end'>
+          <HeaderMenu isLoggedIn={!!user?.userName}/>
+        </Flex>
       </Flex>
     </Box>
   );
 };
 
 Header.propTypes = {
-  user: userShape.isRequired
+  user: userShape
+}
+
+Header.defaultProps = {
+  user: {},
 }
