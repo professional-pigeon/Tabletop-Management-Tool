@@ -52,7 +52,7 @@ export default function CharacterCard({ character }) {
           <CardNoteList notes={notes} />
         </Flex>
         <HStack>
-          <DeleteCharacterModal characterId={id} />
+          <DeleteCharacterModal characterId={id} buttonVariant='card-delete' />
           <Button   
             size='sm'     
             as={Link}

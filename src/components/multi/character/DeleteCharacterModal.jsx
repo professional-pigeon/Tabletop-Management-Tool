@@ -18,7 +18,8 @@ import StateTextInput from '../../single/StateTextInput';
 export default function DeleteCharacterModal({ 
   characterId,
   setPlace,
-  place
+  place,
+  buttonVariant
 }) {
   const [textConfirm, setTextConfirm] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +44,7 @@ export default function DeleteCharacterModal({
 
   return (
     <>
-      <Button onClick={onOpen} size='sm'>Delete</Button>
+      <Button onClick={onOpen} variant={buttonVariant}>Delete</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -74,10 +75,12 @@ DeleteCharacterModal.propTypes = {
   characterId: PropTypes.number,
   place: PropTypes.oneOfType([campaignShape, locationShape]),
   setPlace: PropTypes.func, 
+  buttonVariant: PropTypes.string,
 };
 
 DeleteCharacterModal.defaultProps = {
   characterId: 0,
   place: {},
   setPlace: () => {}, 
+  buttonVariant: undefined,
 };
