@@ -7,7 +7,11 @@ const Button = {
   variants: {
     'card-delete': {
       bg: 'red.500',
-      color: 'white'
+      color: 'white',
+      h: "8",
+      minW: "8",
+      fontSize: "sm",
+      px: "3",
     }
   },
 } 

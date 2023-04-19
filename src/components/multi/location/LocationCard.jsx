@@ -48,7 +48,7 @@ export default function LocationCard({ location }) {
           <CardNoteList notes={notes} />
         </Flex>
         <HStack>
-          <DeleteLocationModal locationId={id} />
+          <DeleteLocationModal locationId={id} buttonVariant='card-delete'/>
           <Button
             size='sm'
             as={Link}
