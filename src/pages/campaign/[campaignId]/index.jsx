@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
 import React from 'react'
 import AddLocationModal from '../../../components/multi/location/AddLocationModal'
 import AddCharacterModal from '../../../components/multi/character/AddCharacterModal'
@@ -21,7 +21,6 @@ export default function Index(props) {
           <Heading>Campaign: {campaign.name}</Heading>
           <Flex direction='row' w='100%' gap={6} pt='2rem'>
             <FeatureHolder>
-              <Text fontSize='2xl' textDecor='underline'>Features</Text>
               <AddLocationModal isAddingInnerLocation={false} buttonVariant='add-modal' place={campaign} setPlace={setCampaign} />
               <AddCharacterModal initialPlace={campaign} buttonVariant='add-modal' setInitialPlace={setCampaign} />
             </FeatureHolder>

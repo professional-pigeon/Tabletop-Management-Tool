@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
 import { useRouter } from "next/router"
 import React from 'react'
 import AddCharacterModal from '../../../../../components/multi/character/AddCharacterModal'
@@ -25,7 +25,6 @@ export default function Index(props) {
           <Heading>Location: {location.name}</Heading>
           <Flex direction='row' w='100%' gap={6} pt='2rem'>
             <FeatureHolder>
-            <Text fontSize='2xl' textDecor='underline'>Features</Text>
               <UpdateLocationModal place={location} setPlace={setLocation} />
               <AddLocationModal place={location} buttonVariant='add-modal' setPlace={setLocation} isAddingInnerLocation />
               <AddCharacterModal initialPlace={location} buttonVariant='add-modal' setInitialPlace={setLocation} />

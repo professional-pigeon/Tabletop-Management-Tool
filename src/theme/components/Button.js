@@ -4,6 +4,8 @@ const linkColor = 'white'
 const linkHoverColor = 'gray.100'
 const addColor = 'purple.200'
 const addHoverColor = 'purple.100'
+const updateColor = 'cyan.300'
+const updateHoverColor = 'cyan.100'
 
 const Button = {
   defaultProps: {},
@@ -12,7 +14,7 @@ const Button = {
   sizes: {},
   // styles for different visual variants ("outline", "solid")
   variants: {
-    'card-delete': {
+    'delete-card': {
       bg: deleteColor,
       color: 'white',
       h: "8",
@@ -34,7 +36,7 @@ const Button = {
         bg: deleteHoverColor
       }
     },
-    'card-link': {
+    'link-card': {
       bg: linkColor,
       border: '1px solid',
       borderColor: 'black',
@@ -71,6 +73,17 @@ const Button = {
         bg: addHoverColor,
       }
     },
+    'update': {
+      bg: updateColor,
+      color: 'black',
+      h: "10",
+      minW: "10",
+      fontSize: "md",
+      px: "4",
+      _hover: {
+        bg: updateHoverColor,
+      }
+    }
   },
 } 
 
