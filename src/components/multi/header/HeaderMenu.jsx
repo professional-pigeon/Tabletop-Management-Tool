@@ -18,14 +18,15 @@ export default function HeaderMenu({ isLoggedIn }) {
         as={IconButton}
         aria-label='Options'
         icon={<HamburgerIcon />}
+        color='black'
       />
       {isLoggedIn ?
-        (<MenuList>
+        (<MenuList color='black'>
           <MenuItem onClick={() => logoutWrap()}>Logout</MenuItem>
           <MenuItem onClick={() => router.push('/dashboard')}>Go To Dashboard</MenuItem>
         </MenuList>
         ) : (
-          <MenuList>
+          <MenuList  color='black'>
           <MenuItem onClick={() => router.push('/login')}>Login</MenuItem>
           <MenuItem onClick={() => router.push('/signup')}>Signup</MenuItem>
         </MenuList>

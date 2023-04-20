@@ -47,7 +47,7 @@ const Button = {
         bg: linkHoverColor,
       }
     },
-    'link': {
+    'link-base': {
       bg: linkColor,
       border: '1px solid',
       borderColor: 'black',
