@@ -17,7 +17,7 @@ import { updateLocation } from '../../../lib/location';
 
 export default function UpdateLocationModal({ 
   place, 
-  setPlace 
+  setPlace,
 }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -49,7 +49,7 @@ export default function UpdateLocationModal({
 
   return (
     <>
-      <Button onClick={onOpen}>Update Location</Button>
+      <Button onClick={onOpen} variant='update'>Update Location</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

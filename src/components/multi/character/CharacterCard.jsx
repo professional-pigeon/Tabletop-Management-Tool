@@ -52,9 +52,9 @@ export default function CharacterCard({ character }) {
           <CardNoteList notes={notes} />
         </Flex>
         <HStack>
-          <DeleteCharacterModal characterId={id} buttonVariant='card-delete' />
+          <DeleteCharacterModal characterId={id} buttonVariant='delete-card' />
           <Button   
-            size='sm'     
+            variant='link-card'  
             as={Link}
             href={`/campaign/${campaignId}/character/${id}`}
           >

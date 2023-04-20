@@ -48,9 +48,9 @@ export default function LocationCard({ location }) {
           <CardNoteList notes={notes} />
         </Flex>
         <HStack>
-          <DeleteLocationModal locationId={id} buttonVariant='card-delete'/>
+          <DeleteLocationModal locationId={id} buttonVariant='delete-card'/>
           <Button
-            variant='card-link'
+            variant='link-card'
             as={Link}
             href={`/campaign/${campaignId}/location/${id}`}
           >
