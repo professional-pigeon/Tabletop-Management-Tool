@@ -38,7 +38,7 @@ export default function AddCampaignModal({
 
   return (
     <>
-      <Button onClick={onOpen}>Add Campaign</Button>
+      <Button onClick={onOpen} variant='add-modal'>Add Campaign</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

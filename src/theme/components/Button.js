@@ -1,17 +1,17 @@
-const deleteColor = 'gray.900'
-const deleteHoverColor = 'gray.700'
+const deleteColor = 'pink.500'
+const deleteHoverColor = 'pink.400'
 const linkColor = 'white'
 const linkHoverColor = 'gray.100'
 const addColor = 'purple.200'
 const addHoverColor = 'purple.100'
 const updateColor = 'cyan.300'
-const updateHoverColor = 'cyan.100'
+const updateHoverColor = 'cyan.200'
 
 const Button = {
-  defaultProps: {},
-  baseStyle: {},
+  // defaultProps: {},
+  // baseStyle: {},
   // styles for different sizes ("sm", "md", "lg")
-  sizes: {},
+  // sizes: {},
   // styles for different visual variants ("outline", "solid")
   variants: {
     'delete-card': {

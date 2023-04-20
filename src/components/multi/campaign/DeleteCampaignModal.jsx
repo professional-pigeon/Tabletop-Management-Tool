@@ -40,9 +40,15 @@ export default function DeleteCampaignModal({
       setCampaigns(newCampaigns)
     })
   }
+
+  const open = (e) => {
+    e.preventDefault()
+    onOpen()
+  }
+
   return (
     <>
-      <Button onClick={onOpen} variant={buttonVariant}>Delete</Button>
+      <Button onClick={(e) => open(e)} variant={buttonVariant}>Delete</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
