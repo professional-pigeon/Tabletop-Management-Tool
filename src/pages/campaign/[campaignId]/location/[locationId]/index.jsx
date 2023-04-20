@@ -27,7 +27,7 @@ export default function Index(props) {
             <FeatureHolder>
             <Text fontSize='2xl' textDecor='underline'>Features</Text>
               <UpdateLocationModal place={location} setPlace={setLocation} />
-              <AddLocationModal place={location} setPlace={setLocation} isAddingInnerLocation />
+              <AddLocationModal place={location} buttonVariant='add-modal' setPlace={setLocation} isAddingInnerLocation />
               <AddCharacterModal initialPlace={location} setInitialPlace={setLocation} />
             </FeatureHolder>
             <TabSwitch locations={location.innerLocations} characters={location.characters} />

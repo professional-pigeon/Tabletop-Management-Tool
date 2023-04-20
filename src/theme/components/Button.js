@@ -60,7 +60,7 @@ const Button = {
         bg: linkHoverColor,
       }
     },
-    'modal-add': {
+    'add-modal': {
       bg: addColor,
       color: 'black',
       h: "10",
