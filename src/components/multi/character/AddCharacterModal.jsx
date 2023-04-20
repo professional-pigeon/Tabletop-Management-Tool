@@ -65,7 +65,7 @@ export default function AddCharacterModal({
 
   return (
     <>
-      <Button onClick={onOpen}>Add Character</Button>
+      <Button onClick={onOpen} bg='purple.200'>Add Character</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

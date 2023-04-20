@@ -41,7 +41,7 @@ export default function DeleteCampaignModal({
   }
   return (
     <>
-      <Button onClick={onOpen}>Delete</Button>
+      <Button onClick={onOpen} colorScheme='red'>Delete</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

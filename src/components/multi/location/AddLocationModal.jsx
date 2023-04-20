@@ -50,7 +50,7 @@ export default function AddLocationModal({
 
   return (
     <>
-      <Button onClick={onOpen}>{isAddingInnerLocation ? 'Add Inner Location' : 'Add Location'}</Button>
+      <Button onClick={onOpen} bg='purple.200'>{isAddingInnerLocation ? 'Add Inner Location' : 'Add Location'}</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

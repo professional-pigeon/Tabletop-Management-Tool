@@ -8,7 +8,7 @@ export default function CampaignListHolder() {
   const { campaigns, setCampaigns } = useAllCampaigns()
 
   return (
-    <Flex direction='column' px='1rem' py='.5rem' bg='white' minW='24rem' borderRadius='.5rem' boxShadow='lg' gap={4}>
+    <Flex direction='column' px='1rem' py='.5rem' bg='white' minW='28rem' borderRadius='.5rem' boxShadow='lg' gap={4}>
       <Heading>All Campaigns</Heading>
       <Flex direction='column' gap={2}>
         {campaigns.length > 0 && campaigns.map((campaign) => 
