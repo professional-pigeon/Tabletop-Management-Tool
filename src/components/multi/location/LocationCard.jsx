@@ -50,7 +50,7 @@ export default function LocationCard({ location }) {
         <HStack>
           <DeleteLocationModal locationId={id} buttonVariant='card-delete'/>
           <Button
-            size='sm'
+            variant='card-link'
             as={Link}
             href={`/campaign/${campaignId}/location/${id}`}
           >

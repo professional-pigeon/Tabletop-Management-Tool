@@ -19,7 +19,8 @@ import { useCampaignIdContext } from '../../context/CampaignIdContext';
 export default function AddLocationModal({ 
   isAddingInnerLocation, 
   place, 
-  setPlace 
+  setPlace,
+  buttonVariant
 }) {
   const nameRef = useRef()
   const descriptionRef = useRef()
@@ -50,7 +51,7 @@ export default function AddLocationModal({
 
   return (
     <>
-      <Button onClick={onOpen} bg='purple.200'>{isAddingInnerLocation ? 'Add Inner Location' : 'Add Location'}</Button>
+      <Button onClick={onOpen} variant={buttonVariant}>{isAddingInnerLocation ? 'Add Inner Location' : 'Add Location'}</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -79,10 +80,12 @@ AddLocationModal.propTypes = {
   place: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
   isAddingInnerLocation: PropTypes.bool,
   setPlace: PropTypes.func, 
+  buttonVariant: PropTypes.string,
 };
 
 AddLocationModal.defaultProps = {
   isAddingInnerLocation: false,
   place: {},
   setPlace: () => {}, 
+  buttonVariant: undefined,
 };
