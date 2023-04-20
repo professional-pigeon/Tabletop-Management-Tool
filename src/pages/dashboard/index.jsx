@@ -11,7 +11,7 @@ export default function Index(props) {
 
   return (
     <Layout user={user}>
-      <Flex direction='row' w='100vw' px='4rem' py='1rem' gap={4} justifyContent='center'>
+      <Flex direction='row' flexWrap='wrap' w='100vw' px='4rem' py='1rem' gap={4} justifyContent='center'>
         <CampaignListHolder />
         <About />
       </Flex>

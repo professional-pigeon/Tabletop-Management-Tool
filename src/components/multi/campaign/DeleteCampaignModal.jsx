@@ -19,7 +19,8 @@ import StateTextInput from '../../single/StateTextInput';
 export default function DeleteCampaignModal({ 
   campaignId,
   setCampaigns,
-  campaigns
+  campaigns,
+  buttonVariant
 }) {
   const [textConfirm, setTextConfirm] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -41,7 +42,7 @@ export default function DeleteCampaignModal({
   }
   return (
     <>
-      <Button onClick={onOpen} colorScheme='red'>Delete</Button>
+      <Button onClick={onOpen} variant={buttonVariant}>Delete</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -71,5 +72,10 @@ export default function DeleteCampaignModal({
 DeleteCampaignModal.propTypes = {
   campaignId: PropTypes.number.isRequired,
   campaigns: PropTypes.arrayOf(campaignShape).isRequired,
-  setCampaigns: PropTypes.func.isRequired
+  setCampaigns: PropTypes.func.isRequired,
+  buttonVariant: PropTypes.string,
 };
+
+DeleteCampaignModal.defaultProps = {
+  buttonVariant: undefined,
+}

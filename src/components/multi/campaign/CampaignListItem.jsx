@@ -8,14 +8,24 @@ import DeleteCampaignModal from './DeleteCampaignModal';
 export default function CampaignListItem({ campaign, setCampaigns, campaigns }) {
   const { id, name } = campaign
   return (
-    <HStack w='full' justifyContent='space-between' p='.5rem' borderRadius='.5rem' bg='blue.100'>
+    <HStack 
+      w='full' 
+      justifyContent='space-between' 
+      p='.5rem' borderRadius='.5rem' 
+      bg='purple.100'
+    >
       <Link 
         href="/campaign/[campaignId]"
         as={`/campaign/${id}`}
       >
         <Text fontSize='xl'>{name}</Text>
       </Link>
-      <DeleteCampaignModal campaignId={id} campaigns={campaigns} setCampaigns={setCampaigns} />
+      <DeleteCampaignModal 
+        campaignId={id} 
+        campaigns={campaigns} 
+        setCampaigns={setCampaigns} 
+        buttonVariant='link-base'
+      />
     </HStack>
   );
 };
