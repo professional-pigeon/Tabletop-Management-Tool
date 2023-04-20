@@ -24,7 +24,8 @@ import usePlaceSelects from '../../../lib/hooks/usePlaceSelects';
 
 export default function AddCharacterModal({
   initialPlace,
-  setInitialPlace
+  setInitialPlace,
+  buttonVariant
 }) {
   const nameRef = useRef();
   const descriptionRef = useRef();
@@ -65,7 +66,7 @@ export default function AddCharacterModal({
 
   return (
     <>
-      <Button onClick={onOpen} bg='purple.200'>Add Character</Button>
+      <Button onClick={onOpen} variant={buttonVariant}>Add Character</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -108,9 +109,11 @@ export default function AddCharacterModal({
 AddCharacterModal.propTypes = {
   initialPlace: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
   setInitialPlace: PropTypes.func, 
+  buttonVariant: PropTypes.string,
 };
 
 AddCharacterModal.defaultProps = {
   initialPlace: {},
   setInitialPlace: () => {},
+  buttonVariant: undefined,
 };

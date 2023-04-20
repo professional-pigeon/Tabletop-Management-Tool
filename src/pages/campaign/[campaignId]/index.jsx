@@ -23,7 +23,7 @@ export default function Index(props) {
             <FeatureHolder>
               <Text fontSize='2xl' textDecor='underline'>Features</Text>
               <AddLocationModal isAddingInnerLocation={false} buttonVariant='add-modal' place={campaign} setPlace={setCampaign} />
-              <AddCharacterModal initialPlace={campaign} setInitialPlace={setCampaign} />
+              <AddCharacterModal initialPlace={campaign} buttonVariant='add-modal' setInitialPlace={setCampaign} />
             </FeatureHolder>
             <TabSwitch locations={campaign.locations} characters={campaign.characters} />
           </Flex>
