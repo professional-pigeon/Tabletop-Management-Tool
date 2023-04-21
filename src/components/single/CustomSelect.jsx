@@ -17,7 +17,8 @@ export default function CustomSelect({
   helperText,
   name, 
   selectOptions, 
-  valueRef
+  valueRef,
+  placeholder
 }) {
     
   return (
@@ -25,7 +26,7 @@ export default function CustomSelect({
       <FormLabel>{name}</FormLabel>
       <Select
         isDisabled={disabled} 
-        placeholder='select option'
+        placeholder={placeholder}
         ref={valueRef}
       >
         {selectOptions.map((opt) => 
@@ -43,6 +44,7 @@ CustomSelect.propTypes = {
   errorMessage: PropTypes.string,
   helperText: PropTypes.string,
   name: PropTypes.string,
+  placeholder: PropTypes.string,
   selectOptions: PropTypes.arrayOf(PropTypes.string),
   valueRef: PropTypes.oneOfType([
     PropTypes.func, 
@@ -56,5 +58,6 @@ CustomSelect.defaultProps ={
   errorMessage: 'issue with field',
   helperText: '',
   name: '',
+  placeholder: 'select option',
   selectOptions: [],
 };
