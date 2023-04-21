@@ -5,6 +5,8 @@ import useCharacters from '../../../../../lib/hooks/useCharacters'
 import Layout from '../../../../../components/single/Layout'
 import { authUser } from '../../../../../lib/user'
 import { userShape } from '../../../../../lib/propShapes'
+import FeatureHolder from '../../../../../components/single/FeatureHolder'
+import UpdateCharacterModal from '../../../../../components/multi/character/UpdateCharacterModal'
 
 export default function Index(props) {
   const { user } = props
@@ -14,11 +16,13 @@ export default function Index(props) {
     <Layout user={user}>
       <Flex direction='column' w='100vw' p='1rem'>
         <Heading>Character: {character.name}</Heading>
-        <Flex direction='column'>
-          <Text>{character.description}</Text>
-          <Text>{character.characterRace}</Text>
-          <Text>{character.characterType}</Text>
-        </Flex>
+        <FeatureHolder>
+          <UpdateCharacterModal 
+            character={character} 
+            initialPlace={character.characterLocation} 
+            buttonVariant='update'
+          />
+        </FeatureHolder>
       </Flex>
     </Layout>
   )
