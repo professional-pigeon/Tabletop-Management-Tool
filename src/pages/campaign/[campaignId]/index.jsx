@@ -10,6 +10,7 @@ import Layout from '../../../components/single/Layout'
 import { authUser } from '../../../lib/user'
 import { userShape } from '../../../lib/propShapes'
 import AddNoteModal from '../../../components/multi/note/AddNoteModal'
+import NoteList from '../../../components/multi/note/NoteList'
 
 export default function Index(props) {
   const { user } = props
@@ -26,6 +27,7 @@ export default function Index(props) {
               <AddLocationModal isAddingInnerLocation={false} buttonVariant='add-modal' place={campaign} setPlace={setCampaign} />
               <AddCharacterModal initialPlace={campaign} buttonVariant='add-modal' setInitialPlace={setCampaign} />
               <AddNoteModal place={campaign} setPlace={setCampaign} placeType='Campaign' buttonVariant='add-modal'/>
+              <NoteList place={campaign} setPlace={setCampaign} notes={campaign.notes} />
             </FeatureHolder>
             <TabSwitch locations={campaign.locations} characters={campaign.characters} />
           </Flex>
