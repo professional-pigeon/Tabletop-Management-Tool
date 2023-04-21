@@ -83,7 +83,18 @@ const Button = {
       _hover: {
         bg: updateHoverColor,
       }
-    }
+    },
+    'update-card': {
+      bg: updateColor,
+      color: 'black',
+      h: "8",
+      minW: "8",
+      fontSize: "sm",
+      px: "3",
+      _hover: {
+        bg: updateHoverColor,
+      }
+    },
   },
 } 
 

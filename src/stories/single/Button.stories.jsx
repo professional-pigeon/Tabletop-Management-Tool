@@ -14,7 +14,8 @@ function Template() {
       <Button variant='link-base'>Go to</Button>
       <Button variant='link-card'>Go to</Button>
       <Button variant='add-modal'>Add Thing</Button>
-      <Button variant='update-modal'>update Thing</Button>
+      <Button variant='update-modal'>Update Thing</Button>
+      <Button variant='update-card'>Update Thing</Button>
     </Flex>
   )
 }

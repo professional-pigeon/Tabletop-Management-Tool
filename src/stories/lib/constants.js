@@ -55,4 +55,4 @@ const campaign = {
 
 }
 
-export { character, location, innerLocation, campaign }
+export { character, location, innerLocation, campaign, note1 }
