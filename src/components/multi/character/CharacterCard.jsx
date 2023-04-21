@@ -23,9 +23,16 @@ export default function CharacterCard({ character }) {
       minW='15rem'
       w='30%'
       maxW='18rem'
+      border='1px solid'
+      borderColor='white'
       borderRadius='.25rem' 
       boxShadow='base'
       bg='white'
+      _hover={{ 
+        boxShadow: 'lg', 
+        border: '1px solid', 
+        borderColor: 'black' 
+      }}
     >
       <Flex 
         direction='column' 
