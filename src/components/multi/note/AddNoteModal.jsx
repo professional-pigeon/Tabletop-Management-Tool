@@ -13,7 +13,6 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { campaignShape, locationShape, characterShape } from '../../../lib/propShapes';
 import TextInput from '../../single/TextInput';
-import { useCampaignIdContext } from '../../context/CampaignIdContext';
 
 export default function AddNoteModal({ 
   place, 
@@ -63,11 +62,13 @@ export default function AddNoteModal({
 AddNoteModal.propTypes = {
   place: PropTypes.oneOfType([campaignShape, locationShape, characterShape, PropTypes.object]),
   setPlace: PropTypes.func, 
+  placeType: PropTypes.string,
   buttonVariant: PropTypes.string,
 };
 
 AddNoteModal.defaultProps = {
   place: {},
+  placeType: '',
   setPlace: () => {}, 
   buttonVariant: undefined,
 };
