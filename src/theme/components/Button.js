@@ -14,6 +14,17 @@ const Button = {
   // sizes: {},
   // styles for different visual variants ("outline", "solid")
   variants: {
+    'delete-icon': {
+      bg: deleteColor,
+      color: 'white',
+      h: "8",
+      minW: "8",
+      fontSize: "sm",
+      px: "3",
+      _hover: {
+        bg: deleteHoverColor
+      }
+    },
     'delete-card': {
       bg: deleteColor,
       color: 'white',
@@ -73,6 +84,17 @@ const Button = {
         bg: addHoverColor,
       }
     },
+    'add-icon': {
+      bg: addColor,
+      color: 'black',
+      h: "8",
+      minW: "8",
+      fontSize: "sm",
+      px: "3",
+      _hover: {
+        bg: addHoverColor,
+      }
+    },
     'update-modal': {
       bg: updateColor,
       color: 'black',
@@ -85,6 +107,17 @@ const Button = {
       }
     },
     'update-card': {
+      bg: updateColor,
+      color: 'black',
+      h: "8",
+      minW: "8",
+      fontSize: "sm",
+      px: "3",
+      _hover: {
+        bg: updateHoverColor,
+      }
+    },
+    'update-icon': {
       bg: updateColor,
       color: 'black',
       h: "8",
