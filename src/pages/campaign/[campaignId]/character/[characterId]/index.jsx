@@ -9,6 +9,7 @@ import { userShape } from '../../../../../lib/propShapes'
 import FeatureHolder from '../../../../../components/single/FeatureHolder'
 import UpdateCharacterModal from '../../../../../components/multi/character/UpdateCharacterModal'
 import { CampaignIdProvider } from '../../../../../components/context/CampaignIdContext'
+import AddNoteModal from '../../../../../components/multi/note/AddNoteModal'
 
 export default function Index(props) {
   const { user } = props
@@ -28,6 +29,8 @@ export default function Index(props) {
               initialPlace={character.characterLocation} 
               buttonVariant='update'
             />
+            <AddNoteModal place={character} setPlace={setCharacter} placeType='Character' buttonVariant='add-modal'/>
+
           </FeatureHolder>
         </Flex>
       </Layout>

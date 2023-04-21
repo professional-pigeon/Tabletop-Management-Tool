@@ -11,6 +11,8 @@ import useLocations from '../../../../../lib/hooks/useLocations'
 import Layout from '../../../../../components/single/Layout'
 import { authUser } from '../../../../../lib/user'
 import { userShape } from '../../../../../lib/propShapes'
+import AddNoteModal from '../../../../../components/multi/note/AddNoteModal'
+
 
 export default function Index(props) {
   const { user } = props
@@ -28,6 +30,7 @@ export default function Index(props) {
               <UpdateLocationModal place={location} setPlace={setLocation} />
               <AddLocationModal place={location} buttonVariant='add-modal' setPlace={setLocation} isAddingInnerLocation />
               <AddCharacterModal initialPlace={location} buttonVariant='add-modal' setInitialPlace={setLocation} />
+              <AddNoteModal place={location} setPlace={setLocation} placeType='Location' buttonVariant='add-modal'/>
             </FeatureHolder>
             <TabSwitch locations={location.innerLocations} characters={location.characters} />
           </Flex>
