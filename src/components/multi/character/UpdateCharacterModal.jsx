@@ -17,12 +17,14 @@ import {
   characterRaces as characterRaceOptions, 
   characterTypes as characterTypeOptions } 
   from '../../../lib/enumerated';
+import { updateCharacter } from '../../../lib/character';
 import PlaceSelect from '../../single/PlaceSelect';
 import CustomSelect from '../../single/CustomSelect';
 import usePlaceSelects from '../../../lib/hooks/usePlaceSelects';
 
 export default function UpdateCharacterModal({
   character,
+  setCharacter,
   initialPlace,
   buttonVariant
 }) {
@@ -56,6 +58,7 @@ export default function UpdateCharacterModal({
       characterType: characterTypeRef.current.value || characterType,
       characterRace: characterRaceRef.current.value || characterRace
     }
+    updateCharacter(params).then((res) => setCharacter(res))
     onClose();
   };
 
@@ -96,7 +99,7 @@ export default function UpdateCharacterModal({
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button onClick={() => updateCharacterCall()}>Add</Button>
+            <Button onClick={updateCharacterCall}>Update</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

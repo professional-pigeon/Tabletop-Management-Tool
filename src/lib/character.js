@@ -72,4 +72,42 @@ async function deleteCharacter(characterId) {
   }
 }
 
-export { getCharacter, addCharacter, deleteCharacter }
+
+async function updateCharacter(params) {
+  let character
+  const { 
+    placeType,
+    placeId,
+    name, 
+    description,
+    characterType,
+    characterRace, 
+    characterId
+  } = params
+  
+  try {
+    character = await fetch(
+      `/api/characters/${characterId}`,
+      {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ 
+          char_place_type: placeType, 
+          char_place_id: placeId,
+          name, 
+          description, 
+          id: characterId,
+          character_type: characterType,
+          character_race: characterRace
+        }),
+      }
+    )
+    const characterData = await character.json()
+
+    return keysToCamel(characterData)
+  } catch (error) {
+    return { error }
+  }
+};
+
+export { getCharacter, addCharacter, deleteCharacter, updateCharacter }

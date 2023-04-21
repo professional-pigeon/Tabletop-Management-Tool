@@ -8,7 +8,7 @@ import { authUser } from '../../../../../lib/user'
 import { userShape } from '../../../../../lib/propShapes'
 import FeatureHolder from '../../../../../components/single/FeatureHolder'
 import UpdateCharacterModal from '../../../../../components/multi/character/UpdateCharacterModal'
-import { CampaignIdProvider } from '@/components/context/CampaignIdContext'
+import { CampaignIdProvider } from '../../../../../components/context/CampaignIdContext'
 
 export default function Index(props) {
   const { user } = props
@@ -24,6 +24,7 @@ export default function Index(props) {
           <FeatureHolder>
             <UpdateCharacterModal 
               character={character} 
+              setCharacter={setCharacter}
               initialPlace={character.characterLocation} 
               buttonVariant='update'
             />
