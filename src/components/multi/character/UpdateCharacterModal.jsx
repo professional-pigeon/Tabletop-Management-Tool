@@ -46,14 +46,16 @@ export default function UpdateCharacterModal({
   const sortedSelectOptions = sortSelects(selectOptions);
 
   const updateCharacterCall = () => {
+    const { id: placeId, placeType } = place;
     const params = {
+      placeId: placeId || initialPlace.id,
+      placeType: placeType || sortedSelectOptions[0].placeType,
       characterId: character.id,
       name: nameRef.current.value || name,
       description: descriptionRef.current.value || description,
       characterType: characterTypeRef.current.value || characterType,
       characterRace: characterRaceRef.current.value || characterRace
     }
-    console.log(params)
     onClose();
   };
 
@@ -73,14 +75,17 @@ export default function UpdateCharacterModal({
               name='Character Type' 
               valueRef={characterTypeRef}
               selectOptions={characterTypeOptions} 
+              placeholder={characterType}
             />
             <CustomSelect 
               name='Character Race' 
               valueRef={characterRaceRef}
               selectOptions={characterRaceOptions} 
+              placeholder={characterRace}
             />
             <PlaceSelect 
               name='Where is the Character?' 
+              placeholder={initialPlace.name}
               selectOptions={sortedSelectOptions} 
               selectValue={place} 
               setSelectValue={setPlace}
