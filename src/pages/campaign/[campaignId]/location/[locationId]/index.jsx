@@ -12,7 +12,7 @@ import Layout from '../../../../../components/single/Layout'
 import { authUser } from '../../../../../lib/user'
 import { userShape } from '../../../../../lib/propShapes'
 import AddNoteModal from '../../../../../components/multi/note/AddNoteModal'
-
+import NoteList from '../../../../../components/multi/note/NoteList'
 
 export default function Index(props) {
   const { user } = props
@@ -31,6 +31,7 @@ export default function Index(props) {
               <AddLocationModal place={location} buttonVariant='add-modal' setPlace={setLocation} isAddingInnerLocation />
               <AddCharacterModal initialPlace={location} buttonVariant='add-modal' setInitialPlace={setLocation} />
               <AddNoteModal place={location} setPlace={setLocation} placeType='Location' buttonVariant='add-modal'/>
+              <NoteList place={location} setPlace={setLocation} notes={location.notes} />
             </FeatureHolder>
             <TabSwitch locations={location.innerLocations} characters={location.characters} />
           </Flex>

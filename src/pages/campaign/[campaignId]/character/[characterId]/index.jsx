@@ -10,6 +10,7 @@ import FeatureHolder from '../../../../../components/single/FeatureHolder'
 import UpdateCharacterModal from '../../../../../components/multi/character/UpdateCharacterModal'
 import { CampaignIdProvider } from '../../../../../components/context/CampaignIdContext'
 import AddNoteModal from '../../../../../components/multi/note/AddNoteModal'
+import NoteList from '../../../../../components/multi/note/NoteList'
 
 export default function Index(props) {
   const { user } = props
@@ -22,16 +23,18 @@ export default function Index(props) {
       <Layout user={user}>
         <Flex direction='column' w='100vw' p='1rem'>
           <Heading>Character: {character.name}</Heading>
-          <FeatureHolder>
-            <UpdateCharacterModal 
-              character={character} 
-              setCharacter={setCharacter}
-              initialPlace={character.characterLocation} 
-              buttonVariant='update-modal'
-            />
-            <AddNoteModal place={character} setPlace={setCharacter} placeType='Character' buttonVariant='add-modal'/>
-
-          </FeatureHolder>
+          <Flex direction='row' gap={6} w='full'>
+            <FeatureHolder>
+              <UpdateCharacterModal 
+                character={character} 
+                setCharacter={setCharacter}
+                initialPlace={character.characterLocation} 
+                buttonVariant='update-modal'
+              />
+              <AddNoteModal place={character} setPlace={setCharacter} placeType='Character' buttonVariant='add-modal'/>
+            </FeatureHolder>
+            <NoteList place={character} setPlace={setCharacter} notes={character.notes} />
+          </Flex>
         </Flex>
       </Layout>
       </CampaignIdProvider>
