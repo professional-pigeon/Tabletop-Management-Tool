@@ -13,7 +13,7 @@ import {
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { deleteLocation } from '../../../lib/location';
-import { campaignShape, locationShape } from '../../../lib/propShapes';
+import { placeShape } from '../../../lib/propShapes';
 import StateTextInput from '../../single/StateTextInput';
 
 
@@ -76,7 +76,7 @@ export default function DeleteLocationModal({
 
 DeleteLocationModal.propTypes = {
   locationId: PropTypes.number,
-  place: PropTypes.oneOfType([campaignShape, locationShape]),
+  place: placeShape,
   setPlace: PropTypes.func, 
   buttonVariant: PropTypes.string,
 };

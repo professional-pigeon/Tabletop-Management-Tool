@@ -12,7 +12,7 @@ import {
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { addLocation } from '../../../lib/location';
-import { campaignShape, locationShape } from '../../../lib/propShapes';
+import { placeShape } from '../../../lib/propShapes';
 import TextInput from '../../single/TextInput';
 import { useCampaignIdContext } from '../../context/CampaignIdContext';
 
@@ -77,7 +77,7 @@ export default function AddLocationModal({
 };
 
 AddLocationModal.propTypes = {
-  place: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
+  place: placeShape,
   isAddingInnerLocation: PropTypes.bool,
   setPlace: PropTypes.func, 
   buttonVariant: PropTypes.string,

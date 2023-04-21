@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { campaignShape, locationShape } from '../../../lib/propShapes';
+import { placeShape } from '../../../lib/propShapes';
 import StateTextInput from '../../single/StateTextInput';
 import { updateLocation } from '../../../lib/location';
 
@@ -75,7 +75,7 @@ export default function UpdateLocationModal({
 };
 
 UpdateLocationModal.propTypes = {
-  place: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
+  place: placeShape,
   setPlace: PropTypes.func, 
 };
 

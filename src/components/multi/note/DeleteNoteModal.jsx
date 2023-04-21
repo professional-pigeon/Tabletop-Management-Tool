@@ -14,7 +14,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { deleteNote } from '../../../lib/note';
-import { campaignShape, locationShape, characterShape } from '../../../lib/propShapes';
+import { placeShape } from '../../../lib/propShapes';
 import StateTextInput from '../../single/StateTextInput';
 
 
@@ -37,8 +37,10 @@ export default function DeleteNoteModal({
 
   const deleteNoteCall = () => {
     deleteNote(noteId).then(() => {
-      // const newCampaigns = campaigns.filter((obj) => obj.id !== campaignId)
-      // setPlace(newCampaigns)
+      const newPlace = place
+      const newNotes = place.notes.filter((obj) => obj.id !== noteId)
+      newPlace.notes = newNotes
+      setPlace(newPlace)
     })
   }
 
@@ -63,7 +65,7 @@ export default function DeleteNoteModal({
             <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
               Close
             </Button>
-            <Button onClick={() => deleteCampaignWrap()} isDisabled={textConfirm !== 'DELETE'}>Delete</Button>
+            <Button onClick={() => deleteNoteCall()} isDisabled={textConfirm !== 'DELETE'}>Delete</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -73,7 +75,6 @@ export default function DeleteNoteModal({
 
 DeleteNoteModal.propTypes = {
   noteId: PropTypes.number.isRequired,
-  place: PropTypes.oneOfType([campaignShape, locationShape, characterShape, PropTypes.object]),
-  setPlace: PropTypes.func,
-  buttonVariant: PropTypes.string,
+  place: placeShape.isRequired,
+  setPlace: PropTypes.func.isRequired,
 };

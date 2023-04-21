@@ -12,7 +12,7 @@ import {
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../single/TextInput';
-import { campaignShape, characterShape, locationShape } from '../../../lib/propShapes';
+import { characterShape, placeShape } from '../../../lib/propShapes';
 import { 
   characterRaces as characterRaceOptions, 
   characterTypes as characterTypeOptions } 
@@ -108,7 +108,7 @@ export default function UpdateCharacterModal({
 };
 
 UpdateCharacterModal.propTypes = {
-  initialPlace: PropTypes.oneOfType([campaignShape, locationShape, PropTypes.object]),
+  initialPlace: placeShape,
   buttonVariant: PropTypes.string,
   character: characterShape,
   setCharacter: PropTypes.func,

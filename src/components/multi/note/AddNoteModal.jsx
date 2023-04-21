@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { campaignShape, locationShape, characterShape } from '../../../lib/propShapes';
+import { placeShape } from '../../../lib/propShapes';
 import TextInput from '../../single/TextInput';
 import { addNote } from '../../../lib/note';
 
@@ -64,7 +64,7 @@ export default function AddNoteModal({
 };
 
 AddNoteModal.propTypes = {
-  place: PropTypes.oneOfType([campaignShape, locationShape, characterShape, PropTypes.object]),
+  place: placeShape,
   setPlace: PropTypes.func, 
   placeType: PropTypes.string,
   buttonVariant: PropTypes.string,
