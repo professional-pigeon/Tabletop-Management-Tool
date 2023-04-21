@@ -3,6 +3,8 @@ import {
   number,
   shape,
   string,
+  object,
+  oneOfType
 } from 'prop-types';
 
 const noteShape = shape({
@@ -66,4 +68,7 @@ const userShape = shape({
   email: string
 })
 
-export { noteShape, characterShape, locationShape, campaignShape, userShape } 
+const placeShape = oneOfType([campaignShape, locationShape, characterShape, object])
+
+
+export { placeShape, noteShape, characterShape, locationShape, campaignShape, userShape } 
