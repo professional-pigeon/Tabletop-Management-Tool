@@ -73,7 +73,7 @@ const Button = {
         bg: addHoverColor,
       }
     },
-    'update': {
+    'update-modal': {
       bg: updateColor,
       color: 'black',
       h: "10",

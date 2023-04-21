@@ -49,7 +49,7 @@ export default function UpdateLocationModal({
 
   return (
     <>
-      <Button onClick={onOpen} variant='update'>Update Location</Button>
+      <Button onClick={onOpen} variant='update-modal'>Update Location</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

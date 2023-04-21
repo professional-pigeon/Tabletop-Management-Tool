@@ -27,7 +27,7 @@ export default function Index(props) {
               character={character} 
               setCharacter={setCharacter}
               initialPlace={character.characterLocation} 
-              buttonVariant='update'
+              buttonVariant='update-modal'
             />
             <AddNoteModal place={character} setPlace={setCharacter} placeType='Character' buttonVariant='add-modal'/>
 

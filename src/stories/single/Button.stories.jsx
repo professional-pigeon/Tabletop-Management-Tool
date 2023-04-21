@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react'
+import { Button, Flex } from '@chakra-ui/react'
 import React from "react";
 
 export default {
@@ -6,13 +6,19 @@ export default {
   component: Button,
 };
 
-function Template(args) {
-  const { variant } = args
-  return <Button variant={variant} />
+function Template() {
+  return (
+    <Flex direction='row' flexWrap='wrap' gap={4}>
+      <Button variant='delete'>Delete</Button>
+      <Button variant='delete-card'>Delete</Button>
+      <Button variant='link-base'>Go to</Button>
+      <Button variant='link-card'>Go to</Button>
+      <Button variant='add-modal'>Add Thing</Button>
+      <Button variant='update-modal'>update Thing</Button>
+    </Flex>
+  )
 }
 
-export const Primary = Template.bind({});
-Primary.args = { variant: '' }
 
-export const CardDelete = Template.bind({});
-Primary.args = { variant: 'card-delete' }
+export const AllButtons = Template.bind({});
+AllButtons.args = {}
