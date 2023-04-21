@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
 import React from 'react'
 import { useRouter } from 'next/router'
 import useCharacters from '../../../../../lib/hooks/useCharacters'
