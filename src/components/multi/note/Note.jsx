@@ -1,6 +1,7 @@
 import { Flex, Text, VStack, Button } from '@chakra-ui/react';
 import React from 'react';
 import { noteShape } from '../../../lib/propShapes';
+import DeleteNoteModal from './DeleteNoteModal';
 
 export default function Note({ note }) {
   return (
@@ -23,7 +24,7 @@ export default function Note({ note }) {
         </Text>
       </Text>
       <VStack>
-        <Button variant='delete-card'>hi</Button>
+        <DeleteNoteModal />
         <Button variant='update-card'>hi</Button>
       </VStack>
     </Flex>
