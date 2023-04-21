@@ -9,10 +9,12 @@ import useCampaigns from '../../../lib/hooks/useCampaigns'
 import Layout from '../../../components/single/Layout'
 import { authUser } from '../../../lib/user'
 import { userShape } from '../../../lib/propShapes'
+import AddNoteModal from '../../../components/multi/note/AddNoteModal'
 
 export default function Index(props) {
   const { user } = props
   const { campaign, setCampaign } = useCampaigns()
+  console.log(campaign)
 
   return (
     <CampaignIdProvider id={parseInt(campaign.id, 10)}>
@@ -23,6 +25,7 @@ export default function Index(props) {
             <FeatureHolder>
               <AddLocationModal isAddingInnerLocation={false} buttonVariant='add-modal' place={campaign} setPlace={setCampaign} />
               <AddCharacterModal initialPlace={campaign} buttonVariant='add-modal' setInitialPlace={setCampaign} />
+              <AddNoteModal place={campaign} setPlace={setCampaign} placeType='Campaign' buttonVariant='add-modal'/>
             </FeatureHolder>
             <TabSwitch locations={campaign.locations} characters={campaign.characters} />
           </Flex>
