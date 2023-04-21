@@ -52,18 +52,15 @@ async function deleteNote(noteId) {
 
 async function updateNote(params) {
   let note
-  const { content, noteId} = params
+  const { content, id } = params
   
   try {
     note = await fetch(
-      `/api/notes/${noteId}`,
+      `/api/notes/${id}`,
       {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ 
-          id: noteId,
-          content
-        }),
+        body: JSON.stringify({ id, content }),
       }
     )
     const noteData = await note.json()

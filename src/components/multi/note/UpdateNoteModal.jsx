@@ -29,15 +29,16 @@ export default function UpdateNoteModal({
   const updateNoteCall = () => {
     const params = {
       id,
-
+      content: contentRef.current.value || content
     }
     updateNote(params).then((res) => {
-      const newPlace = place
-      const newNotes = place.notes.filter((obj) => obj.id !== id)
+      const newPlace = { ...place }
+      const newNotes = place.notes.filter((obj) => obj.id !== params.id)
       newNotes.unshift(res)
-      newPlace.notes = newNotes.unshift(res)
+      newPlace.notes = newNotes
       setPlace(newPlace)
     })
+    onClose()
   }
 
   return (

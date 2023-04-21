@@ -35,7 +35,7 @@ export default function DeleteCharacterModal({
 
   const deleteCharacterWrap = () => {
     deleteCharacter(characterId).then(() => {
-      const newPlace = place
+      const newPlace = { ...place }
       const newCharacters = place.characters.filter((obj) => obj.id !== characterId)
       newPlace.characters = newCharacters
       setPlace(newPlace)

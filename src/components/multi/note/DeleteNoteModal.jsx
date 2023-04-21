@@ -37,7 +37,7 @@ export default function DeleteNoteModal({
 
   const deleteNoteCall = () => {
     deleteNote(noteId).then(() => {
-      const newPlace = place
+      const newPlace = { ...place }
       const newNotes = place.notes.filter((obj) => obj.id !== noteId)
       newPlace.notes = newNotes
       setPlace(newPlace)

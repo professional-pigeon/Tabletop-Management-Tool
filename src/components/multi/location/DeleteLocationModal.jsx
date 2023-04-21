@@ -37,7 +37,7 @@ export default function DeleteLocationModal({
 
   const deleteLocationWrap = () => {
     deleteLocation(locationId).then(() => {
-      const newPlace = place
+      const newPlace = { ...place }
       const newLocations = place.locations.filter((obj) => obj.id !== locationId)
       newPlace.locations = newLocations
       setPlace(newPlace)

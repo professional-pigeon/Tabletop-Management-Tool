@@ -15,7 +15,6 @@ import NoteList from '../../../components/multi/note/NoteList'
 export default function Index(props) {
   const { user } = props
   const { campaign, setCampaign } = useCampaigns()
-  console.log(campaign)
 
   return (
     <CampaignIdProvider id={parseInt(campaign.id, 10)}>
