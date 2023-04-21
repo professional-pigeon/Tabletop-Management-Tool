@@ -16,7 +16,8 @@ export default function PlaceSelect({
   helperText,
   errorMessage,
   selectOptions, 
-  setSelectValue 
+  setSelectValue,
+  placeholder
 }) {
     
   return (
@@ -24,7 +25,7 @@ export default function PlaceSelect({
       <FormLabel>{name}</FormLabel>
       <Select
         isDisabled={disabled} 
-        placeholder='select option'
+        placeholder={placeholder}
         onChange={(e) => setSelectValue(JSON.parse(e.target.value))}
       >
         {selectOptions.map((opt) => 
@@ -48,6 +49,7 @@ PlaceSelect.propTypes = {
   error: PropTypes.bool,
   helperText: PropTypes.string,
   errorMessage: PropTypes.string,
+  placeholder: PropTypes.string,
 };
 
 PlaceSelect.defaultProps ={
@@ -57,5 +59,6 @@ PlaceSelect.defaultProps ={
   disabled: false,
   error: false,
   helperText: '',
-  errorMessage: `issue with field`
+  errorMessage: `issue with field`,
+  placeholder: 'select option'
 };
