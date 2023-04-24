@@ -20,6 +20,8 @@
 
 This is the front end application for a Tabletop Management App. You can download the adjoining API/DB here Tabletop-API(https://github.com/professional-pigeon/tabletop-api)
 
+You can also use the application here(https://fh-tabletop-management.herokuapp.com/login)
+
 ## Setup/Installation Requirements
 
 * Clone/download from github repository [here] (https://github.com/professional-pigeon/Tabletop-Management-Tool)
