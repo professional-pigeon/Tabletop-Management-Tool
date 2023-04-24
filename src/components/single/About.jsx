@@ -8,8 +8,7 @@ export default function About() {
       <Heading textAlign='center'>About</Heading>
       <VStack>
         <Text textIndent='2rem'>Hi, this is a TTRPG management app. Created for use by myself and a few friends, if you have questions or requests for features please email kyle.kayperez@gmail.com.</Text>
-        <Text textIndent='2rem'>This front end app uses React, Next.js, Storybook, and Chakra UI; a component library which has strengths in theme application, aria functions, and accessibility features.</Text>
-        <Text textIndent='2rem'>The api is also self-built and hosted on Heroku and was made using RoR. I chose to keep them separate as I was most recently working at a company that was transitioning their RoR front end to Next.js and I like the separation of functionality.</Text>
+        <Text textIndent='2rem'>If I do not know you personally and you have stumbled this app and would like to use it for your campaign, feel free to. Please reach out to let me know what you like about it and know that I am open to suggestions.</Text>
       </VStack>
     </Flex>
   );
