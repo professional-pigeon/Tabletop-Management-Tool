@@ -11,10 +11,13 @@ import { authUser } from '../../../lib/user'
 import { userShape } from '../../../lib/propShapes'
 import AddNoteModal from '../../../components/multi/note/AddNoteModal'
 import NoteList from '../../../components/multi/note/NoteList'
+import LocationHolder from '../../../components/multi/location/LocationHolder'
+import CharacterCardHolder from '../../../components/multi/character/CharacterCardHolder'
 
 export default function Index(props) {
   const { user } = props
   const { campaign, setCampaign } = useCampaigns()
+  const { notes, locations, characters } = campaign
 
   return (
     <CampaignIdProvider id={parseInt(campaign.id, 10)}>
@@ -26,9 +29,12 @@ export default function Index(props) {
               <AddLocationModal isAddingInnerLocation={false} buttonVariant='add-modal' place={campaign} setPlace={setCampaign} />
               <AddCharacterModal initialPlace={campaign} buttonVariant='add-modal' setInitialPlace={setCampaign} />
               <AddNoteModal place={campaign} setPlace={setCampaign} placeType='Campaign' buttonVariant='add-modal'/>
-              <NoteList place={campaign} setPlace={setCampaign} notes={campaign.notes} />
             </FeatureHolder>
-            <TabSwitch locations={campaign.locations} characters={campaign.characters} />
+            <TabSwitch tabs={['Locations', 'Characters', 'Notes']}>
+              <LocationHolder locations={locations} />
+              <CharacterCardHolder characters={characters} />
+              <NoteList notes={notes} place={campaign} setPlace={setCampaign} />
+            </TabSwitch>
           </Flex>
         </Flex>
       </Layout>

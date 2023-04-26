@@ -1,4 +1,4 @@
-import { Box, Tabs, TabPanels, TabList, Tab} from '@chakra-ui/react';
+import { Box, Tabs, TabPanels, TabPanel, TabList, Tab} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,7 +16,10 @@ export default function TabSwitch({ tabs, children }) {
           {tabs.map((tab) => <Tab>{tab}</Tab>)}
         </TabList>
         <TabPanels>
-            {children}
+            {Array.isArray(children) ? 
+              children.map((child) => <TabPanel>{child}</TabPanel>)
+              : <TabPanel>{children}</TabPanel>
+            }
         </TabPanels>
       </Tabs>
     </Box>
