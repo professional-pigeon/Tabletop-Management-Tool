@@ -7,7 +7,7 @@ import { characterShape } from '../../../lib/propShapes';
 export default function CharacterCardHolder({ characters }) {
   return (
     <Flex direction='row' gap='1rem' flexWrap='wrap' p='1rem'>
-    {characters.length > 0 && characters.map((character) => 
+    {characters?.length > 0 && characters.map((character) => 
       <CharacterCard 
         key={`${character.id} ${character.name}`} 
         character={character} 

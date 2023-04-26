@@ -14,7 +14,7 @@ export default function NoteList({ notes, place, setPlace }) {
       overflowY='auto'
     >
       <Heading>Notes</Heading>
-      {notes.length > 0 && notes.map((note) => <Note key={`note ${note.id}`} note={note} place={place} setPlace={setPlace} />)}
+      {notes?.length > 0 && notes.map((note) => <Note key={`note ${note.id}`} note={note} place={place} setPlace={setPlace} />)}
     </Flex>
   );
 };

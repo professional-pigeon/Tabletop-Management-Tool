@@ -7,7 +7,7 @@ import { locationShape } from '../../../lib/propShapes';
 export default function LocationHolder({ locations }) {
   return (
     <Flex direction='row' gap='1rem' flexWrap='wrap' p='1rem'>
-      {locations.length > 0 && locations.map((location) => 
+      {locations?.length > 0 && locations.map((location) => 
         <LocationCard 
           key={`${location.id} ${location.name}`} 
           location={location} 
