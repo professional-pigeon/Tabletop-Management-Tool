@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types'
 import { noteShape, placeShape } from '../../../lib/propShapes';
@@ -13,7 +13,6 @@ export default function NoteList({ notes, place, setPlace }) {
       maxHeight='100vh'
       overflowY='auto'
     >
-      <Heading>Notes</Heading>
       {notes?.length > 0 && notes.map((note) => <Note key={`note ${note.id}`} note={note} place={place} setPlace={setPlace} />)}
     </Flex>
   );
