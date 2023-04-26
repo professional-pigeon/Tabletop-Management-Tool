@@ -1,11 +1,8 @@
-import { Box, Tabs, TabPanel, TabPanels, TabList, Tab} from '@chakra-ui/react';
+import { Box, Tabs, TabPanels, TabList, Tab} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import CharacterCardHolder from './character/CharacterCardHolder';
-import LocationHolder from './location/LocationHolder';
-import { locationShape, characterShape } from '../../lib/propShapes';
 
-export default function TabSwitch({ locations, characters }) {
+export default function TabSwitch({ tabs, children }) {
   const [tabIndex, setTabIndex] = useState(0)
 
   const handleTabsChange = (index) => {
@@ -16,16 +13,10 @@ export default function TabSwitch({ locations, characters }) {
     <Box w='100%'>
       <Tabs index={tabIndex} onChange={handleTabsChange}>
         <TabList>
-          <Tab>Locations</Tab>
-          <Tab>Characters</Tab>
+          {tabs.map((tab) => <Tab>{tab}</Tab>)}
         </TabList>
         <TabPanels>
-          <TabPanel>
-            {locations?.length > 0 && <LocationHolder locations={locations} />}
-          </TabPanel>
-          <TabPanel>
-            {characters?.length > 0 && <CharacterCardHolder characters={characters} />}
-          </TabPanel>
+            {children}
         </TabPanels>
       </Tabs>
     </Box>
@@ -33,11 +24,9 @@ export default function TabSwitch({ locations, characters }) {
 };
 
 TabSwitch.propTypes = {
-  locations: PropTypes.arrayOf(locationShape),
-  characters: PropTypes.arrayOf(characterShape),
-};
-
-TabSwitch.defaultProps = {
-  locations: [],
-  characters: [],
+  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
