@@ -21,6 +21,7 @@ export default function StateTextInput({
     <FormControl isInvalid={error}>
       <FormLabel>{name}</FormLabel>
       <Input 
+        id={`input-${name}`}
         isDisabled={disabled} 
         value={inputValue} 
         onChange={(e) => setInputValue(e.target.value)}

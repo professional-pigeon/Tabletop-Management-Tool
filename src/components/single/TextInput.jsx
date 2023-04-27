@@ -22,6 +22,7 @@ export default function TextInput({
     <FormControl isInvalid={error}>
       <FormLabel>{name}</FormLabel>
       <Input 
+        id={`input-${name}`}
         isDisabled={disabled} 
         ref={valueRef}
         placeholder={placeholder}
