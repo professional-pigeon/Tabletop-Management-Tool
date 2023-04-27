@@ -7,8 +7,8 @@ describe('template spec', () => {
 
   it('should log you in with correct data', () => {
     cy.visit('http://localhost:4000/login')
-    cy.get('input').type('Test_Admin')
-    cy.get('input').type('WaffleH0use')
+    cy.get('input[id="input-User Name"]').type('Test_Admin')
+    // cy.get('input').type('WaffleH0use')
     cy.get('.chakra-button').contains('Login').click()
   })
 })
