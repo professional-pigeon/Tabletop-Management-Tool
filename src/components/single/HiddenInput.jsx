@@ -27,6 +27,7 @@ export default function HiddenInput({
       <FormLabel>{name}</FormLabel>
       <InputGroup>
         <Input 
+          id={`input-${name}`}
           isDisabled={disabled} 
           type={show ? 'text' : 'password'}
           value={inputValue} 
