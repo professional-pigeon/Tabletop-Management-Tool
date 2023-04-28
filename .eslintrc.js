@@ -8,6 +8,7 @@ module.exports = {
     'airbnb',
     'plugin:storybook/recommended',
     'prettier',
+    "plugin:cypress/recommended"
   ],
   parserOptions: {
     ecmaVersion: 12,
@@ -17,7 +18,7 @@ module.exports = {
       modules: true,
     },
   },
-  plugins: ['react'],
+  plugins: ['react', 'cypress', 'storybook'],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
   },
