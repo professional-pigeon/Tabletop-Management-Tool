@@ -9,7 +9,7 @@ export default function FeatureHolder({ children }) {
   return (
       <Flex direction='column' w='30%' gap={2} pt={3}>
         <Text fontSize='2xl' textDecor='underline'>Features</Text>
-        <Button variant='link-base' leftIcon={<ArrowBackIcon />} onClick={() => Router.back()}>Go back</Button>
+        <Button variant='link-base' leftIcon={<ArrowBackIcon />} onClick={() => Router.back()}>Go Back</Button>
         {children}
       </Flex>
   )
