@@ -10,7 +10,24 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', (user_name = 'test_user', password = 'run123!') => { 
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:4000/api/auth/login',
+    body: { user_name, password }
+  }).then(({ body }) => {
+    window.localStorage.setItem('_api_tabletop_management_session', body.token)
+  }) 
+})
+// const login = (user_name = 'test_user', password = 'run123!') => {
+//   cy.request({
+//     method: 'POST',
+//     url: 'http://localhost:4000/api/auth/login',
+//     body: { user_name, password }
+//   }).then(({ body }) => {
+//     window.localStorage.setItem('_api_tabletop_management_session', body.token)
+//   }) 
+// }
 //
 //
 // -- This is a child command --
