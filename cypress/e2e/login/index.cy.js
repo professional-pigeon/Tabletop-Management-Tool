@@ -11,9 +11,9 @@ describe('log in', () => {
 
   it('should log you in with correct data', () => {
     cy.visit('http://localhost:4000/login')
-    cy.get('input[id="input-User Name"]').type('admin_kk')
-    cy.get('input[id="input-Password"]').type('test123')
+    cy.get('input[id="input-User Name"]').type('test_user')
+    cy.get('input[id="input-Password"]').type('run123!')
     cy.get('.chakra-button').contains('Login').click()
-    cy.contains('Welcome admin_kk')
+    cy.contains('Welcome test_user')
   })
 })
