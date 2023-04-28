@@ -48,7 +48,13 @@ export default function DeleteCampaignModal({
 
   return (
     <>
-      <Button onClick={(e) => open(e)} variant={buttonVariant}>Delete</Button>
+      <Button 
+        onClick={(e) => open(e)} 
+        variant={buttonVariant}
+        id='open-campaign-delete-modal'
+      >
+        Delete
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -67,7 +73,11 @@ export default function DeleteCampaignModal({
             <Button colorScheme='blue' mr={3} onClick={onCloseWrap}>
               Close
             </Button>
-            <Button onClick={() => deleteCampaignWrap()} isDisabled={textConfirm !== 'DELETE'}>Delete</Button>
+            <Button 
+              onClick={() => deleteCampaignWrap()} 
+              isDisabled={textConfirm !== 'DELETE'}
+              id='Delete-Campaign'
+            >Delete</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

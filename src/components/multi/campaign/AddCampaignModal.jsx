@@ -53,7 +53,7 @@ export default function AddCampaignModal({
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button onClick={addNewCampaign}>Add</Button>
+            <Button onClick={addNewCampaign} id='Add-Campaign'>Add</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
