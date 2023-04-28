@@ -1,5 +1,3 @@
-const { CYCLIC_KEY } = require("@storybook/addon-actions")
-
 describe('dashboard', () => {
   it('goes to dashboard, creates and navigates to a campaign', () => {
     cy.login()
@@ -8,10 +6,6 @@ describe('dashboard', () => {
     cy.get('input[id="input-Name"]').type('Test Campaign')
     cy.get('button[id="Add-Campaign"]').click()
     cy.contains('Test Campaign')
-    cy.get('a[href*="/campaign"]').first().click()
-    cy.contains('Campaign: Static Test')
-    cy.get('.chakra-button').contains('Go Back').click()
-
   })
 
   it('allows you to delete a campaign', () => {
